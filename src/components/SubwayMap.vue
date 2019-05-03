@@ -2,6 +2,8 @@
   <div id="subway-map"></div>
 </template>
 <script>
+import BMapSub from "BMapSub";
+
 export default {
   name: "SubwayMap",
   data: function() {
