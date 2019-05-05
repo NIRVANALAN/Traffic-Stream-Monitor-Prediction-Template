@@ -47,9 +47,13 @@ export default {
 
       self.detail.search("近江");
     });
+    
     subway.addEventListener("subwayloaded", function() {
       alert("地铁图加载完成");
       self.detail = new BMapSub.DetailInfo(subway);
+
+      var drct = new BMapSub.Direction(subway);
+      drct.search("近江", "振宁路");
     });
   }
 };
