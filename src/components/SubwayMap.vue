@@ -26,7 +26,7 @@ export default {
     );
     var marker = new BMapSub.Marker("近江", { icon: startIcon });
     subway.addMarker(marker);
-*/
+    */
     var infowindow = new BMapSub.InfoWindow(
       `
       <div id="bd-subwayInfo">
@@ -39,6 +39,13 @@ export default {
     subway.openInfoWindow(infowindow, "近江");
     subway.setCenter("近江");
     subway.setZoom(1);
+
+    subway.addEventListener('tap', function(e) {
+        alert('您点击了"' + e.station.name + '"站');
+    });
+    subway.addEventListener('subwayloaded', function() {
+        alert('地铁图加载完成');
+    });
   }
 };
 </script>
