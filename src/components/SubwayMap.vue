@@ -9,8 +9,20 @@ export default {
   name: "SubwayMap",
   data: function() {
     return {
-      detail: null
+      detail: null,
+      infowindow: null
     };
+  },
+  methods: {
+    getInfoTag: function(text) {
+      return `
+      <div id="bd-subwayInfo">
+        <div id="bd-subwayTitle">
+          ${text}
+        </div>
+      </div>
+      `;
+    }
   },
   mounted: function() {
     var subway = new BMapSub.Subway("subway-map", "179");
@@ -29,31 +41,24 @@ export default {
     var marker = new BMapSub.Marker("近江", { icon: startIcon });
     subway.addMarker(marker);
     */
-    var infowindow = new BMapSub.InfoWindow(
-      `
-      <div id="bd-subwayInfo">
-        <div id="bd-subwayTitle">
-          近江
-        </div>
-      </div>
-      `
-    );
-    subway.openInfoWindow(infowindow, "近江");
-    subway.setCenter("近江");
     subway.setZoom(1);
 
     subway.addEventListener("tap", function(e) {
-      alert('您点击了"' + e.station.name + '"站');
+      self.infowindow = new BMapSub.InfoWindow(`
+      <div id="bd-subwayInfo">
+        <div id="bd-subwayTitle">
+          ${e.station.name}
+        </div>
+      </div>
+      `);
+      subway.openInfoWindow(self.infowindow, e.station.name);
 
-      self.detail.search("近江");
+      // self.detail.search(e.station.name);
     });
-    
+
     subway.addEventListener("subwayloaded", function() {
       alert("地铁图加载完成");
       self.detail = new BMapSub.DetailInfo(subway);
-
-      var drct = new BMapSub.Direction(subway);
-      drct.search("近江", "振宁路");
     });
   }
 };
