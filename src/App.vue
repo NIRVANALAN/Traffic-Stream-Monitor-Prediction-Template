@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import SubwayMap from "./components/SubwayMap.vue";
+import SubwayMap from "./components/SubwayMap";
 
 export default {
   name: "app",
