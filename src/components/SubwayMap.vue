@@ -18,6 +18,14 @@ export default {
       offset: new BMapSub.Size(10, 100)
     });
     subway.addControl(zoomControl);
+
+    var startIcon = new BMapSub.Icon(
+      "https://api.map.baidu.com/images/subway/start-bak.png",
+      new BMapSub.Size(50, 80)
+    );
+    var marker = new BMapSub.Marker("近江", { icon: startIcon });
+    subway.addMarker(marker);
+    subway.setZoom(1);
   }
 };
 </script>
