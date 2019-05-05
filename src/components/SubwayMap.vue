@@ -8,7 +8,9 @@ import BMAPSUB_ANCHOR_BOTTOM_RIGHT from "BMapSub";
 export default {
   name: "SubwayMap",
   data: function() {
-    return {};
+    return {
+      detail: null
+    };
   },
   mounted: function() {
     var subway = new BMapSub.Subway("subway-map", "179");
@@ -40,11 +42,14 @@ export default {
     subway.setCenter("近江");
     subway.setZoom(1);
 
-    subway.addEventListener('tap', function(e) {
-        alert('您点击了"' + e.station.name + '"站');
+    subway.addEventListener("tap", function(e) {
+      alert('您点击了"' + e.station.name + '"站');
+
+      self.detail.search("近江");
     });
-    subway.addEventListener('subwayloaded', function() {
-        alert('地铁图加载完成');
+    subway.addEventListener("subwayloaded", function() {
+      alert("地铁图加载完成");
+      self.detail = new BMapSub.DetailInfo(subway);
     });
   }
 };
