@@ -1,29 +1,17 @@
 # vue-bmap-demo
 
-## Project setup
-```
-npm install
-```
+## Info
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+This is a demo for using BaiduMap with VueJS.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Reference
 
-### Run your tests
-```
-npm run test
-```
+### 百度地图
 
-### Lints and fixes files
-```
-npm run lint
-```
+- [百度地图 - 地铁组件](http://wiki.lbsyun.baidu.com/wiki/index.php?title=webcomponent/guide/subway)
+- [地铁组件的详细内容](http://lbsyun.baidu.com/cms/jsapi/reference/subway.html)
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Vue
+
+- [官网教程](https://cn.vuejs.org/index.html)
+- [vue-cli](https://cli.vuejs.org/zh/)
