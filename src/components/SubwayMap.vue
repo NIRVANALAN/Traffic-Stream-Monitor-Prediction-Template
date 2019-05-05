@@ -51,10 +51,10 @@ export default {
     //   var detail = new BMapSub.DetailInfo(subway);
     //   detail.search("火车东站");
     // });
-    subway.addEventListener("subwayloaded", function() {
-      var drct = new BMapSub.Direction(subway);
-      drct.search("凤起路", "朝阳");
-    });
+    // subway.addEventListener("subwayloaded", function() {
+    //   var drct = new BMapSub.Direction(subway);
+    //   drct.search("凤起路", "朝阳");
+    // });
     subway.addEventListener("directioncomplete", function() {
       alert("可以自定义点击详情后的操作！");
     });
