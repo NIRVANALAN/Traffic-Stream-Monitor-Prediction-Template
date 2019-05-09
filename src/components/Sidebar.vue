@@ -31,6 +31,23 @@
           <el-menu-item index="3-4">站点</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
+      <el-submenu index="4">
+        <template slot="title">
+          <i class="el-icon-info"></i>我的消息
+        </template>
+        <el-menu-item index="4-1">消息一</el-menu-item>
+        <el-menu-item index="4-2">消息二</el-menu-item>
+      </el-submenu>
+      <el-submenu index="5">
+        <template slot="title">
+          <i class="el-icon-setting"></i>设置
+        </template>
+      </el-submenu>
+      <el-submenu index="6">
+        <template slot="title">
+          <i class="el-icon-edit"></i>我的反馈
+        </template>
+      </el-submenu>
     </el-menu>
   </el-aside>
 </template>
