@@ -2,7 +2,6 @@ import Vue from 'vue'
 import App from './App.vue'
 
 import './plugins/element.js'
-import './plugins/echarts.js'
 
 Vue.config.productionTip = false
 
