@@ -1,6 +1,6 @@
 <template>
   <el-aside>
-    <el-menu :default-openeds="['1', '3']">
+    <el-menu unique-opened>
       <el-submenu index="1">
         <template slot="title">
           <i class="el-icon-message"></i>数据统计
