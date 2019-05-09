@@ -17,13 +17,15 @@
 import UserHeader from "./components/UserHeader.vue";
 import Sidebar from "./components/Sidebar.vue";
 import SubwayMap from "./components/SubwayMap.vue";
+import Chart from "./components/Chart.vue";
 
 export default {
   name: "app",
   components: {
     Sidebar,
     UserHeader,
-    SubwayMap
+    SubwayMap,
+    Chart
   }
 };
 </script>
