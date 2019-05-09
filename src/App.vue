@@ -1,17 +1,11 @@
 <template>
-  <div id="app">
-    <SubwayMap></SubwayMap>
-  </div>
+  <div id="app"></div>
 </template>
 
 <script>
-import SubwayMap from "./components/SubwayMap.vue";
-
 export default {
   name: "app",
-  components: {
-    SubwayMap
-  }
+  components: {}
 };
 </script>
 
