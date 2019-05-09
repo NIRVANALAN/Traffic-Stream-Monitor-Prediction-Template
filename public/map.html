@@ -38,7 +38,11 @@
         }
         // 获取北京地铁数据-初始化地铁图
         var subway = new BMapSub.Subway('container', subwaycity.citycode);
-        subway.setZoom(0.5);
+        var zoomControl = new BMapSub.ZoomControl({
+            anchor: BMAPSUB_ANCHOR_BOTTOM_RIGHT,
+            offset: new BMapSub.Size(10, 100)
+        });
+        subway.addControl(zoomControl);
     </script>
 </body>
 
