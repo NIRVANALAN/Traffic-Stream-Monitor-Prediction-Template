@@ -1,27 +1,43 @@
 <template>
-  <div id="app">
-    <SubwayMap></SubwayMap>
-  </div>
+  <el-container style="height: 100%; solid #eee; display: flex">
+    <Sidebar></Sidebar>
+
+    <el-container>
+      <UserHeader></UserHeader>
+      <SubwayMap></SubwayMap>
+
+      <el-footer>
+        <chart></chart>
+      </el-footer>
+    </el-container>
+  </el-container>
 </template>
 
 <script>
-import SubwayMap from "./components/SubwayMap";
+import UserHeader from "./components/UserHeader.vue";
+import Sidebar from "./components/Sidebar.vue";
+import SubwayMap from "./components/SubwayMap.vue";
+import Chart from "./components/Chart.vue";
 
 export default {
   name: "app",
   components: {
-    SubwayMap
+    Sidebar,
+    UserHeader,
+    SubwayMap,
+    Chart
   }
 };
 </script>
 
 <style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  margin: 0;
+  display: flex;
+  height: 100%;
+}
+
+html {
+  height: 100%;
 }
 </style>

@@ -6,6 +6,8 @@ Vue.use(BaiduMap, {
   ak: '6CWm9eOX1pjyGCoLbLecFnCT6I02D7kR'
 })
 
+import './plugins/element.js'
+
 Vue.config.productionTip = false
 
 new Vue({
