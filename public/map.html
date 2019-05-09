@@ -43,6 +43,14 @@
             offset: new BMapSub.Size(10, 100)
         });
         subway.addControl(zoomControl);
+
+        subway.addEventListener('subwayloaded', function () {
+            var drct = new BMapSub.Direction(subway);
+            drct.search('西直门', '西红门');
+        });
+        subway.addEventListener('directioncomplete', function () {
+            alert('可以自定义点击详情后的操作！');
+        });
     </script>
 </body>
 
