@@ -6,6 +6,7 @@
       <UserHeader></UserHeader>
       <el-main>
         <SubwayMap></SubwayMap>
+        <Card></Card>
       </el-main>
 
       <el-footer>
