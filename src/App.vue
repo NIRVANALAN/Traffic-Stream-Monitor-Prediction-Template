@@ -20,7 +20,7 @@ import SubwayMap from "./components/SubwayMap.vue";
 import Chart from "./components/Chart.vue";
 
 export default {
-  name: "app",
+  name: "App",
   components: {
     Sidebar,
     UserHeader,
