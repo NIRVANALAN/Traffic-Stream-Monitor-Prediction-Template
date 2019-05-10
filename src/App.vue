@@ -4,7 +4,9 @@
 
     <el-container>
       <UserHeader></UserHeader>
-      <SubwayMap></SubwayMap>
+      <el-main>
+        <SubwayMap></SubwayMap>
+      </el-main>
 
       <el-footer>
         <chart></chart>
@@ -18,6 +20,7 @@ import UserHeader from "./components/UserHeader.vue";
 import Sidebar from "./components/Sidebar.vue";
 import SubwayMap from "./components/SubwayMap.vue";
 import Chart from "./components/Chart.vue";
+import Card from "./components/Card.vue";
 
 export default {
   name: "App",
@@ -25,7 +28,8 @@ export default {
     Sidebar,
     UserHeader,
     SubwayMap,
-    Chart
+    Chart,
+    Card
   }
 };
 </script>
@@ -39,5 +43,10 @@ body {
 
 html {
   height: 100%;
+}
+
+.el-main {
+  padding: 0%;
+  position: relative;
 }
 </style>
