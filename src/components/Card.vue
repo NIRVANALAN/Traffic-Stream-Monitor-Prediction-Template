@@ -1,18 +1,52 @@
 <template>
-  <el-card class="box-card">
+  <el-card class="box-card" body-style="{padding:'0px'}">
     <div slot="header" class="clearfix">
-      <span>卡片名称</span>
+      <span>总客运量</span>
       <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
     </div>
-    <div class="item">列表内容</div>
+    <div class="item">8846</div>
+    <div id="passengerFlow" style="height:200px;">
+      <!-- <img src="./../assets/basicAreaChart.png" alt class="image"> -->
+    </div>
   </el-card>
 </template>
 <script>
+
+import echarts from "echarts";
+
 export default {
-  name: "Card"
+  name: "Card",
+  mounted() {
+    var passengerFLowChart = echarts.init(document.getElementById("passengerFlow"));
+
+  var option = {
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+        areaStyle: {}
+    }]
+};
+
+passengerFLowChart.setOption(option);
+
+  }
 };
 </script>
 <style scoped>
+#passengerFLow {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
 .text {
   font-size: 14px;
 }
@@ -31,9 +65,13 @@ export default {
 }
 
 .box-card {
-  width: 200px;
+  width: 410px;
   position: absolute;
   top: 10px;
   right: 10px;
+}
+.image {
+  width: 100%;
+  display: block;
 }
 </style>
