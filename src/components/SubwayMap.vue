@@ -1,7 +1,5 @@
 <template>
-  <el-main>
-    <iframe src="./map.html" frameborder="0" id="map-frame"></iframe>
-  </el-main>
+  <iframe src="./map.html" frameborder="0" id="map-frame"></iframe>
 </template>
 
 <script>
@@ -11,10 +9,6 @@ export default {
 </script>
 
 <style scoped>
-.el-main {
-  padding: 0%;
-  position: relative;
-}
 #map-frame {
   height: 100%;
   width: 100%;
