@@ -8,7 +8,7 @@
         <SubwayMap></SubwayMap>
         <Card></Card>
       </el-main>
-
+      <SwitchCard></SwitchCard>
       <el-footer>
         <chart></chart>
       </el-footer>
@@ -22,6 +22,7 @@ import Sidebar from "./components/Sidebar.vue";
 import SubwayMap from "./components/SubwayMap.vue";
 import Chart from "./components/Chart.vue";
 import Card from "./components/Card.vue";
+import SwitchCard from "./components/SwitchCard.vue";
 
 export default {
   name: "App",
@@ -30,7 +31,8 @@ export default {
     UserHeader,
     SubwayMap,
     Chart,
-    Card
+    Card,
+    SwitchCard
   }
 };
 </script>
