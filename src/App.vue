@@ -51,10 +51,5 @@ html {
 .el-main {
   padding: 0%;
   position: relative;
-  /* height: 80%; */
-}
-
-.el-footer {
-  height: 400px;
 }
 </style>
