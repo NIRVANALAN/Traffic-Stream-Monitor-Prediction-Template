@@ -9,7 +9,7 @@
         <Card></Card>
       </el-main>
       <SwitchCard></SwitchCard>
-      <el-footer>
+      <el-footer height="260px">
         <chart></chart>
       </el-footer>
     </el-container>

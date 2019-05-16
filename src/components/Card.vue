@@ -11,7 +11,7 @@
     </el-card>
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>平均客运量</span>
+        <span>平均站点运量</span>
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="item">1056</div>
@@ -23,7 +23,7 @@
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="item">1056</div>
-      <div id="CongestionDegree" style="height:200px;"></div>
+      <div id="CongestionDegree" style="height:180px;"></div>
     </el-card>
   </div>
 </template>
@@ -61,24 +61,24 @@ export default {
     };
 
     var averageFlowOption = {
-      title: {
-        text: "平均站点流量"
-        // subtext: "纯属虚构"
-      },
+      // title: {
+      //   text: "平均站点流量"
+      //   // subtext: "纯属虚构"
+      // },
       tooltip: {
         trigger: "axis"
       },
-      legend: {
-        data: ["入站量", "出战量"]
-      },
+      // legend: {
+      //   data: ["入站量", "出战量"]
+      // },
       toolbox: {
         show: true,
         feature: {
           mark: { show: true },
           dataView: { show: true, readOnly: false },
-          magicType: { show: true, type: ["line", "bar"] },
-          restore: { show: true },
-          saveAsImage: { show: true }
+          magicType: { show: true, type: ["line", "bar"] }
+          // restore: { show: true },
+          // saveAsImage: { show: true }
         }
       },
       calculable: true,
@@ -123,16 +123,16 @@ export default {
             20.0,
             6.4,
             3.3
-          ],
-          markPoint: {
-            data: [
-              { type: "max", name: "最大值" },
-              { type: "min", name: "最小值" }
-            ]
-          },
-          markLine: {
-            data: [{ type: "average", name: "平均值" }]
-          }
+          ]
+          // markPoint: {
+          //   data: [
+          //     { type: "max", name: "最大值" },
+          //     { type: "min", name: "最小值" }
+          //   ]
+          // },
+          // markLine: {
+          //   data: [{ type: "average", name: "平均值" }]
+          // }
         },
         {
           name: "出站量",
@@ -150,22 +150,22 @@ export default {
             18.8,
             6.0,
             2.3
-          ],
-          markPoint: {
-            data: [
-              {
-                name: "年最高",
-                value: 182.2,
-                xAxis: 7,
-                yAxis: 183,
-                symbolSize: 18
-              },
-              { name: "当天最低", value: 2.3, xAxis: 11, yAxis: 3 }
-            ]
-          },
-          markLine: {
-            data: [{ type: "average", name: "平均值" }]
-          }
+          ]
+          // markPoint: {
+          //   data: [
+          //     {
+          //       name: "年最高",
+          //       value: 182.2,
+          //       xAxis: 7,
+          //       yAxis: 183,
+          //       symbolSize: 18
+          //     },
+          //     { name: "当天最低", value: 2.3, xAxis: 11, yAxis: 3 }
+          //   ]
+          // }
+          // markLine: {
+          //   data: [{ type: "average", name: "平均值" }]
+          // }
         }
       ]
     };
@@ -175,11 +175,11 @@ export default {
         trigger: "item",
         formatter: "{a} <br/>{b} : {c} ({d}%)"
       },
-      legend: {
-        orient: "vertical",
-        x: "left",
-        data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
-      },
+      // legend: {
+      //   orient: "vertical",
+      //   x: "left",
+      //   data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
+      // },
       toolbox: {
         show: true,
         feature: {
@@ -197,8 +197,8 @@ export default {
               }
             }
           },
-          restore: { show: true },
-          saveAsImage: { show: true }
+          // restore: { show: true },
+          // saveAsImage: { show: true }
         }
       },
       calculable: true,
