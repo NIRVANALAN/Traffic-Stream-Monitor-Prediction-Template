@@ -11,14 +11,14 @@ export default {
 
     var option = {
       title: {
-        text: "某地区蒸发量和降水量",
-        subtext: "纯属虚构"
+        text: "入站量和出站量",
+        subtext: "菜市口站" // TODO 替换成真实站点
       },
       tooltip: {
         trigger: "axis"
       },
       legend: {
-        data: ["蒸发量", "降水量"]
+        data: ["入站量", "出战量"]
       },
       toolbox: {
         show: true,
@@ -35,18 +35,19 @@ export default {
         {
           type: "category",
           data: [
-            "1月",
-            "2月",
-            "3月",
-            "4月",
-            "5月",
-            "6月",
-            "7月",
-            "8月",
-            "9月",
-            "10月",
-            "11月",
-            "12月"
+            // TODO 换成真实的时间，左右各6个时间片
+            "16:30",
+            "16:40",
+            "16:50",
+            "17:00",
+            "17:10",
+            "17:20",
+            "17:30",
+            "17:40",
+            "17:50",
+            "18:00",
+            "18:10",
+            "18:20"
           ]
         }
       ],
@@ -57,9 +58,10 @@ export default {
       ],
       series: [
         {
-          name: "蒸发量",
+          name: "入站量",
           type: "bar",
           data: [
+            // TODO 换成真实数据
             2.0,
             4.9,
             7.0,
@@ -78,13 +80,13 @@ export default {
               { type: "max", name: "最大值" },
               { type: "min", name: "最小值" }
             ]
-          },
-          markLine: {
-            data: [{ type: "average", name: "平均值" }]
           }
+          // markLine: {
+          //   data: [{ type: "average", name: "平均值" }]
+          // }
         },
         {
-          name: "降水量",
+          name: "出站量",
           type: "bar",
           data: [
             2.6,
@@ -103,18 +105,18 @@ export default {
           markPoint: {
             data: [
               {
-                name: "年最高",
+                name: "当前最高",
                 value: 182.2,
                 xAxis: 7,
                 yAxis: 183,
                 symbolSize: 18
               },
-              { name: "年最低", value: 2.3, xAxis: 11, yAxis: 3 }
+              { name: "当前最低", value: 2.3, xAxis: 11, yAxis: 3 }
             ]
-          },
-          markLine: {
-            data: [{ type: "average", name: "平均值" }]
           }
+          // markLine: {
+          //   data: [{ type: "average", name: "平均值" }]
+          // }
         }
       ]
     };
