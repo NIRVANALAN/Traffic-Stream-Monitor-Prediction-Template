@@ -1,6 +1,7 @@
 <template>
   <el-container style="height: 100%; solid #eee; display: flex">
     <Sidebar></Sidebar>
+    <el-container direction="horizontal">
     <el-container>
       <el-main>
         <UserHeader></UserHeader>
@@ -12,6 +13,7 @@
       </el-footer>
     </el-container>
     <Card></Card>
+    </el-container>
   </el-container>
 </template>
 
