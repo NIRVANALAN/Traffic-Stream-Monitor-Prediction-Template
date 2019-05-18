@@ -1,18 +1,17 @@
 <template>
   <el-container style="height: 100%; solid #eee; display: flex">
     <Sidebar></Sidebar>
-
     <el-container>
-      <UserHeader></UserHeader>
       <el-main>
+        <UserHeader></UserHeader>
         <SubwayMap></SubwayMap>
-        <Card></Card>
       </el-main>
-      <SwitchCard></SwitchCard>
-      <el-footer height="260px">
+      <el-footer height="270px">
+        <SwitchCard></SwitchCard>
         <chart></chart>
       </el-footer>
     </el-container>
+    <Card></Card>
   </el-container>
 </template>
 
