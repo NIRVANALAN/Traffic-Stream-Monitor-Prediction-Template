@@ -6,7 +6,7 @@
         <UserHeader></UserHeader>
         <SubwayMap></SubwayMap>
       </el-main>
-      <el-footer height="270px">
+      <el-footer height="240px">
         <SwitchCard></SwitchCard>
         <chart></chart>
       </el-footer>
