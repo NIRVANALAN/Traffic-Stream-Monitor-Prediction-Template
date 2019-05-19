@@ -1,0 +1,38 @@
+<template>
+  <el-header>
+    <el-dropdown>
+    <i class="el-icon-view" style="margin-right: 15px"></i>
+      <el-dropdown-menu slot="dropdown" style="background-color: #00F5FF">
+        <el-dropdown-item>回放</el-dropdown-item>
+        <el-dropdown-item divided>线路</el-dropdown-item>
+        <el-dropdown-item divided>拥堵</el-dropdown-item>
+        <el-dropdown-item divided>收藏</el-dropdown-item>
+      </el-dropdown-menu>
+    </el-dropdown>
+    <el-dropdown>
+      <i class="el-icon-setting" style="margin-right: 15px"></i>
+      <el-dropdown-menu slot="dropdown" style="background-color: #00F5FF">
+        <el-dropdown-item>退出</el-dropdown-item>
+        <el-dropdown-item divided>详细</el-dropdown-item>
+        <el-dropdown-item divided>我的</el-dropdown-item>
+      </el-dropdown-menu>
+    </el-dropdown>
+    <span>王小虎</span>
+  </el-header>
+</template>
+
+<script>
+export default {
+  name: "UserHeader"
+};
+</script>
+
+<style scoped>
+.el-header {
+  background-color: #b3c0d1;
+  color: #333;
+  line-height: 60px;
+  text-align: right;
+  font-size: 12px;
+}
+</style>
