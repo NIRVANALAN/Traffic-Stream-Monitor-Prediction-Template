@@ -11,7 +11,9 @@
         <chart></chart>
       </el-footer>
     </el-container>
-    <Card></Card>
+    <el-container>
+      <Card></Card>
+    </el-container>
   </el-container>
 </template>
 

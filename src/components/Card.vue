@@ -2,12 +2,12 @@
   <div class="cards">
     <!-- <el-row> -->
     <el-card class="box-card" :body-style="{padding: '0px'}">
-      <div slot="header" class="clearfix">
+      <div slot="header" class="clearfix" style="padding:'0px'">
         <span>总客运量</span>
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="item">8846</div>
-      <div id="passengerFlow" style="height:180px;"></div>
+      <div id="passengerFlow" style="height:180px; padding:0px"></div>
     </el-card>
     <el-card class="box-card" :body-style="{ padding: '0px' }">
       <div slot="header" class="clearfix">
@@ -46,14 +46,14 @@ export default {
       tooltip: {
         trigger: "axis"
       },
-      toolbox: {
-        show: true,
-        feature: {
-          mark: { show: true },
-          dataView: { show: true, readOnly: false },
-          magicType: { show: true, type: ["line", "bar"] }
-        }
-      },
+      // toolbox: {
+      //   show: false,
+      //   feature: {
+      //     mark: { show: true },
+      //     dataView: { show: true, readOnly: false },
+      //     magicType: { show: true, type: ["line", "bar"] }
+      //   }
+      // },
       calculable: true,
       xAxis: {
         type: "category",
@@ -83,7 +83,7 @@ export default {
         trigger: "axis"
       },
       toolbox: {
-        show: true,
+        show: false,
         feature: {
           mark: { show: true },
           dataView: { show: true, readOnly: false },
@@ -167,7 +167,7 @@ export default {
         formatter: "{a} <br/>{b} : {c} ({d}%)"
       },
       toolbox: {
-        show: true,
+        show: false,
         feature: {
           mark: { show: true },
           dataView: { show: true, readOnly: false },
@@ -257,12 +257,11 @@ export default {
 }
 
 .box-card {
-  width: 270px;
+  width: 220px;
   position: relative;
   top: 10px;
   bottom: 10px;
   right: 10px;
-   /* body-style："{ padding: '0px' }" */
   padding:0px;
 }
 
