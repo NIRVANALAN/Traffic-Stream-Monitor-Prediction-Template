@@ -1,7 +1,7 @@
 <template>
   <el-container id="cards" direction="vertical">
     <!-- <el-row> -->
-    <el-card class="box-card">
+    <el-card class="box-card" :body-style="{padding: '0px'}">
       <div slot="header" class="clearfix">
         <span>总客运量</span>
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
@@ -9,7 +9,7 @@
       <div class="item">8846</div>
       <div id="passengerFlow" style="height:180px;"></div>
     </el-card>
-    <el-card class="box-card">
+    <el-card class="box-card" :body-style="{ padding: '0px' }">
       <div slot="header" class="clearfix">
         <span>平均站点运量</span>
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
@@ -17,13 +17,13 @@
       <div class="item">1056</div>
       <div id="averageFlow" style="height:220px;"></div>
     </el-card>
-    <el-card class="box-card">
+    <el-card class="box-card" :body-style="{ padding: '0px' }">
       <div slot="header" class="clearfix">
         <span>拥挤程度</span>
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="item">1056</div>
-      <div id="CongestionDegree" style="height:180px;"></div>
+      <div id="CongestionDegree" style="height:150px;"></div>
     </el-card>
   </div>
 </template>
@@ -43,13 +43,31 @@ document.getElementById("passengerFlow")
     );
 
     var passengerFlowOption = {
+      tooltip: {
+        trigger: "axis"
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          magicType: { show: true, type: ["line", "bar"] }
+        }
+      },
+      calculable: true,
       xAxis: {
         type: "category",
         boundaryGap: false,
         data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
       },
       yAxis: {
-        type: "value"
+        type: "value",
+        axisLabel: {
+          show: false
+        },
+        axisTick: {
+          show: false
+        }
       },
       series: [
         {
@@ -61,24 +79,15 @@ document.getElementById("passengerFlow")
     };
 
     var averageFlowOption = {
-      // title: {
-      //   text: "平均站点流量"
-      //   // subtext: "纯属虚构"
-      // },
       tooltip: {
         trigger: "axis"
       },
-      // legend: {
-      //   data: ["入站量", "出战量"]
-      // },
       toolbox: {
         show: true,
         feature: {
           mark: { show: true },
           dataView: { show: true, readOnly: false },
           magicType: { show: true, type: ["line", "bar"] }
-          // restore: { show: true },
-          // saveAsImage: { show: true }
         }
       },
       calculable: true,
@@ -103,7 +112,13 @@ document.getElementById("passengerFlow")
       ],
       yAxis: [
         {
-          type: "value"
+          type: "value",
+          axisLabel: {
+            show: false
+          },
+          axisTick: {
+            show: false
+          }
         }
       ],
       series: [
@@ -124,15 +139,6 @@ document.getElementById("passengerFlow")
             6.4,
             3.3
           ]
-          // markPoint: {
-          //   data: [
-          //     { type: "max", name: "最大值" },
-          //     { type: "min", name: "最小值" }
-          //   ]
-          // },
-          // markLine: {
-          //   data: [{ type: "average", name: "平均值" }]
-          // }
         },
         {
           name: "出站量",
@@ -151,21 +157,6 @@ document.getElementById("passengerFlow")
             6.0,
             2.3
           ]
-          // markPoint: {
-          //   data: [
-          //     {
-          //       name: "年最高",
-          //       value: 182.2,
-          //       xAxis: 7,
-          //       yAxis: 183,
-          //       symbolSize: 18
-          //     },
-          //     { name: "当天最低", value: 2.3, xAxis: 11, yAxis: 3 }
-          //   ]
-          // }
-          // markLine: {
-          //   data: [{ type: "average", name: "平均值" }]
-          // }
         }
       ]
     };
@@ -175,11 +166,6 @@ document.getElementById("passengerFlow")
         trigger: "item",
         formatter: "{a} <br/>{b} : {c} ({d}%)"
       },
-      // legend: {
-      //   orient: "vertical",
-      //   x: "left",
-      //   data: ["直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎"]
-      // },
       toolbox: {
         show: true,
         feature: {
@@ -196,15 +182,15 @@ document.getElementById("passengerFlow")
                 max: 1548
               }
             }
-          },
+          }
           // restore: { show: true },
           // saveAsImage: { show: true }
         }
       },
-      calculable: true,
+      // calculable: true,
       series: [
         {
-          name: "访问来源",
+          name: "拥挤程度",
           type: "pie",
           radius: ["50%", "70%"],
           itemStyle: {
@@ -218,19 +204,16 @@ document.getElementById("passengerFlow")
             },
             emphasis: {
               label: {
-                show: true,
+                show: false,
                 position: "center",
                 textStyle: {
-                  fontSize: "30",
+                  fontSize: "10",
                   fontWeight: "bold"
                 }
               }
             }
           },
-          data: [
-            { value: 135, name: "空载率" },
-            { value: 1548, name: "满载率" }
-          ]
+          data: [{ value: 135, name: "空载率" }, { value: 158, name: "满载率" }]
         }
       ]
     };
@@ -270,15 +253,17 @@ document.getElementById("passengerFlow")
   position: absolute;
   top: 10px;
   right: 10px;
+  padding: 0px;
 }
 
 .box-card {
-  width: 410px;
+  width: 270px;
   position: relative;
   top: 10px;
   bottom: 10px;
   right: 10px;
-  padding: 0;
+   /* body-style："{ padding: '0px' }" */
+  padding:0px;
 }
 
 .image {
