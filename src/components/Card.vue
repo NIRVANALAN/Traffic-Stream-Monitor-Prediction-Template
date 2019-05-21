@@ -2,12 +2,12 @@
   <div class="cards">
     <!-- <el-row> -->
     <el-card class="box-card" :body-style="{padding: '0px'}">
-      <div slot="header" class="clearfix" style="padding:'0px'">
+      <div slot="header" class="clearfix" style="padding:'5px'">
         <span>总客运量</span>
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="item">8846</div>
-      <div id="passengerFlow" style="height:180px; padding:0px"></div>
+      <div id="passengerFlow" style="height:180px; padding:10px"></div>
     </el-card>
     <el-card class="box-card" :body-style="{ padding: '0px' }">
       <div slot="header" class="clearfix">
@@ -15,7 +15,7 @@
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="item">1056</div>
-      <div id="averageFlow" style="height:220px;"></div>
+      <div id="averageFlow" style="height:220px; padding:10px"></div>
     </el-card>
     <el-card class="box-card" :body-style="{ padding: '0px' }">
       <div slot="header" class="clearfix">
@@ -23,7 +23,7 @@
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="item">1056</div>
-      <div id="CongestionDegree" style="height:150px;"></div>
+      <div id="CongestionDegree" style="height:180px; padding:10px"></div>
     </el-card>
   </div>
 </template>
@@ -250,19 +250,20 @@ export default {
 }
 
 .cards {
-  position: absolute;
+  position: relative;
   top: 10px;
   right: 10px;
-  padding: 0px;
+  left: 10px;
+  padding: 10px;
 }
 
 .box-card {
-  width: 220px;
+  width: 300px;
   position: relative;
   top: 10px;
   bottom: 10px;
   right: 10px;
-  padding:0px;
+  padding: 0px;
 }
 
 .image {
