@@ -2,11 +2,15 @@
   <iframe src="./map.html" frameborder="0" id="map-frame"></iframe>
 </template>
 
+
 <script>
+import eventbus from "../assets/Bus.js";
 export default {
   name: "SubwayMap"
 };
 </script>
+
+
 
 <style scoped>
 #map-frame {

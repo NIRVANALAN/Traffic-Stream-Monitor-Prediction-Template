@@ -27,7 +27,7 @@
          * }
          */
         /* globals BMapSub */
-        var subwayCityName = '北京';
+        var subwayCityName = '杭州';
         var list = BMapSub.SubwayCitiesList;
         var subwaycity = null;
         for (var i = 0; i < list.length; i++) {
@@ -44,13 +44,23 @@
         });
         subway.addControl(zoomControl);
 
-        subway.addEventListener('subwayloaded', function () {
-            var drct = new BMapSub.Direction(subway);
-            drct.search('西直门', '西红门');
+        subway.addEventListener('tap', function (e) {
+            alert('您点击了"' + e.station.name + '"站');
+            var detail = new BMapSub.DetailInfo(subway);
+            detail.search(e.station.name);
         });
-        subway.addEventListener('directioncomplete', function () {
-            alert('可以自定义点击详情后的操作！');
-        });
+
+        // subway.addEventListener('subwayloaded', function () {
+        //     var detail = new BMapSub.DetailInfo(subway);
+        //     detail.search('西直门');
+        // });
+        // subway.addEventListener('subwayloaded', function () {
+        //     var drct = new BMapSub.Direction(subway);
+        //     drct.search('西直门', '西红门');
+        // });
+        // subway.addEventListener('directioncomplete', function () {
+        //     alert('可以自定义点击详情后的操作！');
+        // });
     </script>
 </body>
 
