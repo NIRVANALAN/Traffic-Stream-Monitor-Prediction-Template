@@ -17,16 +17,6 @@
 <body>
     <div id="container"></div>
     <script type="text/javascript">
-        /**
-         * 从所有城市列表中获取北京信息
-         * 结果格式
-         * {
-         *     keyword: 'beijing',
-         *     name: '北京',
-         *     citycode: '131'
-         * }
-         */
-        /* globals BMapSub */
         var subwayCityName = '杭州';
         var list = BMapSub.SubwayCitiesList;
         var subwaycity = null;
@@ -36,7 +26,7 @@
                 break;
             }
         }
-        // 获取北京地铁数据-初始化地铁图
+
         var subway = new BMapSub.Subway('container', subwaycity.citycode);
         var zoomControl = new BMapSub.ZoomControl({
             anchor: BMAPSUB_ANCHOR_BOTTOM_RIGHT,
@@ -49,18 +39,6 @@
             var detail = new BMapSub.DetailInfo(subway);
             detail.search(e.station.name);
         });
-
-        // subway.addEventListener('subwayloaded', function () {
-        //     var detail = new BMapSub.DetailInfo(subway);
-        //     detail.search('西直门');
-        // });
-        // subway.addEventListener('subwayloaded', function () {
-        //     var drct = new BMapSub.Direction(subway);
-        //     drct.search('西直门', '西红门');
-        // });
-        // subway.addEventListener('directioncomplete', function () {
-        //     alert('可以自定义点击详情后的操作！');
-        // });
     </script>
 </body>
 
