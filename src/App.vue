@@ -1,18 +1,18 @@
 <template>
   <el-container style="height: 100%; solid #eee; display: flex">
     <Sidebar></Sidebar>
-    <el-container direction="horizontal">
-    <el-container>
+    <el-container style="width:70%" direction="horizontal">
       <el-main>
         <UserHeader></UserHeader>
         <SubwayMap></SubwayMap>
       </el-main>
-      <el-footer height="240px">
+      <el-footer height="250px">
         <SwitchCard></SwitchCard>
         <chart></chart>
       </el-footer>
     </el-container>
-    <Card></Card>
+    <el-container>
+      <Card></Card>
     </el-container>
   </el-container>
 </template>

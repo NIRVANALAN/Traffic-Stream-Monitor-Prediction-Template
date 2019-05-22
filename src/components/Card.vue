@@ -2,12 +2,12 @@
   <el-container id="cards" direction="vertical">
     <!-- <el-row> -->
     <el-card class="box-card" :body-style="{padding: '0px'}">
-      <div slot="header" class="clearfix">
+      <div slot="header" class="clearfix" style="padding:'5px'">
         <span>总客运量</span>
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="item">8846</div>
-      <div id="passengerFlow" style="height:180px;"></div>
+      <div id="passengerFlow" style="height:180px; padding:10px"></div>
     </el-card>
     <el-card class="box-card" :body-style="{ padding: '0px' }">
       <div slot="header" class="clearfix">
@@ -15,7 +15,7 @@
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="item">1056</div>
-      <div id="averageFlow" style="height:220px;"></div>
+      <div id="averageFlow" style="height:220px; padding:10px"></div>
     </el-card>
     <el-card class="box-card" :body-style="{ padding: '0px' }">
       <div slot="header" class="clearfix">
@@ -23,7 +23,7 @@
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
       <div class="item">1056</div>
-      <div id="CongestionDegree" style="height:150px;"></div>
+      <div id="CongestionDegree" style="height:180px; padding:10px"></div>
     </el-card>
   </div>
 </template>
@@ -46,14 +46,14 @@ document.getElementById("passengerFlow")
       tooltip: {
         trigger: "axis"
       },
-      toolbox: {
-        show: true,
-        feature: {
-          mark: { show: true },
-          dataView: { show: true, readOnly: false },
-          magicType: { show: true, type: ["line", "bar"] }
-        }
-      },
+      // toolbox: {
+      //   show: false,
+      //   feature: {
+      //     mark: { show: true },
+      //     dataView: { show: true, readOnly: false },
+      //     magicType: { show: true, type: ["line", "bar"] }
+      //   }
+      // },
       calculable: true,
       xAxis: {
         type: "category",
@@ -83,7 +83,7 @@ document.getElementById("passengerFlow")
         trigger: "axis"
       },
       toolbox: {
-        show: true,
+        show: false,
         feature: {
           mark: { show: true },
           dataView: { show: true, readOnly: false },
@@ -167,7 +167,7 @@ document.getElementById("passengerFlow")
         formatter: "{a} <br/>{b} : {c} ({d}%)"
       },
       toolbox: {
-        show: true,
+        show: false,
         feature: {
           mark: { show: true },
           dataView: { show: true, readOnly: false },
@@ -253,17 +253,17 @@ document.getElementById("passengerFlow")
   position: absolute;
   top: 10px;
   right: 10px;
-  padding: 0px;
+  left: 10px;
+  padding: 10px;
 }
 
 .box-card {
-  width: 270px;
+  width: 300px;
   position: relative;
   top: 10px;
   bottom: 10px;
   right: 10px;
-   /* body-style："{ padding: '0px' }" */
-  padding:0px;
+  padding: 0px;
 }
 
 .image {

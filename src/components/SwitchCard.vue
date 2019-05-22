@@ -37,12 +37,12 @@ export default {
 }
 
 #switchcard {
-  position: absolute;
+  position: relative;
   padding: 0;
-  bottom: 100px;
-  right: 750px;
+  bottom: 10px;
+  /* right: 750px; */
 
-  width: 200px;
+  width: 300px;
   height: 100px;
 }
 </style>

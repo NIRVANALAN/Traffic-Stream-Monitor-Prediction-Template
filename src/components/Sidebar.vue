@@ -1,5 +1,5 @@
 <template>
-  <el-aside width = "180px">
+  <el-aside width="250px">
     <el-menu unique-opened>
       <el-submenu index="1">
         <template slot="title">
@@ -64,6 +64,6 @@ export default {
   position: relative;
   height: 100%;
   background-color: rgb(238, 241, 246);
-  width: "200px";
+  width: "210px";
 }
 </style>
