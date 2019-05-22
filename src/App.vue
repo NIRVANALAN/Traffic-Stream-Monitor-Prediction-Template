@@ -1,7 +1,7 @@
 <template>
   <el-container style="height: 100%; solid #eee; display: flex">
     <Sidebar></Sidebar>
-    <el-container style="width:70%" direction="horizontal">
+    <el-container style="width:70%" direction="verticle">
       <el-main>
         <UserHeader></UserHeader>
         <SubwayMap></SubwayMap>

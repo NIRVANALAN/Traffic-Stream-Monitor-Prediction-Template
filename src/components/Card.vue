@@ -25,7 +25,7 @@
       <div class="item">1056</div>
       <div id="CongestionDegree" style="height:180px; padding:10px"></div>
     </el-card>
-  </div>
+  </el-container>
 </template>
 <script>
 import echarts from "echarts";
@@ -34,7 +34,7 @@ export default {
   name: "Card",
   mounted() {
     var passengerFLowChart = echarts.init(
-document.getElementById("passengerFlow")
+      document.getElementById("passengerFlow")
     );
     var averageFLowChart = echarts.init(document.getElementById("averageFlow"));
 
@@ -250,7 +250,7 @@ document.getElementById("passengerFlow")
 }
 
 #cards {
-  position: absolute;
+  position: relative;
   top: 10px;
   right: 10px;
   left: 10px;
