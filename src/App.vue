@@ -2,7 +2,7 @@
   <el-container style="height: 100%; solid #eee; display: flex">
     <Sidebar></Sidebar>
     <el-container style="width:70%" direction="verticle">
-      <el-main>
+      <el-main direction="verticle">
         <UserHeader></UserHeader>
         <SubwayMap></SubwayMap>
       </el-main>
