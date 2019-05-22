@@ -38,6 +38,8 @@
             alert('您点击了"' + e.station.name + '"站');
             var detail = new BMapSub.DetailInfo(subway);
             detail.search(e.station.name);
+
+            window.parent.postMessage(e.station.name);
         });
     </script>
 </body>

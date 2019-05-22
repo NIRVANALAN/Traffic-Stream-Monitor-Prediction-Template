@@ -4,7 +4,6 @@
 
 <script>
 import echarts from "echarts";
-import eventbus from "../assets/Bus.js";
 
 export default {
   name: "Chart",

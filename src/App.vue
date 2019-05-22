@@ -34,6 +34,11 @@ export default {
     Chart,
     Card,
     SwitchCard
+  },
+  mounted() {
+    window.addEventListener('message', function(e) {
+      if (e.source == window.frames[0]) console.log(e)
+    })
   }
 };
 </script>
