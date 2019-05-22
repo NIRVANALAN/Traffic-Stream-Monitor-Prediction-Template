@@ -1,5 +1,5 @@
 <template>
-  <div class="cards">
+  <el-container id="cards" direction="vertical">
     <!-- <el-row> -->
     <el-card class="box-card" :body-style="{padding: '0px'}">
       <div slot="header" class="clearfix" style="padding:'5px'">
@@ -34,7 +34,7 @@ export default {
   name: "Card",
   mounted() {
     var passengerFLowChart = echarts.init(
-      document.getElementById("passengerFlow")
+document.getElementById("passengerFlow")
     );
     var averageFLowChart = echarts.init(document.getElementById("averageFlow"));
 
@@ -249,8 +249,8 @@ export default {
   clear: both;
 }
 
-.cards {
-  position: relative;
+#cards {
+  position: absolute;
   top: 10px;
   right: 10px;
   left: 10px;
