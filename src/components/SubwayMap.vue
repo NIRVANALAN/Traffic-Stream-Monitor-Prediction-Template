@@ -4,7 +4,6 @@
 
 
 <script>
-import eventbus from "../assets/Bus.js";
 export default {
   name: "SubwayMap"
 };

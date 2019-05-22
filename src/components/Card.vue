@@ -1,5 +1,5 @@
 <template>
-  <div class="cards">
+  <el-container id="cards" direction="vertical">
     <!-- <el-row> -->
     <el-card class="box-card" :body-style="{padding: '0px'}">
       <div slot="header" class="clearfix" style="padding:'5px'">
@@ -25,7 +25,7 @@
       <div class="item">1056</div>
       <div id="CongestionDegree" style="height:180px; padding:10px"></div>
     </el-card>
-  </div>
+  </el-container>
 </template>
 <script>
 import echarts from "echarts";
@@ -249,7 +249,7 @@ export default {
   clear: both;
 }
 
-.cards {
+#cards {
   position: relative;
   top: 10px;
   right: 10px;

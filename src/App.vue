@@ -1,8 +1,8 @@
 <template>
   <el-container style="height: 100%; solid #eee; display: flex">
     <Sidebar></Sidebar>
-    <el-container style="width:70%">
-      <el-main>
+    <el-container style="width:70%" direction="verticle">
+      <el-main direction="verticle">
         <UserHeader></UserHeader>
         <SubwayMap></SubwayMap>
       </el-main>
@@ -34,6 +34,11 @@ export default {
     Chart,
     Card,
     SwitchCard
+  },
+  mounted() {
+    window.addEventListener('message', function(e) {
+      if (e.source == window.frames[0]) console.log(e)
+    })
   }
 };
 </script>
