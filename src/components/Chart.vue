@@ -8,6 +8,8 @@ import echarts from "echarts";
 export default {
   name: "Chart",
   mounted() {
+    // mounted() {
+    // var event = 10;
     var chart = echarts.init(document.getElementById("chart"));
 
     var option = {
@@ -121,8 +123,15 @@ export default {
         }
       ]
     };
-
     chart.setOption(option);
+    window.addEventListener("message", function(e) {
+      if (e.source == window.frames[0]) console.log(e);
+      // console.log(e);
+      event = e;
+      option.title.subtext = event.data;
+      chart.setOption(option);
+    });
+    // }
   }
 };
 </script>
