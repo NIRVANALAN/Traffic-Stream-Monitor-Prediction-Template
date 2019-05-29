@@ -15,21 +15,21 @@ export default {
     var option = {
       title: {
         text: "入站量和出站量",
-        subtext: "菜市口站" // TODO 替换成真实站点
+        subtext: "火车东站" // TODO 替换成真实站点
       },
       tooltip: {
         trigger: "axis"
       },
       legend: {
-        data: ["入站量", "出战量"]
+        data: ["入站量", "出站量"]
       },
       toolbox: {
         show: true,
         feature: {
           mark: { show: true },
           dataView: { show: true, readOnly: false },
-          magicType: { show: true, type: ["line", "bar"] }
-          // restore: { show: true },
+          magicType: { show: true, type: ["line", "bar"] },
+          restore: { show: true }
           // saveAsImage: { show: true }
         }
       },
@@ -38,6 +38,7 @@ export default {
         {
           type: "category",
           data: [
+            // TODO
             // TODO 换成真实的时间，左右各6个时间片
             "16:30",
             "16:40",
@@ -80,13 +81,13 @@ export default {
           ],
           markPoint: {
             data: [
-              { type: "max", name: "最大值" },
-              { type: "min", name: "最小值" }
+              { type: "max", name: "最大值" }
+              // { type: "min", name: "最小值" }
             ]
+          },
+          markLine: {
+            data: [{ type: "average", name: "平均值" }]
           }
-          // markLine: {
-          //   data: [{ type: "average", name: "平均值" }]
-          // }
         },
         {
           name: "出站量",
@@ -107,29 +108,31 @@ export default {
           ],
           markPoint: {
             data: [
-              {
-                name: "当前最高",
-                value: 182.2,
-                xAxis: 7,
-                yAxis: 183,
-                symbolSize: 18
-              },
-              { name: "当前最低", value: 2.3, xAxis: 11, yAxis: 3 }
+              // { type: "max", name: "最大值" },
+              // { type: "min", name: "最小值" }
             ]
           }
-          // markLine: {
-          //   data: [{ type: "average", name: "平均值" }]
-          // }
         }
       ]
     };
     chart.setOption(option);
     window.addEventListener("message", function(e) {
-      if (e.source == window.frames[0]) console.log(e);
-      // console.log(e);
-      event = e;
-      option.title.subtext = event.data;
-      chart.setOption(option);
+      if (e.source == window.frames[0]) {
+        // console.log(e);
+        event = e;
+        var station_name = event.data;
+        if (!station_name.endsWith("站")) {
+          station_name.concat("站");
+        }
+        option.title.subtext = station_name;
+        // use get method to get data predicted by model
+        // option.xAxis// TODO
+        // option.series[0] [1]// TODO
+        option.series[0].data.reverse(); // test
+        option.series[1].data.reverse();
+        // console.log(option.series);
+        chart.setOption(option);
+      }
     });
     // }
   }
