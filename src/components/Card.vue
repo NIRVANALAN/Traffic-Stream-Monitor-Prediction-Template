@@ -4,26 +4,26 @@
     <el-card class="box-card" :body-style="{padding: '0px'}">
       <div slot="header" class="clearfix" style="padding:'5px'">
         <span>总客运量</span>
-        <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+        <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
       </div>
       <div class="item">8846</div>
-      <div id="passengerFlow" style="height:180px; padding:10px"></div>
+      <div id="passengerFlow" style="height:210px; width:280px;padding:0px;overflow:hidden;"></div>
     </el-card>
     <el-card class="box-card" :body-style="{ padding: '0px' }">
       <div slot="header" class="clearfix">
         <span>平均站点运量</span>
-        <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+        <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
       </div>
       <div class="item">1056</div>
-      <div id="averageFlow" style="height:220px; padding:10px"></div>
+      <div id="averageFlow" style="height:200px; width=280px; padding:10px;overflow:hidden"></div>
     </el-card>
-    <el-card class="box-card" :body-style="{ padding: '0px' }">
+    <el-card class="box-card" :body-style="{ padding: '0px' }" style="overflow:hidden">
       <div slot="header" class="clearfix">
         <span>拥挤程度</span>
-        <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+        <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
       </div>
       <div class="item">1056</div>
-      <div id="CongestionDegree" style="height:180px; padding:10px"></div>
+      <div id="CongestionDegree" style="height:160px; padding:5px; margin-bottom:5px"></div>
     </el-card>
   </el-container>
 </template>
@@ -46,15 +46,29 @@ export default {
       tooltip: {
         trigger: "axis"
       },
+      grid: {
+        left: "10%",
+        right: "10%",
+        top: "0%",
+        y2: 100,
+        // bottom: "10%",
+        containLabel: true
+      },
       calculable: true,
       xAxis: {
         type: "category",
         boundaryGap: false,
+        axisTick: {
+          show: false
+        },
         data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
       },
       yAxis: {
         type: "value",
         axisLabel: {
+          show: false
+        },
+        axisLine: {
           show: false
         },
         axisTick: {
@@ -73,6 +87,14 @@ export default {
     var averageFlowOption = {
       tooltip: {
         trigger: "axis"
+      },
+      grid: {
+        left: "5%",
+        right: "10%",
+        top: "5%",
+        y2: 75,
+        // bottom: "10%",
+        containLabel: true
       },
       toolbox: {
         show: false,
@@ -184,7 +206,8 @@ export default {
         {
           name: "拥挤程度",
           type: "pie",
-          radius: ["50%", "70%"],
+          radius: ["0%", "70%"],
+          center: [200, 67],
           itemStyle: {
             normal: {
               label: {
@@ -205,7 +228,7 @@ export default {
               }
             }
           },
-          data: [{ value: 135, name: "空载率" }, { value: 158, name: "满载率" }]
+          data: [{ value: 137, name: "空载率" }, { value: 66, name: "满载率" }]
         }
       ]
     };
@@ -229,6 +252,10 @@ export default {
 
 .item {
   margin-bottom: 18px;
+  margin-left: 20px;
+  margin-top: 10px;
+  font-size: 30px;
+  font-family: "Sans-serif", Times, serif;
 }
 
 .clearfix:before,
@@ -251,8 +278,9 @@ export default {
 
 .box-card {
   width: 300px;
+  height: 320px;
   position: relative;
-  top: 10px;
+  /* top: 10px; */
   bottom: 10px;
   right: 10px;
   padding: 0px;
