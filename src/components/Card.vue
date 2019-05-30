@@ -4,12 +4,12 @@
       <span>xxx 拥堵</span>
     </el-card>
     <el-card class="box-card" :body-style="{padding: '0px'}">
-      <div>总客运量</div>
+      <div class="card_head">总客运量</div>
       <div class="item">8846</div>
-      <div id="passengerFlow" style="height:210px; width:280px;padding:0px;overflow:hidden;"></div>
+      <div id="passengerFlow" style="height:200px; width:280px;padding:0px;overflow:hidden;"></div>
     </el-card>
     <el-card class="box-card" :body-style="{ padding: '0px' }">
-      <div>平均站点运量</div>
+      <div class="card_head">平均站点运量</div>
       <div class="item">1056</div>
       <div id="averageFlow" style="height:200px; width=280px; padding:10px;overflow:hidden"></div>
     </el-card>
@@ -18,7 +18,7 @@
       :body-style="{ padding: '0px' }"
       style="overflow:hidden; height: 220px; "
     >
-      <div>拥挤程度</div>
+      <div class="card_head">拥挤程度</div>
       <div class="item">1056</div>
       <div id="CongestionDegree" style="height:160px; padding:5px; margin-bottom:5px"></div>
     </el-card>
@@ -44,10 +44,10 @@ export default {
         trigger: "axis"
       },
       grid: {
-        left: "5%",
-        right: "5%",
+        left: "10%",
+        right: "10%",
         top: "5%",
-        bottom: "5%",
+        bottom: "20%",
         containLabel: true
       },
       calculable: true,
@@ -88,7 +88,7 @@ export default {
         left: "5%",
         right: "5%",
         top: "5%",
-        bottom: "5%",
+        bottom: "20%",
         containLabel: true
       },
       toolbox: {
@@ -201,8 +201,8 @@ export default {
         {
           name: "拥挤程度",
           type: "pie",
-          radius: ["0%", "70%"],
-          center: [200, 67],
+          radius: ["0%", "65%"],
+          center: [140, 65],
           itemStyle: {
             normal: {
               label: {
@@ -246,7 +246,7 @@ export default {
 }
 
 .item {
-  margin: 0;
+  margin-left: 10px;
   font-size: 30px;
   font-family: "Sans-serif", Times, serif;
 }
@@ -267,10 +267,10 @@ export default {
 
 #cards {
   position: relative;
-  top: 10px;
-  right: 10px;
-  left: 10px;
-  padding: 10px;
+  top: 5px;
+  right: 5px;
+  left: 5px;
+  padding: 5px;
 }
 
 #warnings {
@@ -279,17 +279,21 @@ export default {
 }
 
 .warning-card {
-  width: 300px;
+  width: 280px;
   height: 100px;
   position: relative;
-  top: 0px;
+  top: 10px;
   bottom: 10px;
   right: 10px;
   padding: 0px;
 }
+.card_head {
+  margin-left: 10px;
+  margin-top: 10px;
+}
 
 .box-card {
-  width: 300px;
+  width: 280px;
   height: 270px;
   position: relative;
   top: 10px;
