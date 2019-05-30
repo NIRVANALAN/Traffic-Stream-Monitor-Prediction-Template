@@ -1,5 +1,8 @@
 <template>
   <el-container id="cards" direction="vertical">
+    <el-card class="warning-card" :body-style="{padding: '0px'}">
+      <span>xxx 拥堵</span>
+    </el-card>
     <el-card class="box-card" :body-style="{padding: '0px'}">
       <div>总客运量</div>
       <div class="item">8846</div>
@@ -10,7 +13,11 @@
       <div class="item">1056</div>
       <div id="averageFlow" style="height:200px; width=280px; padding:10px;overflow:hidden"></div>
     </el-card>
-    <el-card class="box-card" :body-style="{ padding: '0px' }" style="overflow:hidden">
+    <el-card
+      class="box-card"
+      :body-style="{ padding: '0px' }"
+      style="overflow:hidden; height: 220px; "
+    >
       <div>拥挤程度</div>
       <div class="item">1056</div>
       <div id="CongestionDegree" style="height:160px; padding:5px; margin-bottom:5px"></div>
@@ -266,11 +273,26 @@ export default {
   padding: 10px;
 }
 
+#warnings {
+  width: 300px;
+  height: 120px;
+}
+
+.warning-card {
+  width: 300px;
+  height: 100px;
+  position: relative;
+  top: 0px;
+  bottom: 10px;
+  right: 10px;
+  padding: 0px;
+}
+
 .box-card {
   width: 300px;
   height: 270px;
   position: relative;
-  /* top: 10px; */
+  top: 10px;
   bottom: 10px;
   right: 10px;
   padding: 0px;
