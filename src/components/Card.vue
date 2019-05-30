@@ -1,27 +1,17 @@
 <template>
   <el-container id="cards" direction="vertical">
-    <!-- <el-row> -->
     <el-card class="box-card" :body-style="{padding: '0px'}">
-      <div slot="header" class="clearfix" style="padding:'5px'">
-        <span>总客运量</span>
-        <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
-      </div>
+      <div>总客运量</div>
       <div class="item">8846</div>
       <div id="passengerFlow" style="height:210px; width:280px;padding:0px;overflow:hidden;"></div>
     </el-card>
     <el-card class="box-card" :body-style="{ padding: '0px' }">
-      <div slot="header" class="clearfix">
-        <span>平均站点运量</span>
-        <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
-      </div>
+      <div>平均站点运量</div>
       <div class="item">1056</div>
       <div id="averageFlow" style="height:200px; width=280px; padding:10px;overflow:hidden"></div>
     </el-card>
     <el-card class="box-card" :body-style="{ padding: '0px' }" style="overflow:hidden">
-      <div slot="header" class="clearfix">
-        <span>拥挤程度</span>
-        <!-- <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button> -->
-      </div>
+      <div>拥挤程度</div>
       <div class="item">1056</div>
       <div id="CongestionDegree" style="height:160px; padding:5px; margin-bottom:5px"></div>
     </el-card>
@@ -47,11 +37,10 @@ export default {
         trigger: "axis"
       },
       grid: {
-        left: "10%",
-        right: "10%",
-        top: "0%",
-        y2: 100,
-        // bottom: "10%",
+        left: "5%",
+        right: "5%",
+        top: "5%",
+        bottom: "5%",
         containLabel: true
       },
       calculable: true,
@@ -90,10 +79,9 @@ export default {
       },
       grid: {
         left: "5%",
-        right: "10%",
+        right: "5%",
         top: "5%",
-        y2: 75,
-        // bottom: "10%",
+        bottom: "5%",
         containLabel: true
       },
       toolbox: {
@@ -251,9 +239,7 @@ export default {
 }
 
 .item {
-  margin-bottom: 18px;
-  margin-left: 20px;
-  margin-top: 10px;
+  margin: 0;
   font-size: 30px;
   font-family: "Sans-serif", Times, serif;
 }
@@ -268,6 +254,10 @@ export default {
   clear: both;
 }
 
+#title {
+  padding: 0;
+}
+
 #cards {
   position: relative;
   top: 10px;
@@ -278,7 +268,7 @@ export default {
 
 .box-card {
   width: 300px;
-  height: 320px;
+  height: 270px;
   position: relative;
   /* top: 10px; */
   bottom: 10px;
@@ -289,5 +279,9 @@ export default {
 .image {
   width: 100%;
   display: block;
+}
+
+.passengerFlow .averageFlow .CongestionDegree {
+  padding: 0;
 }
 </style>
