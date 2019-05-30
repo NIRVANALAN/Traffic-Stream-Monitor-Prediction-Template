@@ -1,5 +1,5 @@
 <template>
-  <el-aside width="250px">
+  <el-aside width="200px">
     <el-menu unique-opened>
       <el-submenu index="1">
         <template slot="title">
