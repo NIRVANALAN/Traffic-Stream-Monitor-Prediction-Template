@@ -1,22 +1,56 @@
 <template>
   <el-carousel
+    initial-index="2"
+    type="card"
     trigger="click"
-    height="100px"
+    height="75px"
     id="switchcard"
     :loop="false"
     :autoplay="false"
     indicator-position="none"
   >
-    <el-carousel-item v-for="item in 4" :key="item">
-      <h3 class="small">{{ item }}</h3>
+    <el-carousel-item v-for="item in data" :key="item">
+      
+      <div class="grid-content">
+						<el-col :md="12" :offset="6">
+							<div>
+								<p class="italictext">{{item.date}}</p>
+								<span class="service">{{item.stand}}</span>
+							</div>
+						</el-col>
+					</div>
     </el-carousel-item>
   </el-carousel>
 </template>
 
 <script>
 export default {
-  name: "SwitchCard"
-};
+  name: "SwitchCard",
+  data(){
+            return{
+              data:[{
+                date:"5月28日",
+                stand:"西直门",
+              },
+              {
+                date:"5月29日",
+                stand:"西直门",
+              },
+              {
+                date:"5月30日",
+                stand:"西直门",
+              },
+              {
+                date:"5月31日",
+                stand:"西直门",
+              },
+              {
+                date:"6月1日",
+                stand:"西直门",
+              }]
+     }
+}
+}
 </script>
 
 <style scoped>
@@ -24,7 +58,7 @@ export default {
   color: #475669;
   font-size: 14px;
   opacity: 0.75;
-  line-height: 100px;
+  line-height: 75px;
   margin: 0;
 }
 
@@ -37,12 +71,14 @@ export default {
 }
 
 #switchcard {
-  position: absolute;
+  position: relative;
   padding: 0;
-  bottom: 100px;
-  right: 750px;
-
-  width: 200px;
-  height: 100px;
+  bottom: 0px;
+  right: 0px;
+  top: 0px;
+  left:0px;
+  margin: auto;
+  width: 450px;
+  height: 75px;
 }
 </style>
