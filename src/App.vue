@@ -1,5 +1,9 @@
 <template>
-  <el-container style="height: 100%; solid #eee; display: flex">
+  <div>
+    <!-- <Index></Index> -->
+    <router-view></router-view>
+  </div>
+  <!-- <el-container style="height: 100%; solid #eee; display: flex">
     <Sidebar></Sidebar>
     <el-container style="width:70%" direction="verticle">
       <el-main direction="verticle">
@@ -14,28 +18,29 @@
     <el-container>
       <Card></Card>
     </el-container>
-  </el-container>
+  </el-container>-->
 </template>
 
 <script>
-import UserHeader from "./components/UserHeader.vue";
-import Sidebar from "./components/Sidebar.vue";
-import SubwayMap from "./components/SubwayMap.vue";
-import Chart from "./components/Chart.vue";
-import Card from "./components/Card.vue";
-import SwitchCard from "./components/SwitchCard.vue";
+import Index from "./components/Index";
+// import UserHeader from "./components/UserHeader.vue";
+// import Sidebar from "./components/Sidebar.vue";
+// import SubwayMap from "./components/SubwayMap.vue";
+// import Chart from "./components/Chart.vue";
+// import Card from "./components/Card.vue";
+// import SwitchCard from "./components/SwitchCard.vue";
 
 export default {
   name: "App",
   components: {
-    Sidebar,
-    UserHeader,
-    SubwayMap,
-    Chart,
-    Card,
-    SwitchCard
-  },
-
+    Index
+    // Sidebar,
+    // UserHeader,
+    // SubwayMap,
+    // Chart,
+    // Card,
+    // SwitchCard
+  }
 };
 </script>
 
