@@ -118,9 +118,7 @@ export default {
     chart.setOption(option);
     window.addEventListener("message", function(e) {
       if (e.source == window.frames[0]) {
-        // console.log(e);
-        event = e;
-        var station_name = event.data;
+        var station_name = e.data;
         if (!station_name.endsWith("站")) {
           station_name.concat("站");
         }
@@ -134,7 +132,6 @@ export default {
         chart.setOption(option);
       }
     });
-    // }
   }
 };
 </script>
