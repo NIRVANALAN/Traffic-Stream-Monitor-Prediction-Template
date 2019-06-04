@@ -34,7 +34,7 @@ export default {
 <style scoped>
 #card-side {
   float: right;
+  right: 0%;
+  width: 300px;
 }
 </style>
-
-
