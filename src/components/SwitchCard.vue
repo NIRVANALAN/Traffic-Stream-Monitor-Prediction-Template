@@ -1,8 +1,7 @@
 <template>
   <el-carousel
-    trigger="click"
     height="100px"
-    id="switchcard"
+    id="switch-card"
     :loop="false"
     :autoplay="false"
     indicator-position="none"
@@ -15,7 +14,11 @@
 
 <script>
 export default {
-  name: "SwitchCard"
+  name: "SwitchCard",
+  props: {
+    leftTop: Object,
+    rightBottom: Object
+  }
 };
 </script>
 
@@ -36,12 +39,10 @@ export default {
   background-color: #d3dce6;
 }
 
-#switchcard {
-  position: relative;
+#switch-card {
+  position: fixed;
   padding: 0;
-  bottom: 10px;
-  /* right: 750px; */
-
+  margin: 0;
   width: 300px;
   height: 100px;
 }
