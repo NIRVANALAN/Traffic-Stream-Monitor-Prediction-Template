@@ -1,12 +1,12 @@
 <template>
-  <el-container style="height: 100%; solid #eee; display: flex">
+  <el-container style="width: 100%; height: 100%; solid #eee; display: flex">
     <Sidebar></Sidebar>
-    <el-container style="width:930px" direction="verticle">
+    <el-container style="width: 100%" direction="verticle">
       <el-main direction="verticle">
         <UserHeader></UserHeader>
         <SubwayMap></SubwayMap>
       </el-main>
-      <el-footer width="930px" height="250px">
+      <el-footer height="250px">
         <SwitchCard></SwitchCard>
         <chart></chart>
       </el-footer>
