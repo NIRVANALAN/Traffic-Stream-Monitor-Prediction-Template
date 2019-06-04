@@ -2,7 +2,6 @@
   <el-header>
     <el-dropdown>
       <i class="el-icon-view" style="margin-right: 15px"></i>
-      <!-- <el-dropdown-menu slot="dropdown" style="background-color: #00F5FF"> -->
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item>回放</el-dropdown-item>
         <el-dropdown-item divided>线路</el-dropdown-item>
@@ -12,14 +11,12 @@
     </el-dropdown>
     <el-dropdown>
       <i class="el-icon-setting" style="margin-right: 15px"></i>
-      <!-- <el-dropdown-menu slot="dropdown" style="background-color: #00F5FF"> -->
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item>退出</el-dropdown-item>
         <el-dropdown-item divided>详细</el-dropdown-item>
         <el-dropdown-item divided>我的</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
-    <!-- <span>王小虎</span> -->
     <span>
       <el-button type="primary" size="small" @click="login">登录</el-button>
     </span>
