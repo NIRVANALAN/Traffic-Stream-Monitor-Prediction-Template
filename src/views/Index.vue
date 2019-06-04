@@ -6,10 +6,10 @@
 
       <el-container>
         <el-container>
-          <el-main direction="verticle">
-            <SubwayMap></SubwayMap>
-          </el-main>
+          <SubwayMap></SubwayMap>
+
           <SwitchCard></SwitchCard>
+
           <el-footer height="250px">
             <chart></chart>
           </el-footer>
@@ -48,10 +48,5 @@ html {
   margin: 0;
   display: flex;
   height: 100%;
-}
-
-.el-main {
-  padding: 0%;
-  position: relative;
 }
 </style>
