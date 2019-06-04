@@ -11,15 +11,13 @@
         <chart></chart>
       </el-footer>
     </el-container>
-    <el-container>
-      <Card></Card>
-    </el-container>
+    <CardSide></CardSide>
   </el-container>
 </template>
 
 <script>
 import UserHeader from "../components/UserHeader";
-import Card from "../components/Card";
+import CardSide from "../components/CardSide";
 import Sidebar from "../components/Sidebar.vue";
 import SubwayMap from "../components/SubwayMap.vue";
 import Chart from "../components/Chart.vue";
@@ -32,7 +30,7 @@ export default {
     UserHeader,
     SubwayMap,
     Chart,
-    Card,
+    CardSide,
     SwitchCard
   }
 };

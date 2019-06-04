@@ -1,28 +1,24 @@
 <template>
   <el-card class="info-card" :body-style="{padding: '0px'}">
-    <div class="info-card-head">{{ cardTitle }}</div>
-    <div class="info-card-item">{{ cardNumber }}</div>
-    <div class="info-card-chart" :id="chartId"></div>
+    <div class="info-card-head">{{ infoCard.title }}</div>
+    <div class="info-card-item">{{ infoCard.number }}</div>
+    <div class="info-card-chart" :id="infoCard.name"></div>
   </el-card>
 </template>
 <script>
 import echarts from "echarts";
 
 export default {
-  name: "Card",
+  name: "InfoCard",
   props: {
-    infoChartOption: {},
-    cardTitle: '',
-    cardNumber: 0
+    infoCard: Object
   },
   data() {
-    return {
-      chartId = this._uid
-    }
+    return {};
   },
   mounted() {
-    var infoChart = echarts.init(document.getElementById(infoChartName));
-    infoChart.setOption(infoChartOption);
+    var infoChart = echarts.init(document.getElementById(this.infoCard.name));
+    infoChart.setOption(this.infoCard.option);
   }
 };
 </script>
