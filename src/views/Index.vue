@@ -1,25 +1,29 @@
 <template>
-  <el-container style="width: 100%; height: 100%; solid #eee; display: flex">
+  <el-container style="width: 100%; height: 100%; solid #eee; display: flex; right:0;">
     <Sidebar></Sidebar>
-    <el-container style="width: 100%" direction="verticle">
-      <el-main direction="verticle">
-        <UserHeader></UserHeader>
-        <SubwayMap></SubwayMap>
-      </el-main>
-      <el-footer height="250px">
-        <SwitchCard></SwitchCard>
-        <chart></chart>
-      </el-footer>
-    </el-container>
-    <el-container>
-      <Card></Card>
+    <el-container style="width: 100%" direction="vertical">
+      <UserHeader></UserHeader>
+
+      <el-container>
+        <el-container>
+          <SubwayMap></SubwayMap>
+
+          <SwitchCard></SwitchCard>
+
+          <el-footer height="250px">
+            <chart></chart>
+          </el-footer>
+        </el-container>
+
+        <CardSide></CardSide>
+      </el-container>
     </el-container>
   </el-container>
 </template>
 
 <script>
-import UserHeader from "../components/UserHeader";
-import Card from "../components/Card";
+import UserHeader from "../components/UserHeader.vue";
+import CardSide from "../components/CardSide.vue";
 import Sidebar from "../components/Sidebar.vue";
 import SubwayMap from "../components/SubwayMap.vue";
 import Chart from "../components/Chart.vue";
@@ -32,25 +36,17 @@ export default {
     UserHeader,
     SubwayMap,
     Chart,
-    Card,
+    CardSide,
     SwitchCard
   }
 };
 </script>
 
 <style>
-body {
+body,
+html {
   margin: 0;
   display: flex;
   height: 100%;
-}
-
-html {
-  height: 100%;
-}
-
-.el-main {
-  padding: 0%;
-  position: relative;
 }
 </style>
