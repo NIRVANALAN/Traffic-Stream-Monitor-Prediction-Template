@@ -1,12 +1,17 @@
 <template>
   <div id="top-app">
-    <router-view id="top-router"/>
+    <Index></Index>
   </div>
 </template>
 
 <script>
+import Index from "./views/Index.vue";
+
 export default {
-  name: "App"
+  name: "App",
+  components: {
+    Index
+  }
 };
 </script>
 
@@ -19,7 +24,7 @@ html {
   width: 100%;
 }
 
-#top-router {
+.Index {
   height: 100%;
   width: 100%;
 }
