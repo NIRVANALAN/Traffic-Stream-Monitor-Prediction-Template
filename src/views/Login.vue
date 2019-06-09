@@ -92,18 +92,24 @@ export default {
             var get_profile_url = "http://127.0.0.1:8000/User/get_profile/";
             // get user_token
             let user_token = data.access;
-            localStorage.setItem("currentUser_name", form_username);
-            localStorage.setItem("currentUser_token", user_token);
+            localStorage.setItem("username", form_username);
+            localStorage.setItem("token", user_token);
+            // use token by default
+            if (window.localStorage.getItem("token")) {
+              Axios.defaults.headers.common["Authorization"] =
+                `Bearer ` + window.localStorage.getItem("token");
+            }
             // console.log(data);
             Axios.get(get_profile_url, {
-              headers: {
-                Authorization: "Bearer " + user_token
-              }
+              // headers: {
+              //   Authorization: "Bearer " + user_token
+              // }
             })
               .then(response => {
                 // console.log(response.data);
-                var user_profile = response.data;
-                localStorage.setItem("currentUser_profile", user_profile);
+                var user_profile = JSON.stringify(response.data);
+                localStorage.setItem("profile", user_profile);
+                // console.log(user_profile);
                 router.replace("/");
               })
               .catch(function(error) {

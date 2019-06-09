@@ -130,7 +130,8 @@ export default {
         option.series[1].data.reverse();
         // console.log(option.series);
         chart.setOption(option);
-        console.log(localStorage.getItem("currentUser_name"));
+        var profile = JSON.parse(localStorage.getItem("profile"));
+        console.log(profile);
       }
     });
   }
