@@ -32,6 +32,7 @@
       </div>
       <form>
         <input
+          id="name"
           type="text"
           class="text"
           value="Username"
@@ -40,6 +41,7 @@
         >
         <div class="key">
           <input
+            id="password"
             type="password"
             value="Password"
             onfocus="this.value = '';"
@@ -58,46 +60,50 @@
 
 <script>
 import Axios from "axios";
+import { EROFS } from "constants";
 export default {
   methods: {
     login() {
+      var router = this.$router;
+      // router.replace("/");
       // for test
       // Axios.get("http://127.0.0.1:8000/Station/get_station/").then(response =>
       //   console.log(response.data)
       // );
+      var form_username = $("#name").val();
+      var form_password = $("#password").val();
+      // console.log(form_username);
+      // console.log(form_password);
       Axios.post("http://127.0.0.1:8000/User/obtain_token/", {
-        username: "JayDHi",
-        password: "199882"
+        // username: "JayDHi",
+        // password: "199882"
+        username: form_username,
+        password: form_password
       })
-        .then(function(response) {
-          var data = response.data;
-          var url_string = "http://127.0.0.1:8000/User/get_profile/";
-          let token = data.access;
-          console.log(data);
-
-          // var config = {
-          //   headers: {
-          //     Authorization: "bearer " + data.access
-          //     // 'Accept': "application/json, text/plain, */*",
-          //     // "Content-Type": "application/json"
-          //   }
-          // };
-
-          // var bodyParameters = {
-          //   key: "value"
-          // };
-          // console.log(data.access);
-          Axios.get(url_string, {
-            headers: {
-              Authorization: "Bearer " + token
-            }
-         })
-        .then(response => console.log(response.data))
-        })
         .catch(function(error) {
+          alert("Authentication failed");
           console.log(error);
+          // router.replace("/login");
+        })
+        .then(function(response) {
+          if (response) {
+            var data = response.data;
+            router.replace("/");
+            var get_profile_url = "http://127.0.0.1:8000/User/get_profile/";
+            // get token
+            let token = data.access;
+            console.log(data);
+            Axios.get(get_profile_url, {
+              headers: {
+                Authorization: "Bearer " + token
+              }
+            })
+              .then(response => console.log(response.data))
+              .catch(function(error) {
+                console.log(error);
+              });
+          }
         });
-      // this.$router.replace("/");
     }
   }
 };
