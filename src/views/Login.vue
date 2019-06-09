@@ -32,6 +32,7 @@
       </div>
       <form>
         <input
+          id="name"
           type="text"
           class="text"
           value="Username"
@@ -40,6 +41,7 @@
         >
         <div class="key">
           <input
+            id="password"
             type="password"
             value="Password"
             onfocus="this.value = '';"
@@ -57,10 +59,64 @@
 
 
 <script>
+import Axios from "axios";
+import { EROFS } from "constants";
 export default {
   methods: {
     login() {
-      this.$router.replace("/");
+      // Login and save user_name, user_token and user_profile
+      var router = this.$router;
+      // router.replace("/");
+      // for test
+      // Axios.get("http://127.0.0.1:8000/Station/get_station/").then(response =>
+      //   console.log(response.data)
+      // );
+      var form_username = $("#name").val();
+      var form_password = $("#password").val();
+      // console.log(form_username);
+      // console.log(form_password);
+      Axios.post("http://127.0.0.1:8000/User/obtain_token/", {
+        // username: "JayDHi",
+        // password: "199882"
+        username: form_username,
+        password: form_password
+      })
+        .catch(function(error) {
+          alert("Authentication failed");
+          console.log(error);
+          // router.replace("/login");
+        })
+        .then(function(response) {
+          if (response) {
+            var data = response.data;
+            var get_profile_url = "http://127.0.0.1:8000/User/get_profile/";
+            // get user_token
+            let user_token = data.access;
+            localStorage.setItem("username", form_username);
+            localStorage.setItem("token", user_token);
+            // use token by default
+            if (window.localStorage.getItem("token")) {
+              Axios.defaults.headers.common["Authorization"] =
+                `Bearer ` + window.localStorage.getItem("token");
+            }
+            // console.log(data);
+            Axios.get(get_profile_url, {
+              // headers: {
+              //   Authorization: "Bearer " + user_token
+              // }
+            })
+              .then(response => {
+                // console.log(response.data);
+                var user_profile = JSON.stringify(response.data);
+                localStorage.setItem("profile", user_profile);
+                // console.log(user_profile);
+                router.replace("/");
+              })
+              .catch(function(error) {
+                console.log(error);
+              });
+          }
+        });
     }
   }
 };

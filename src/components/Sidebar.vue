@@ -54,7 +54,11 @@
 
 <script>
 export default {
-  name: "Sidebar"
+  name: "Sidebar",
+  methods: {
+    set_sidebar() {
+    }
+  }
 };
 </script>
 
