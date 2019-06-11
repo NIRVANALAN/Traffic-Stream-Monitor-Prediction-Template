@@ -20,3 +20,7 @@ This is a demo for using BaiduMap with VueJS.
 
 - [官网教程](https://cn.vuejs.org/index.html)
 - [vue-cli](https://cli.vuejs.org/zh/)
+
+### Axios
+
+- [GitHub](https://github.com/axios/axios)

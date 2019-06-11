@@ -64,7 +64,6 @@ export default {
             let user_token = data.access;
             localStorage.setItem("username", form_username);
             localStorage.setItem("token", user_token);
-            // use token by default
             if (window.localStorage.getItem("token")) {
               Axios.defaults.headers.common["Authorization"] =
                 `Bearer ` + window.localStorage.getItem("token");

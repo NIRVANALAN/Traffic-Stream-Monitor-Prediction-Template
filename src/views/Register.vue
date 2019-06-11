@@ -18,13 +18,9 @@
         </div>
       </div>
     </div>
-    <!-- <div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div> -->
 
     <div class="register-container container">
       <div class="row">
-        <!-- <div class="iphone span5">
-                    <img src="img/iphone.png" alt="">
-        </div>-->
         <div class="register span6">
           <form action method="post">
             <h2>
