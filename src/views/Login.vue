@@ -68,16 +68,16 @@ export default {
             if (window.localStorage.getItem("token")) {
               Axios.defaults.headers.common["Authorization"] =
                 `Bearer ` + window.localStorage.getItem("token");
-            Axios.get(get_profile_url, {
-            })
-              .then(response => {
-                var user_profile = JSON.stringify(response.data);
-                localStorage.setItem("profile", user_profile);
-                router.replace("/");
-              })
-              .catch(function(error) {
-                window.console.log(error);
-              });
+              Axios.get(get_profile_url, {})
+                .then(response => {
+                  var user_profile = JSON.stringify(response.data);
+                  localStorage.setItem("profile", user_profile);
+                  router.replace("/");
+                })
+                .catch(function(error) {
+                  window.console.log(error);
+                });
+            }
           }
         });
     }
