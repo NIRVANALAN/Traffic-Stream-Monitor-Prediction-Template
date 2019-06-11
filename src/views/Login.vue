@@ -42,13 +42,13 @@
 
 <script>
 import Axios from "axios";
-import { EROFS } from "constants";
+
 export default {
   methods: {
     login() {
       var router = this.$router;
-      var form_username = $("#name").val();
-      var form_password = $("#password").val();
+      var form_username = window.$("#name").val();
+      var form_password = window.$("#password").val();
       Axios.post("http://127.0.0.1:8000/User/obtain_token/", {
         username: form_username,
         password: form_password
