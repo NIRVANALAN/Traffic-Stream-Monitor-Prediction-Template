@@ -8,14 +8,12 @@ import echarts from "echarts";
 export default {
   name: "Chart",
   mounted() {
-    // mounted() {
-    // var event = 10;
     var chart = echarts.init(document.getElementById("chart"));
 
     var option = {
       title: {
         text: "入站量和出站量",
-        subtext: "火车东站" // TODO 替换成真实站点
+        subtext: "火车东站"
       },
       tooltip: {
         trigger: "axis"
@@ -107,10 +105,7 @@ export default {
             2.3
           ],
           markPoint: {
-            data: [
-              // { type: "max", name: "最大值" },
-              // { type: "min", name: "最小值" }
-            ]
+            data: []
           }
         }
       ]
@@ -123,15 +118,11 @@ export default {
           station_name.concat("站");
         }
         option.title.subtext = station_name;
-        // use get method to get data predicted by model
-        // option.xAxis// TODO
-        // option.series[0] [1]// TODO
-        option.series[0].data.reverse(); // test
+        option.series[0].data.reverse();
         option.series[1].data.reverse();
-        // console.log(option.series);
         chart.setOption(option);
         var profile = JSON.parse(localStorage.getItem("profile"));
-        console.log(profile);
+        window.console.log(profile);
       }
     });
   }
