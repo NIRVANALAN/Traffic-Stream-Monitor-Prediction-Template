@@ -1,7 +1,7 @@
 <template>
   <el-card class="info-card" :body-style="{padding: '0px'}">
-    <div class="info-card-head">{{ infoCard.title }}</div>
-    <div class="info-card-item">{{ infoCard.number }}</div>
+    <div class="info-card-head web-font">{{ infoCard.title }}</div>
+    <div class="info-card-item web-font">{{ infoCard.number }}</div>
     <div :id="infoCard.name" class="info-card-chart"></div>
   </el-card>
 </template>
@@ -49,30 +49,26 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.web-font >>> .info-card {
-  width: 100%;
-  margin: 0;
+.info-card {
+  width: 99%;
   padding: 0;
+  padding-bottom: 25px;
+  margin: 0;
   position: relative;
+}
+
+.info-card-head {
+  margin: 15px;
+  font-size: 20px;
 }
 
 .info-card-item {
-  font-size: 14px;
   margin: 10px;
+  font-size: 25px;
 }
 
 .info-card-chart {
-  width: 100%;
+  width: 99%;
   height: 150px;
-}
-
-.info-card {
-  position: relative;
-  width: 100%;
-}
-
-.echarts {
-  width: 100%;
-  height: 100px;
 }
 </style>
