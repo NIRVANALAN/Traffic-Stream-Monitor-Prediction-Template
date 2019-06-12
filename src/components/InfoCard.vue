@@ -2,9 +2,10 @@
   <el-card class="info-card" :body-style="{padding: '0px'}">
     <div class="info-card-head">{{ infoCard.title }}</div>
     <div class="info-card-item">{{ infoCard.number }}</div>
-    <div class="info-card-chart" :id="infoCard.name"></div>
+    <div :id="infoCard.name" class="info-card-chart"></div>
   </el-card>
 </template>
+
 <script>
 import echarts from "echarts";
 
@@ -17,8 +18,8 @@ export default {
     return {};
   },
   mounted() {
-    var infoChart = echarts.init(document.getElementById(this.infoCard.name));
-    infoChart.setOption(this.infoCard.option);
+    var chart = echarts.init(document.getElementById(this.infoCard.name));
+    chart.setOption(this.infoCard.option);
   }
 };
 </script>
@@ -62,5 +63,16 @@ export default {
 
 .info-card-chart {
   width: 100%;
+  height: 150px;
+}
+
+.info-card {
+  position: relative;
+  width: 100%;
+}
+
+.echarts {
+  width: 100%;
+  height: 100px;
 }
 </style>
