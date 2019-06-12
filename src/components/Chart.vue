@@ -5,6 +5,7 @@
 <script>
 import echarts from "echarts";
 import Axios from "axios";
+import { Minimatch } from "minimatch";
 
 export default {
   name: "Chart",
@@ -113,39 +114,61 @@ export default {
     chart.setOption(option);
     window.addEventListener("message", function(e) {
       if (e.source == window.frames[0]) {
-        var station_name = e.data;
         var get_station_url = "http://127.0.0.1:8000/Flow/show_flow/";
-        var data = {
-          year: 2019,
-          month: 5,
-          dates: [1],
-          stations: [1]
-        };
+        const now = new Date();
+        let date = now.getDate();
+        let hour = now.getHours();
+        let minutes = now.getMinutes();
         Axios.get(get_station_url, {
           headers: { "Content-Type": "application/json" },
           params: {
             year: 2019,
             month: 5,
             dates: 1,
-            stations: "1"
+            stations: 1
           }
         })
           .then(response => {
-            console.log(response.data["station_1"]["date_1"]);
+            let data = response.data;
+            console.log(data);
+            let station_info = JSON.parse(localStorage.getItem("stationInfo"));
+            if (station_info != null) {
+              let station_id = Object.keys(data)[0]; // station_id
+              station_info[station_id] = data[station_id]; // append to global storage
+              // change charts options
+              let station_name = e.data;
+              if (!station_name.endsWith("站")) {
+                var new_station_name = station_name.concat("站");
+              }
+              option.title.subtext = new_station_name;
+              // use get method to get data predicted by model
+              // option.xAxis// TODO
+              // get time
+              let time_slide_now = hour * 6 + Math.floor(minutes / 10);
+              // console.log(time_slide_now);
+              for (let index = 0; index < 12; index++) {
+                // 入站量
+                option.series[0].data[index] =
+                  station_info[station_id]["date_1"][
+                    time_slide_now - 6 + index
+                  ]["in"];
+                // 出站量
+                option.series[1].data[index] =
+                  station_info[station_id]["date_1"][
+                    time_slide_now - 6 + index
+                  ]["out"];
+              }
+              // option.series[0].data.reverse(); // test
+              // option.series[1].data.reverse();
+              // console.log(option.series);
+              chart.setOption(option);
+              // var profile = JSON.parse(localStorage.getItem("profile"));
+              // console.log(profile);
+            } else {
+              localStorage.setItem("stationInfo", JSON.stringify(data));
+            }
           })
           .catch(error => console.log(error));
-        // change charts options
-        if (!station_name.endsWith("站")) {
-          station_name.concat("站");
-        }
-        option.title.subtext = station_name;
-        option.series[0].data.reverse();
-        option.series[1].data.reverse();
-        chart.setOption(option);
-
-        // var profile = JSON.parse(localStorage.getItem("profile"));
-        // console.log(profile);
-
       }
     });
   }
