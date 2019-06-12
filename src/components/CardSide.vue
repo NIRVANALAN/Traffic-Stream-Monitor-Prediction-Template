@@ -6,7 +6,6 @@
 
 <script>
 import InfoCard from "./InfoCard.vue";
-import axios from "axios";
 
 export default {
   name: "CardSide",
@@ -17,11 +16,7 @@ export default {
       infoCards: []
     };
   },
-  mounted() {
-    axios
-      .get("//demo.mhtt1123.cn/infoCards")
-      .then(response => (this.infoCards = response.data));
-  }
+  mounted() {}
 };
 </script>
 

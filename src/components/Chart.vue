@@ -10,13 +10,11 @@ import { Minimatch } from "minimatch";
 export default {
   name: "Chart",
   mounted() {
-    // mounted() {
-    // var event = 10;
     var chart = echarts.init(document.getElementById("chart"));
     var option = {
       title: {
         text: "入站量和出站量",
-        subtext: "火车东站" // TODO 替换成真实站点
+        subtext: "火车东站"
       },
       tooltip: {
         trigger: "axis"
@@ -108,10 +106,7 @@ export default {
             2.3
           ],
           markPoint: {
-            data: [
-              // { type: "max", name: "最大值" },
-              // { type: "min", name: "最小值" }
-            ]
+            data: []
           }
         }
       ]
