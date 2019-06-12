@@ -4,12 +4,12 @@
 
 <script>
 import echarts from "echarts";
+import Axios from "axios";
 
 export default {
   name: "Chart",
   mounted() {
     var chart = echarts.init(document.getElementById("chart"));
-
     var option = {
       title: {
         text: "入站量和出站量",
@@ -114,6 +114,27 @@ export default {
     window.addEventListener("message", function(e) {
       if (e.source == window.frames[0]) {
         var station_name = e.data;
+        var get_station_url = "http://127.0.0.1:8000/Flow/show_flow/";
+        var data = {
+          year: 2019,
+          month: 5,
+          dates: [1],
+          stations: [1]
+        };
+        Axios.get(get_station_url, {
+          headers: { "Content-Type": "application/json" },
+          params: {
+            year: 2019,
+            month: 5,
+            dates: 1,
+            stations: "1"
+          }
+        })
+          .then(response => {
+            console.log(response.data["station_1"]["date_1"]);
+          })
+          .catch(error => console.log(error));
+        // change charts options
         if (!station_name.endsWith("站")) {
           station_name.concat("站");
         }
@@ -121,8 +142,10 @@ export default {
         option.series[0].data.reverse();
         option.series[1].data.reverse();
         chart.setOption(option);
-        var profile = JSON.parse(localStorage.getItem("profile"));
-        window.console.log(profile);
+
+        // var profile = JSON.parse(localStorage.getItem("profile"));
+        // console.log(profile);
+
       }
     });
   }
