@@ -122,15 +122,29 @@ export default {
         Axios.post(get_station_url, {
           year: 2019,
           month: 5,
-          dates: [date],
-          stations: [1]
+          dates: [date - 1],
+          stations: [2]
         })
           .then(response => {
-            let data = response.data;
-            let station_info = JSON.parse(localStorage.getItem("stationInfo"));
+            var data = response.data;
+            var station_info = JSON.parse(localStorage.getItem("stationInfo"));
             if (station_info != null) {
-              let station_id = Object.keys(data)[0]; // station_id
-              station_info[station_id] = data[station_id]; // append to global storage
+              // add response data to localStorage
+              let station_id = Object.keys(data)[0]; // request one station_id a time
+              // let station_date = Object.keys(station_info[station_id]);
+              if (station_info[station_id] == undefined) {
+                station_info[station_id] = data[station_id]; // add to global storage
+              } else {
+                // merge station dates info
+                let dates = Object.keys(data[station_id]);
+                for (let index = 0; index < dates.length; index++) {
+                  const element = dates[index];
+                  if (station_info[station_id][dates[index]] == undefined) {
+                    station_info[station_id][dates[index]] =
+                      data[station_id][dates[index]];
+                  }
+                }
+              }
               localStorage.setItem("stationInfo", JSON.stringify(station_info));
               // console.log(station_info[station_id]);
               // change charts options
