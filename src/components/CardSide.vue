@@ -1,6 +1,6 @@
 <template>
   <el-aside id="card-side">
-    <InfoCard v-for="(infoCard, index) in infoCards" :infoCard="infoCard" :key="index"></InfoCard>
+    <info-card v-for="(infoCard, index) in infoCards" :infoCard="infoCard" :key="index"></info-card>
   </el-aside>
 </template>
 

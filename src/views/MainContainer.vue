@@ -1,16 +1,16 @@
 <template>
   <el-container>
     <el-container>
-      <SubwayMap></SubwayMap>
+      <subway-map></subway-map>
 
-      <SwitchCard></SwitchCard>
+      <switch-card></switch-card>
 
       <el-footer height="250px">
         <chart></chart>
       </el-footer>
     </el-container>
 
-    <CardSide></CardSide>
+    <card-side></card-side>
   </el-container>
 </template>
 

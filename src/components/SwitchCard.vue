@@ -1,6 +1,6 @@
 <template>
   <el-carousel
-    initial-index="2"
+    :initial-index="2"
     type="card"
     trigger="click"
     height="75px"
@@ -9,14 +9,14 @@
     :autoplay="false"
     indicator-position="none"
   >
-    <el-carousel-item v-for="item in data" :key="item">
+    <el-carousel-item v-for="(item, index) in content" :key="index">
       <div class="grid-content">
         <el-col :md="12" :offset="6">
           <div>
-            <p class="italictext">{{item.stand}}</p>
+            <p class="italictext">{{ item.stand }}</p>
             <span class="service">
               <i class="el-icon-date"></i>
-              {{item.date}}
+              {{ item.date }}
             </span>
           </div>
         </el-col>
@@ -30,7 +30,7 @@ export default {
   name: "SwitchCard",
   data() {
     return {
-      data: [
+      content: [
         {
           date: "6月11日",
           stand: "西直门"
@@ -65,12 +65,15 @@ export default {
   line-height: 75px;
   margin: 0;
 }
+
 .el-carousel__item:nth-child(2n) {
   background-color: #99a9bf;
 }
+
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
 }
+
 #switchcard {
   position: relative;
   padding: 0;

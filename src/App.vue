@@ -1,6 +1,6 @@
 <template>
   <div id="top-app">
-    <Index></Index>
+    <index></index>
   </div>
 </template>
 
@@ -24,7 +24,7 @@ html {
   width: 100%;
 }
 
-.Index {
+.index {
   height: 100%;
   width: 100%;
 }

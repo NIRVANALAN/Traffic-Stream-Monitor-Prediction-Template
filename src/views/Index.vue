@@ -1,8 +1,8 @@
 <template>
   <el-container style="width: 100%; height: 100%; solid #eee; display: flex; right:0;">
-    <Sidebar></Sidebar>
+    <sidebar></sidebar>
     <el-container style="width: 100%" direction="vertical">
-      <UserHeader></UserHeader>
+      <user-header></user-header>
 
       <router-view id="container-router"/>
     </el-container>
