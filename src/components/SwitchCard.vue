@@ -14,8 +14,8 @@
       <div class="grid-content">
 						<el-col :md="12" :offset="6">
 							<div>
-								<p class="italictext">{{item.date}}</p>
-								<span class="service">{{item.stand}}</span>
+								<p class="italictext">{{item.stand}}</p>
+								<span class="service"><i class="el-icon-date"></i>{{item.date}}</span>
 							</div>
 						</el-col>
 					</div>
@@ -29,23 +29,23 @@ export default {
   data(){
             return{
               data:[{
-                date:"5月28日",
+                date:"6月11日",
                 stand:"西直门",
               },
               {
-                date:"5月29日",
+                date:"6月12日",
                 stand:"西直门",
               },
               {
-                date:"5月30日",
+                date:"6月13日",
                 stand:"西直门",
               },
               {
-                date:"5月31日",
+                date:"6月14日",
                 stand:"西直门",
               },
               {
-                date:"6月1日",
+                date:"6月15日",
                 stand:"西直门",
               }]
      }
@@ -61,15 +61,12 @@ export default {
   line-height: 75px;
   margin: 0;
 }
-
 .el-carousel__item:nth-child(2n) {
   background-color: #99a9bf;
 }
-
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
 }
-
 #switchcard {
   position: relative;
   padding: 0;
