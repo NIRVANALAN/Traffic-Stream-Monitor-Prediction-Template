@@ -119,22 +119,34 @@ export default {
         let date = now.getDate();
         let hour = now.getHours();
         let minutes = now.getMinutes();
-        Axios.get(get_station_url, {
-          headers: { "Content-Type": "application/json" },
-          params: {
-            year: 2019,
-            month: 5,
-            dates: 1,
-            stations: 1
-          }
+        Axios.post(get_station_url, {
+          year: 2019,
+          month: 5,
+          dates: [date - 1],
+          stations: [2]
         })
           .then(response => {
-            let data = response.data;
-            console.log(data);
-            let station_info = JSON.parse(localStorage.getItem("stationInfo"));
+            var data = response.data;
+            var station_info = JSON.parse(localStorage.getItem("stationInfo"));
             if (station_info != null) {
-              let station_id = Object.keys(data)[0]; // station_id
-              station_info[station_id] = data[station_id]; // append to global storage
+              // add response data to localStorage
+              let station_id = Object.keys(data)[0]; // request one station_id a time
+              // let station_date = Object.keys(station_info[station_id]);
+              if (station_info[station_id] == undefined) {
+                station_info[station_id] = data[station_id]; // add to global storage
+              } else {
+                // merge station dates info
+                let dates = Object.keys(data[station_id]);
+                for (let index = 0; index < dates.length; index++) {
+                  const element = dates[index];
+                  if (station_info[station_id][dates[index]] == undefined) {
+                    station_info[station_id][dates[index]] =
+                      data[station_id][dates[index]];
+                  }
+                }
+              }
+              localStorage.setItem("stationInfo", JSON.stringify(station_info));
+              // console.log(station_info[station_id]);
               // change charts options
               let station_name = e.data;
               if (!station_name.endsWith("站")) {
@@ -145,18 +157,27 @@ export default {
               // option.xAxis// TODO
               // get time
               let time_slide_now = hour * 6 + Math.floor(minutes / 10);
+              time_slide_now = time_slide_now < 7 ? 7 : time_slide_now;
               // console.log(time_slide_now);
               for (let index = 0; index < 12; index++) {
                 // 入站量
+                // console.log(station_info[station_id]["date_".concat(date)]);
                 option.series[0].data[index] =
-                  station_info[station_id]["date_1"][
+                  station_info[station_id]["date_".concat(date)][
                     time_slide_now - 6 + index
                   ]["in"];
                 // 出站量
                 option.series[1].data[index] =
-                  station_info[station_id]["date_1"][
+                  station_info[station_id]["date_".concat(date)][
                     time_slide_now - 6 + index
                   ]["out"];
+                let hour_now = Math.floor((time_slide_now - 6 + index) / 6);
+                let time_now = (time_slide_now - 6 + index) % 6;
+                // console.log(option.xAxis);
+                option.xAxis[0].data[index] = String(hour_now)
+                  .concat(":")
+                  .concat(String(time_now).concat("0"));
+                // console.log(option.xAxis[0].data);
               }
               // option.series[0].data.reverse(); // test
               // option.series[1].data.reverse();

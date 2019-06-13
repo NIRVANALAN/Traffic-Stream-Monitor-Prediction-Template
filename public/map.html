@@ -26,8 +26,10 @@
                 break;
             }
         }
-
         var subway = new BMapSub.Subway('container', subwaycity.citycode);
+        // subway.addEventListener('subwayloaded', function () {
+        //     // alert('地铁图加载完成');
+        // });
         var zoomControl = new BMapSub.ZoomControl({
             anchor: BMAPSUB_ANCHOR_BOTTOM_RIGHT,
             offset: new BMapSub.Size(10, 100)
