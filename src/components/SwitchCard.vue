@@ -1,13 +1,26 @@
 <template>
   <el-carousel
-    height="100px"
-    id="switch-card"
+    initial-index="2"
+    type="card"
+    trigger="click"
+    height="75px"
+    id="switchcard"
     :loop="false"
     :autoplay="false"
     indicator-position="none"
   >
-    <el-carousel-item v-for="item in 4" :key="item">
-      <h3 class="small">{{ item }}</h3>
+    <el-carousel-item v-for="item in data" :key="item">
+      <div class="grid-content">
+        <el-col :md="12" :offset="6">
+          <div>
+            <p class="italictext">{{item.stand}}</p>
+            <span class="service">
+              <i class="el-icon-date"></i>
+              {{item.date}}
+            </span>
+          </div>
+        </el-col>
+      </div>
     </el-carousel-item>
   </el-carousel>
 </template>
@@ -15,9 +28,31 @@
 <script>
 export default {
   name: "SwitchCard",
-  props: {
-    leftTop: Object,
-    rightBottom: Object
+  data() {
+    return {
+      data: [
+        {
+          date: "6月11日",
+          stand: "西直门"
+        },
+        {
+          date: "6月12日",
+          stand: "西直门"
+        },
+        {
+          date: "6月13日",
+          stand: "西直门"
+        },
+        {
+          date: "6月14日",
+          stand: "西直门"
+        },
+        {
+          date: "6月15日",
+          stand: "西直门"
+        }
+      ]
+    };
   }
 };
 </script>
@@ -27,23 +62,24 @@ export default {
   color: #475669;
   font-size: 14px;
   opacity: 0.75;
-  line-height: 100px;
+  line-height: 75px;
   margin: 0;
 }
-
 .el-carousel__item:nth-child(2n) {
   background-color: #99a9bf;
 }
-
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
 }
-
-#switch-card {
-  position: fixed;
+#switchcard {
+  position: relative;
   padding: 0;
-  margin: 0;
-  width: 300px;
-  height: 100px;
+  bottom: 0px;
+  right: 0px;
+  top: 0px;
+  left: 0px;
+  margin: auto;
+  width: 450px;
+  height: 75px;
 }
 </style>
