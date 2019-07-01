@@ -3,7 +3,7 @@
     <h1>Unique Login Form</h1>
     <div class="log">
       <div class="content1">
-        <h2>Sign In Form</h2>
+        <h2>登录</h2>
         <form>
           <input
             id="login_name"
@@ -31,7 +31,7 @@
         </form>
       </div>
       <div class="content2">
-        <h2>Sign Up Form</h2>
+        <h2>注册</h2>
         <form>
           <input
             id="reg_name"
