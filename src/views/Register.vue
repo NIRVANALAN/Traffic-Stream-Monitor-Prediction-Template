@@ -10,7 +10,7 @@
             autocomplete="on"
             type="text"
             name="userid"
-            value="USERNAME"
+            value="用户名"
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'USERNAME';}"
           >
@@ -24,8 +24,8 @@
             onblur="if (this.value == '') {this.value = 'PASSWORD';}"
           >
           <div class="button-row">
-            <input type="button" class="sign-in" value="Sign In" @click="login">
-            <input type="reset" class="reset" value="Reset">
+            <input type="button" class="sign-in" value="登入" @click="login">
+            <input type="reset" class="reset" value="重置">
             <div class="clear"></div>
           </div>
         </form>
@@ -38,7 +38,7 @@
             autocomplete="on"
             type="text"
             name="userid"
-            value="USERNAME"
+            value="用户名"
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'USERNAME';}"
           >
@@ -67,7 +67,7 @@
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'PASSWORD';}"
           >
-          <input type="button" class="register" value="Register" @click="register">
+          <input type="button" class="register" value="注册&登录" @click="register">
         </form>
       </div>
       <div class="clear"></div>
