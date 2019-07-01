@@ -1,59 +1,72 @@
 <template>
-  <div class="body">
-    <div class="header">
-      <div class="container">
-        <div class="row">
-          <div class="logo span4">
-            <h1>
-              <a href>
-                Register
-                <span class="red">.</span>
-              </a>
-            </h1>
+  <div class="reg_body">
+    <h1>Unique Login Form</h1>
+    <div class="log">
+      <div class="content1">
+        <h2>Sign In Form</h2>
+        <form>
+          <input
+            type="text"
+            name="userid"
+            value="USERNAME"
+            onfocus="this.value = '';"
+            onblur="if (this.value == '') {this.value = 'USERNAME';}"
+          >
+          <input
+            type="password"
+            name="psw"
+            value="PASSWORD"
+            onfocus="this.value = '';"
+            onblur="if (this.value == '') {this.value = 'PASSWORD';}"
+          >
+          <div class="button-row">
+            <input type="submit" class="sign-in" value="Sign In">
+            <input type="reset" class="reset" value="Reset">
+            <div class="clear"></div>
           </div>
-          <div class="links span8">
-            <a class="home" href rel="tooltip" data-placement="bottom" data-original-title="Home"></a>
-            <a class="blog" href rel="tooltip" data-placement="bottom" data-original-title="Blog"></a>
-          </div>
-        </div>
+        </form>
       </div>
-    </div>
-
-    <div class="register-container container">
-      <div class="row">
-        <div class="register span6">
-          <form action method="post">
-            <h2>
-              REGISTER TO
-              <span class="red">
-                <strong>iAPP</strong>
-              </span>
-            </h2>
-            <label for="firstname">First Name</label>
-            <input
-              type="text"
-              id="firstname"
-              name="firstname"
-              placeholder="enter your first name..."
-            >
-            <label for="lastname">Last Name</label>
-            <input type="text" id="lastname" name="lastname" placeholder="enter your first name...">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="choose a username...">
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="enter your email...">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="choose a password...">
-            <button type="submit">REGISTER</button>
-          </form>
-        </div>
+      <div class="content2">
+        <h2>Sign Up Form</h2>
+        <form>
+          <input
+            type="text"
+            name="userid"
+            value="USERNAME"
+            onfocus="this.value = '';"
+            onblur="if (this.value == '') {this.value = 'NAME AND SURNAME';}"
+          >
+          <input
+            type="tel"
+            name="usrtel"
+            value="PHONE"
+            onfocus="this.value = '';"
+            onblur="if (this.value == '') {this.value = 'PHONE';}"
+          >
+          <input
+            type="email"
+            name="email"
+            value="EMAIL ADDRESS"
+            onfocus="this.value = '';"
+            onblur="if (this.value == '') {this.value = 'EMAIL ADDRESS';}"
+          >
+          <input
+            type="password"
+            name="psw"
+            value="PASSWORD"
+            onfocus="this.value = '';"
+            onblur="if (this.value == '') {this.value = 'PASSWORD';}"
+          >
+          <input type="submit" class="register" value="Register">
+        </form>
       </div>
+      <div class="clear"></div>
     </div>
+    <div class="footer"></div>
   </div>
 </template>
 
 <style scoped src="../assets/css/reg_style.css"></style>
-<style scoped src="../assets/bootstrap/css/bootstrap.min.css"></style>
 
 
 
