@@ -76,7 +76,7 @@ img {
 
 .reg_body {
 	margin:0;
-	padding:0;
+	height: 100%;
 	background:url(../images/banner.jpg) no-repeat;
 	background-attachment:fixed;
 	background-position:center;
@@ -292,10 +292,10 @@ h1 {
 	background-color:#376D29;
 	color:white;
 }
-.footer {
+/* .footer {
 	margin-top:31px;
 	text-align:center;
-}
+} */
 /* .footer p {
 	color:#fff;
 	font-size:17px;
@@ -303,7 +303,7 @@ h1 {
 	font-weight: 300;
 	line-height:25px;
 } */
-.footer a,a:active {
+/* .footer a,a:active {
 	color:#fff;
 	text-decoration:none;
 	transition: all 0.5s ease-in-out;
@@ -311,7 +311,7 @@ h1 {
 .footer a:hover {
 	color:#c0392b;
 	transition: all 0.5s ease-in-out;
-}
+} */
 
 /*-- responsive-mediaquries --*/
 @media(max-width:1920px){

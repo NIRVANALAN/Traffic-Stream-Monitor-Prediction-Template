@@ -55,7 +55,6 @@ export default {
       })
         .catch(function(error) {
           alert("Authentication failed");
-          window.console.log(error);
         })
         .then(function(response) {
           if (response) {

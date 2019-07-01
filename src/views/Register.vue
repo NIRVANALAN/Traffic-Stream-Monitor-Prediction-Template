@@ -6,6 +6,8 @@
         <h2>Sign In Form</h2>
         <form>
           <input
+            id="login_name"
+            autocomplete="on"
             type="text"
             name="userid"
             value="USERNAME"
@@ -13,14 +15,16 @@
             onblur="if (this.value == '') {this.value = 'USERNAME';}"
           >
           <input
+            id="login_pw"
+            autocomplete="on"
             type="password"
             name="psw"
-            value="PASSWORD"
+            value="199882"
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'PASSWORD';}"
           >
           <div class="button-row">
-            <input type="submit" class="sign-in" value="Sign In">
+            <input type="button" class="sign-in" value="Sign In" @click="login">
             <input type="reset" class="reset" value="Reset">
             <div class="clear"></div>
           </div>
@@ -30,34 +34,40 @@
         <h2>Sign Up Form</h2>
         <form>
           <input
+            id="reg_name"
+            autocomplete="on"
             type="text"
             name="userid"
             value="USERNAME"
             onfocus="this.value = '';"
-            onblur="if (this.value == '') {this.value = 'NAME AND SURNAME';}"
+            onblur="if (this.value == '') {this.value = 'USERNAME';}"
           >
-          <input
+          <!-- <input
+            autocomplete="on"
             type="tel"
             name="usrtel"
             value="PHONE"
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'PHONE';}"
-          >
-          <input
+          >-->
+          <!-- <input
+            autocomplete="on"
             type="email"
             name="email"
             value="EMAIL ADDRESS"
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'EMAIL ADDRESS';}"
-          >
+          >-->
           <input
+            id="reg_pw"
+            autocomplete="on"
             type="password"
             name="psw"
             value="PASSWORD"
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'PASSWORD';}"
           >
-          <input type="submit" class="register" value="Register">
+          <input type="button" class="register" value="Register" @click="register">
         </form>
       </div>
       <div class="clear"></div>
@@ -65,6 +75,95 @@
     <div class="footer"></div>
   </div>
 </template>
+
+
+<script>
+import Axios from "axios";
+export default {
+  methods: {
+    login() {
+      var router = this.$router;
+      var form_username = window.$("#login_name").val();
+      var form_password = window.$("#login_pw").val();
+      Axios.post("http://127.0.0.1:8000/User/obtain_token/", {
+        username: form_username,
+        password: form_password
+      })
+        .catch(function(error) {
+          alert("Authentication failed");
+          window.console.log(error);
+        })
+        .then(function(response) {
+          console.log(response);
+          // router.replace("/");
+          if (response) {
+            var data = response.data;
+            var get_profile_url = "http://127.0.0.1:8000/User/get_profile/";
+            let user_token = data.access;
+            localStorage.setItem("username", form_username);
+            localStorage.setItem("token", user_token);
+            if (window.localStorage.getItem("token")) {
+              Axios.defaults.headers.common["Authorization"] =
+                `Bearer ` + window.localStorage.getItem("token");
+              Axios.get(get_profile_url, {})
+                .then(response => {
+                  var user_profile = JSON.stringify(response.data);
+                  // console.log(user_profile);
+                  localStorage.setItem("profile", user_profile);
+                  router.replace("/");
+                })
+                .catch(function(error) {
+                  window.console.log(error);
+                });
+            }
+          }
+        });
+    },
+    register() {
+      var router = this.$router;
+      var form_username = window.$("#reg_name").val();
+      var form_password = window.$("#reg_pw").val();
+      Axios.post("http://127.0.0.1:8000/User/register/", {
+        username: form_username,
+        password: form_password
+      })
+        .catch(function(error) {
+          alert("Register failed");
+          window.console.log(error);
+        })
+        .then(function(response) {
+          // console.log(response);
+          if (response) {
+            console.log(response);
+            var data = response.data;
+            if (data.username == form_username) {
+              console.log(form_username);
+              localStorage.setItem("username", form_username);
+              localStorage.setItem("token", user_token);
+              if (window.localStorage.getItem("token")) {
+                Axios.defaults.headers.common["Authorization"] =
+                  `Bearer ` + window.localStorage.getItem("token");
+                Axios.get(get_profile_url, {})
+                  .then(response => {
+                    var user_profile = JSON.stringify(response.data);
+                    // console.log(user_profile);
+                    localStorage.setItem("profile", user_profile);
+                    router.replace("/");
+                  })
+                  .catch(function(error) {
+                    window.console.log(error);
+                  });
+              }
+            } else {
+              window.alert("Username already exists");
+            }
+          }
+        });
+    }
+  }
+};
+</script>
+
 
 <style scoped src="../assets/css/reg_style.css"></style>
 

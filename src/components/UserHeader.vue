@@ -19,7 +19,7 @@
     </el-dropdown>
     <span>
       <!-- <el-button type="primary" size="small" @click="login">登录</el-button> -->
-      <el-button type="success" size="small" @click="register">登录 / 注册</el-button>
+      <el-button type="success" size="small" @click="login_register">登录 / 注册</el-button>
     </span>
   </el-header>
 </template>
@@ -31,8 +31,8 @@ export default {
     login() {
       this.$router.replace("/login");
     },
-    register() {
-      this.$router.replace("/register");
+    login_register() {
+      this.$router.replace("/login_register");
     }
   }
 };
