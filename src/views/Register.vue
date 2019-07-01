@@ -67,6 +67,22 @@
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'PASSWORD';}"
           >
+          <!-- <el-form>
+            <el-form-item label="活动区域">
+              <el-select placeholder="请选择活动区域">
+                <el-option label="区域一" value="shanghai"></el-option>
+                <el-option label="区域二" value="beijing"></el-option>
+              </el-select>
+            </el-form-item>
+          </el-form>-->
+          <br>
+          <select>
+            <option value="subway_admin">地铁管理员</option>
+            <option value="common_user">地铁出行用户</option>
+            <!-- <option value="audi">Audi</option> -->
+          </select>
+          <br>
+
           <input type="button" class="register" value="注册&登录" @click="register">
         </form>
       </div>

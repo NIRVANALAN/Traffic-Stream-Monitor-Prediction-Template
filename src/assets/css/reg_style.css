@@ -230,9 +230,9 @@ h1 {
 	font-family: 'Muli', sans-serif;
 	border-radius: 4px;
 }
-.content2 input[type="tel"] {
+.content2 select{
 	padding:10px 40px 10px 10px;
-	width:70%;
+	width:82%;
 	border:1px solid white;
 	color:#fff; 
 	text-align:left;
@@ -244,6 +244,34 @@ h1 {
 	font-family: 'Muli', sans-serif;
 	border-radius: 4px;
 }
+.content2 select::-ms-expand {
+    display: none;
+}
+.content2 select:hover {
+    border-color: #888;
+}
+.content2 select:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222; 
+    outline: none;
+}
+.content2 select option {
+    font-weight:normal;
+}
+
+/* .content1 /* Style items (options): */
+/* .select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+} */
+
+
 .content2 input[type="email"] {
 	padding:10px 40px 10px 10px;
 	width:70%;
