@@ -221,7 +221,7 @@ label.lbl-3 {
 	}
 	
 	.login_body {
-	  min-height: 811px;
+	  min-height: 758px;
 	}
 }
 @media (max-width:1366px){
@@ -232,7 +232,7 @@ label.lbl-3 {
 	  margin-top: 3em;
 	}
 	.login_body {
-	  min-height: 768px;
+	  min-height: 720px;
 	}
 }
 @media (max-width:1280px){

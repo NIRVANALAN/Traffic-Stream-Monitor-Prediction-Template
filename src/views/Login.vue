@@ -1,6 +1,6 @@
 <template>
-  <div class="login_body">
-    <h1>Login</h1>
+  <div class="login_body" style="height: 50%">
+    <h1>登录</h1>
     <div class="login-form">
       <div class="close"></div>
       <div class="head-info">
