@@ -17,9 +17,33 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    update_option(chart, app) {
+      // console.log(this.infoCard);
+      let axisData = new Date().toLocaleTimeString().replace(/^\D*/, "");
+      var data0 = this.infoCard.option.series[0].data;
+      var data1 = this.infoCard.option.series[1].data;
+      data0.shift();
+      data0.push(Math.round(Math.random() * 1000));
+      data1.shift();
+      data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
+
+      this.infoCard.option.xAxis[0].data.shift();
+      this.infoCard.option.xAxis[0].data.push(axisData);
+      this.infoCard.option.xAxis[1].data.shift();
+      this.infoCard.option.xAxis[1].data.push(app.count++);
+      chart.setOption(this.infoCard.option);
+    }
+  },
   mounted() {
+    var app = {};
+    app.count = 11;
     var chart = echarts.init(document.getElementById(this.infoCard.name));
-    chart.setOption(this.infoCard.option);
+    if (this.infoCard.name == "CurrentDensity") {
+      setInterval(this.update_option, 2100, chart, app);
+    } else {
+      chart.setOption(this.infoCard.option);
+    }
   }
 };
 </script>

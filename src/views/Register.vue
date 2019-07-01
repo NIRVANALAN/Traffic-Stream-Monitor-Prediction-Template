@@ -77,8 +77,8 @@
           </el-form>-->
           <br>
           <select>
-            <option value="subway_admin">地铁管理员</option>
-            <option value="common_user">地铁出行用户</option>
+            <option value="subway_admin">乘务人员</option>
+            <option value="common_user">普通用户</option>
             <!-- <option value="audi">Audi</option> -->
           </select>
           <br>
@@ -150,6 +150,9 @@ export default {
         .then(function(response) {
           // console.log(response);
           if (response) {
+            var data = response.data;
+            var get_profile_url = "http://127.0.0.1:8000/User/get_profile/";
+            let user_token = data.access;
             console.log(response);
             var data = response.data;
             if (data.username == form_username) {
