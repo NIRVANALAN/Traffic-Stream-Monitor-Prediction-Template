@@ -17,8 +17,12 @@
         <el-dropdown-item divided>我的</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
-    <span>
-      <el-button type="primary" size="small" @click="login">登录</el-button>
+    <span v-if="show_login_button">
+      <el-button type="success" size="small" @click="login_register">登录 / 注册</el-button>
+    </span>
+    <span v-else>
+      <!-- <i class="el-icon-user-solid"></i> -->
+      <el-button size="mini" round type="primary" icon="el-icon-user-solid">{{user_name}}</el-button>
     </span>
   </el-header>
 </template>
@@ -26,9 +30,22 @@
 <script>
 export default {
   name: "UserHeader",
+  data: function() {
+    return {
+      user_name: localStorage.getItem("username")
+    };
+  },
+  computed: {
+    show_login_button: function() {
+      return this.user_name == null;
+    }
+  },
   methods: {
     login() {
       this.$router.replace("/login");
+    },
+    login_register() {
+      this.$router.replace("/login_register");
     }
   }
 };

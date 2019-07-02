@@ -1,75 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html>
 <head>
-
-    <meta charset="utf-8">
-    <title>Fullscreen Responsive Register Template</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- CSS -->
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Oleo+Script:400,700'>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/reg_style.css">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
+<title>Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- font files  -->
+<link href='http://fonts.useso.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.useso.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+<!-- /font files  -->
+<!-- css files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' media="all" />
+<!-- /css files -->
 </head>
-
 <body>
-    <div>
-        <div class="header">
-            <div class="container">
-                <div class="row">
-                    <div class="logo span4">
-                        <h1><a href="">iApp Register <span class="red">.</span></a></h1>
-                    </div>
-                    <div class="links span8">
-                        <a class="home" href="" rel="tooltip" data-placement="bottom" data-original-title="Home"></a>
-                        <a class="blog" href="" rel="tooltip" data-placement="bottom" data-original-title="Blog"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="copyrights">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div> -->
-
-        <div class="register-container container">
-            <div class="row">
-                <!-- <div class="iphone span5">
-                    <img src="img/iphone.png" alt="">
-                </div> -->
-                <div class="register span6">
-                    <form action="" method="post">
-                        <h2>REGISTER TO <span class="red"><strong>iAPP</strong></span></h2>
-                        <label for="firstname">First Name</label>
-                        <input type="text" id="firstname" name="firstname" placeholder="enter your first name...">
-                        <label for="lastname">Last Name</label>
-                        <input type="text" id="lastname" name="lastname" placeholder="enter your first name...">
-                        <label for="username">Username</label>
-                        <input type="text" id="username" name="username" placeholder="choose a username...">
-                        <label for="email">Email</label>
-                        <input type="text" id="email" name="email" placeholder="enter your email...">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="choose a password...">
-                        <button type="submit">REGISTER</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Javascript -->
-    <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/jquery.backstretch.min.js"></script>
-    <script src="js/scripts.js"></script>
+<h1>Unique Login Form</h1>
+<div class="log">
+	<div class="content1">
+		<h2>Sign In Form</h2>
+		<form>
+			<input type="text" name="userid" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'USERNAME';}">
+			<input type="password" name="psw" value="PASSWORD" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}">
+			<div class="button-row">
+				<input type="submit" class="sign-in" value="Sign In">
+				<input type="reset" class="reset" value="Reset">
+				<div class="clear"></div>
+			</div>
+		</form>
+	</div>
+	<div class="content2">
+		<h2>Sign Up Form</h2>
+		<form>
+			<input type="text" name="userid" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'NAME AND SURNAME';}">
+			<input type="tel" name="usrtel" value="PHONE" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PHONE';}">
+			<input type="email" name="email" value="EMAIL ADDRESS" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'EMAIL ADDRESS';}">
+			<input type="password" name="psw" value="PASSWORD" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}">
+			<input type="submit" class="register" value="Register">
+		</form>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="footer">
+	<p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+</div>
 
 </body>
-
 </html>

@@ -54,8 +54,9 @@ export default {
         password: form_password
       })
         .catch(function(error) {
-          alert("Authentication failed");
-          window.console.log(error);
+          alert(error);
+          // alert("Authentication failed");
+          // console.log(error);
         })
         .then(function(response) {
           if (response) {
