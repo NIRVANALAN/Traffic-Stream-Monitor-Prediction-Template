@@ -33,6 +33,25 @@ export default {
       this.infoCard.option.xAxis[1].data.shift();
       this.infoCard.option.xAxis[1].data.push(app.count++);
       chart.setOption(this.infoCard.option);
+    },
+    update_user_option(chart) {
+      this.infoCard.option.series[0].data[0].value =
+        (Math.random() * 100).toFixed(2) - 0;
+      chart.setOption(this.infoCard.option, true);
+    },
+    random(maxData) {
+      return +(Math.random() * (maxData - 10)).toFixed(1);
+    },
+    update_queued_option(chart, maxData) {
+      var dynamicData = [
+        this.random(maxData),
+        this.random(maxData),
+        this.random(maxData),
+        this.random(maxData)
+      ];
+      this.infoCard.option.series[0].data = dynamicData.slice();
+      this.infoCard.option.series[1].data = dynamicData.slice();
+      chart.setOption(this.infoCard.option);
     }
   },
   mounted() {
@@ -41,6 +60,15 @@ export default {
     var chart = echarts.init(document.getElementById(this.infoCard.name));
     if (this.infoCard.name == "CurrentDensity") {
       setInterval(this.update_option, 2100, chart, app);
+    } else if (this.infoCard.name == "WaitingComfortDegree") {
+      setInterval(this.update_user_option, 2000, chart);
+    } else if (this.infoCard.name == "QueueNumber") {
+      setInterval(
+        this.update_queued_option,
+        3000,
+        chart,
+        this.infoCard.maxData
+      );
     } else {
       chart.setOption(this.infoCard.option);
     }
@@ -76,7 +104,7 @@ export default {
 .info-card {
   width: 99%;
   padding: 0;
-  padding-bottom: 25px;
+  padding-bottom: 15px;
   margin: 0;
   position: relative;
 }
@@ -93,6 +121,6 @@ export default {
 
 .info-card-chart {
   width: 99%;
-  height: 150px;
+  height: 200px;
 }
 </style>
