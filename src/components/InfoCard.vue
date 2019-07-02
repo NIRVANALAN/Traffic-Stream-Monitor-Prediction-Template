@@ -38,6 +38,20 @@ export default {
       this.infoCard.option.series[0].data[0].value =
         (Math.random() * 100).toFixed(2) - 0;
       chart.setOption(this.infoCard.option, true);
+    },
+    random(maxData) {
+      return +(Math.random() * (maxData - 10)).toFixed(1);
+    },
+    update_queued_option(chart, maxData) {
+      var dynamicData = [
+        this.random(maxData),
+        this.random(maxData),
+        this.random(maxData),
+        this.random(maxData)
+      ];
+      this.infoCard.option.series[0].data = dynamicData.slice();
+      this.infoCard.option.series[1].data = dynamicData.slice();
+      chart.setOption(this.infoCard.option);
     }
   },
   mounted() {
@@ -48,6 +62,13 @@ export default {
       setInterval(this.update_option, 2100, chart, app);
     } else if (this.infoCard.name == "WaitingComfortDegree") {
       setInterval(this.update_user_option, 2000, chart);
+    } else if (this.infoCard.name == "QueueNumber") {
+      setInterval(
+        this.update_queued_option,
+        3000,
+        chart,
+        this.infoCard.maxData
+      );
     } else {
       chart.setOption(this.infoCard.option);
     }
