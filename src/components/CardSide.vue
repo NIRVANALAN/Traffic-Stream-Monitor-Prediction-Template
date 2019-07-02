@@ -417,7 +417,7 @@ export default {
               }
             },
             yAxis: {
-              data: ["2013", "2014", "2015", "2016"],
+              data: ["火车东站", "文化广场", "市民中心", "钱江路"],
               inverse: true,
               axisTick: { show: false },
               axisLine: { show: false },
@@ -432,8 +432,8 @@ export default {
             grid: {
               top: "center",
               height: 200,
-              left: 70,
-              right: 100
+              left: 80,
+              right: 75
             },
             series: [
               {
