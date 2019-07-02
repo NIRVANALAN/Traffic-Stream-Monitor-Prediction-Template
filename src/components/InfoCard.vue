@@ -76,7 +76,7 @@ export default {
 .info-card {
   width: 99%;
   padding: 0;
-  padding-bottom: 25px;
+  padding-bottom: 15px;
   margin: 0;
   position: relative;
 }
@@ -93,6 +93,6 @@ export default {
 
 .info-card-chart {
   width: 99%;
-  height: 150px;
+  height: 200px;
 }
 </style>

@@ -15,44 +15,124 @@ export default {
     return {
       infoCards: [
         {
-          title: "总客运量",
-          number: "8846",
-          name: "passengerFlow",
-          height: "200px",
+          title: "当前流量",
+          number: "78%",
+          name: "CurrentDensity",
+          height: "300px",
           option: {
+            // title: {
+            //   text: "动态数据",
+            //   subtext: "纯属虚构"
+            // },
             tooltip: {
-              trigger: "axis"
-            },
-            calculable: true,
-            xAxis: {
-              type: "category",
-              boundaryGap: false,
-              data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
-            },
-            yAxis: {
-              type: "value",
-              axisLabel: {
-                show: false
-              },
-              axisTick: {
-                show: false
+              trigger: "axis",
+              axisPointer: {
+                type: "cross",
+                label: {
+                  backgroundColor: "#283b56"
+                }
               }
             },
+            legend: {
+              data: ["出站流量", "入站流量"]
+            },
+            toolbox: {
+              show: false,
+              feature: {
+                // dataView: { readOnly: false },
+                // restore: {},
+                // saveAsImage: {}
+              }
+            },
+            dataZoom: {
+              show: false,
+              start: 0,
+              end: 100
+            },
+            xAxis: [
+              {
+                type: "category",
+                boundaryGap: true,
+                data: (function() {
+                  var now = new Date();
+                  var res = [];
+                  var len = 10;
+                  while (len--) {
+                    res.unshift(now.toLocaleTimeString().replace(/^\D*/, ""));
+                    now = new Date(now - 2000);
+                  }
+                  return res;
+                })()
+              },
+              {
+                type: "category",
+                boundaryGap: true,
+                data: (function() {
+                  var res = [];
+                  var len = 10;
+                  while (len--) {
+                    res.push(10 - len - 1);
+                  }
+                  return res;
+                })()
+              }
+            ],
+            yAxis: [
+              {
+                type: "value",
+                scale: true,
+                name: "",
+                max: 30,
+                min: 0,
+                boundaryGap: [0.2, 0.2]
+              },
+              {
+                type: "value",
+                scale: true,
+                name: "",
+                max: 1200,
+                min: 0,
+                boundaryGap: [0.2, 0.2]
+              }
+            ],
             series: [
               {
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                name: "入站流量",
+                type: "bar",
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                data: (function() {
+                  var res = [];
+                  var len = 10;
+                  while (len--) {
+                    res.push(Math.round(Math.random() * 1000));
+                  }
+                  return res;
+                })()
+              },
+              {
+                name: "出站流量",
                 type: "line",
-                areaStyle: {}
+                data: (function() {
+                  var res = [];
+                  var len = 0;
+                  while (len < 10) {
+                    res.push((Math.random() * 10 + 5).toFixed(1) - 0);
+                    len++;
+                  }
+                  return res;
+                })()
               }
             ],
             grid: {
-              x: 20,
-              y: 20,
-              x2: 20,
+              x: 30,
+              y: 50,
+              x2: 40,
               y2: 20
             }
           }
         },
+
         {
           title: "平均站点运量",
           number: "1056",
@@ -148,6 +228,47 @@ export default {
           }
         },
         {
+          title: "总客运量",
+          number: "8846",
+          name: "passengerFlow",
+          height: "200px",
+          option: {
+            tooltip: {
+              trigger: "axis"
+            },
+            calculable: true,
+            xAxis: {
+              type: "category",
+              boundaryGap: false,
+              data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+            },
+            yAxis: {
+              type: "value",
+              axisLabel: {
+                show: false
+              },
+              axisTick: {
+                show: false
+              }
+            },
+            series: [
+              {
+                data: [820, 932, 901, 934, 1290, 1330, 1320],
+                type: "line",
+                areaStyle: {}
+              }
+            ],
+            grid: {
+              x: 20,
+              y: 20,
+              x2: 20,
+              y2: 20
+            }
+          }
+        }
+      ],
+      userCards: [
+        {
           title: "舒适程度",
           number: "⭐⭐⭐⭐",
           name: "CongestionDegree",
@@ -214,121 +335,8 @@ export default {
               y2: 20
             }
           }
-        },
-        {
-          title: "当前流量",
-          number: "78%",
-          name: "CurrentDensity",
-          height: "300px",
-          option: {
-            title: {
-              text: "动态数据",
-              subtext: "纯属虚构"
-            },
-            tooltip: {
-              trigger: "axis",
-              axisPointer: {
-                type: "cross",
-                label: {
-                  backgroundColor: "#283b56"
-                }
-              }
-            },
-            legend: {
-              data: ["最新成交价", "预购队列"]
-            },
-            toolbox: {
-              show: true,
-              feature: {
-                dataView: { readOnly: false },
-                restore: {},
-                saveAsImage: {}
-              }
-            },
-            dataZoom: {
-              show: false,
-              start: 0,
-              end: 100
-            },
-            xAxis: [
-              {
-                type: "category",
-                boundaryGap: true,
-                data: (function() {
-                  var now = new Date();
-                  var res = [];
-                  var len = 10;
-                  while (len--) {
-                    res.unshift(now.toLocaleTimeString().replace(/^\D*/, ""));
-                    now = new Date(now - 2000);
-                  }
-                  return res;
-                })()
-              },
-              {
-                type: "category",
-                boundaryGap: true,
-                data: (function() {
-                  var res = [];
-                  var len = 10;
-                  while (len--) {
-                    res.push(10 - len - 1);
-                  }
-                  return res;
-                })()
-              }
-            ],
-            yAxis: [
-              {
-                type: "value",
-                scale: true,
-                name: "价格",
-                max: 30,
-                min: 0,
-                boundaryGap: [0.2, 0.2]
-              },
-              {
-                type: "value",
-                scale: true,
-                name: "预购量",
-                max: 1200,
-                min: 0,
-                boundaryGap: [0.2, 0.2]
-              }
-            ],
-            series: [
-              {
-                name: "预购队列",
-                type: "bar",
-                xAxisIndex: 1,
-                yAxisIndex: 1,
-                data: (function() {
-                  var res = [];
-                  var len = 10;
-                  while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                  }
-                  return res;
-                })()
-              },
-              {
-                name: "最新成交价",
-                type: "line",
-                data: (function() {
-                  var res = [];
-                  var len = 0;
-                  while (len < 10) {
-                    res.push((Math.random() * 10 + 5).toFixed(1) - 0);
-                    len++;
-                  }
-                  return res;
-                })()
-              }
-            ]
-          }
         }
-      ],
-      userCards: []
+      ]
     };
   },
   mounted() {}
