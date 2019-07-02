@@ -33,6 +33,11 @@ export default {
       this.infoCard.option.xAxis[1].data.shift();
       this.infoCard.option.xAxis[1].data.push(app.count++);
       chart.setOption(this.infoCard.option);
+    },
+    update_user_option(chart) {
+      this.infoCard.option.series[0].data[0].value =
+        (Math.random() * 100).toFixed(2) - 0;
+      chart.setOption(this.infoCard.option, true);
     }
   },
   mounted() {
@@ -41,6 +46,8 @@ export default {
     var chart = echarts.init(document.getElementById(this.infoCard.name));
     if (this.infoCard.name == "CurrentDensity") {
       setInterval(this.update_option, 2100, chart, app);
+    } else if (this.infoCard.name == "WaitingComfortDegree") {
+      setInterval(this.update_user_option, 2000, chart);
     } else {
       chart.setOption(this.infoCard.option);
     }

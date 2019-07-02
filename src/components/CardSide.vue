@@ -1,6 +1,7 @@
 <template>
   <el-aside id="card-side">
-    <info-card v-for="(infoCard, index) in infoCards" :infoCard="infoCard" :key="index"></info-card>
+    <!-- <info-card v-for="(infoCard, index) in infoCards" :infoCard="infoCard" :key="index"></info-card> -->
+    <info-card v-for="(userCard, index) in userCards" :infoCard="userCard" :key="index"></info-card>
   </el-aside>
 </template>
 
@@ -221,7 +222,7 @@ export default {
             ],
             grid: {
               x: 20,
-              y: 20,
+              y: 10,
               x2: 20,
               y2: 20
             }
@@ -269,7 +270,62 @@ export default {
       ],
       userCards: [
         {
-          title: "舒适程度",
+          title: "候车舒适度",
+          number: "⭐⭐⭐",
+          name: "WaitingComfortDegree",
+          option: {
+            tooltip: {
+              formatter: "{a} <br/>{b} : {c}%"
+            },
+            toolbox: {
+              feature: {
+                // restore: {},
+                // saveAsImage: {}
+              }
+            },
+            series: [
+              {
+                name: "候车舒适度",
+                type: "gauge",
+                // center: ["50%", "45%"], // 默认全局居中
+                radius: "100%", //仪表大小
+                // detail: { formatter: "{value}%" },
+                detail: {
+                  formatter: "{score|{value}%}",
+                  offsetCenter: [0, "70%"],
+                  backgroundColor: "#FFEC45",
+                  height: 15,
+                  rich: {
+                    score: {
+                      color: "white",
+                      fontFamily: "微软雅黑",
+                      fontSize: 25
+                    }
+                  }
+                },
+                data: [
+                  {
+                    value: 50,
+                    label: {
+                      textStyle: {
+                        fontSize: 5
+                      }
+                    },
+                    name: "舒适度"
+                  }
+                ]
+              }
+            ],
+            grid: {
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 0
+            }
+          }
+        },
+        {
+          title: "乘车舒适度",
           number: "⭐⭐⭐⭐",
           name: "CongestionDegree",
           height: "300px",
@@ -299,7 +355,7 @@ export default {
             },
             series: [
               {
-                name: "拥挤程度",
+                name: "拥挤度",
                 type: "pie",
                 radius: ["50%", "70%"],
                 itemStyle: {
@@ -323,8 +379,8 @@ export default {
                   }
                 },
                 data: [
-                  { value: 64, name: "空载率" },
-                  { value: 36, name: "满载率" }
+                  { value: 84, name: "满载车次" },
+                  { value: 46, name: "有座车次" }
                 ]
               }
             ],
