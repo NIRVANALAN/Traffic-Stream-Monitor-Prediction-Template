@@ -1,7 +1,11 @@
 <template>
   <el-aside id="card-side">
-    <!-- <info-card v-for="(infoCard, index) in infoCards" :infoCard="infoCard" :key="index"></info-card> -->
-    <info-card v-for="(userCard, index) in userCards" :infoCard="userCard" :key="index"></info-card>
+    <div v-if="current_role!=0">
+      <info-card v-for="(userCard, index) in userCards" :infoCard="userCard" :key="index"></info-card>
+    </div>
+    <div v-else>
+      <info-card v-for="(infoCard, index) in infoCards" :infoCard="infoCard" :key="index"></info-card>
+    </div>
   </el-aside>
 </template>
 
@@ -506,6 +510,11 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    current_role: function() {
+      return localStorage.getItem("role");
+    }
   },
   mounted() {}
 };
