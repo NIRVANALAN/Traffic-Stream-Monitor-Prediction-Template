@@ -9,8 +9,8 @@ import Axios from "axios";
 export default {
   name: "Chart",
   mounted() {
-    var chart = echarts.init(document.getElementById("chart"));
-    var option = {
+    let chart = echarts.init(document.getElementById("chart"));
+    let option = {
       title: {
         text: "入站量和出站量",
         subtext: "火车东站"
@@ -24,10 +24,10 @@ export default {
       toolbox: {
         show: true,
         feature: {
-          mark: { show: true },
-          dataView: { show: true, readOnly: false },
-          magicType: { show: true, type: ["line", "bar"] },
-          restore: { show: true }
+          mark: {show: true},
+          dataView: {show: true, readOnly: false},
+          magicType: {show: true, type: ["line", "bar"]},
+          restore: {show: true}
         }
       },
       calculable: true,
@@ -74,10 +74,10 @@ export default {
             3.3
           ],
           markPoint: {
-            data: [{ type: "max", name: "最大值" }]
+            data: [{type: "max", name: "最大值"}]
           },
           markLine: {
-            data: [{ type: "average", name: "平均值" }]
+            data: [{type: "average", name: "平均值"}]
           }
         },
         {
@@ -105,8 +105,8 @@ export default {
     };
     chart.setOption(option);
     window.addEventListener("message", function(e) {
-      if (e.source == window.frames[0]) {
-        var get_station_url = "http://127.0.0.1:8000/Flow/show_flow/";
+      if (e.source === window.frames[0]) {
+        const get_station_url = "http://127.0.0.1:8000/Flow/show_flow/";
         const now = new Date();
         let date = now.getDate();
         let hour = now.getHours();
@@ -114,21 +114,21 @@ export default {
         Axios.post(get_station_url, {
           year: 2019,
           month: 5,
-          dates: [date - 1],
+          dates: [date],
           stations: [2]
         })
           .then(response => {
-            var data = response.data;
-            var station_info = JSON.parse(localStorage.getItem("stationInfo"));
+            const data = response.data;
+            let station_info = JSON.parse(localStorage.getItem("stationInfo"));
             if (station_info != null) {
               let station_id = Object.keys(data)[0];
-              if (station_info[station_id] == undefined) {
+              if (station_info[station_id] === undefined) {
                 station_info[station_id] = data[station_id];
               } else {
                 // merge station dates info
                 let dates = Object.keys(data[station_id]);
                 for (let index = 0; index < dates.length; index++) {
-                  if (station_info[station_id][dates[index]] == undefined) {
+                  if (station_info[station_id][dates[index]] === undefined) {
                     station_info[station_id][dates[index]] =
                       data[station_id][dates[index]];
                   }
@@ -144,6 +144,8 @@ export default {
               time_slide_now = time_slide_now < 7 ? 7 : time_slide_now;
               // console.log(time_slide_now);
               for (let index = 0; index < 12; index++) {
+                  // console.log(date);
+                // console.log(station_info)
                 option.series[0].data[index] =
                   station_info[station_id]["date_".concat(date)][
                     time_slide_now - 6 + index

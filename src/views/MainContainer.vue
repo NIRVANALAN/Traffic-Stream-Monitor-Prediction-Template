@@ -2,14 +2,11 @@
   <el-container>
     <el-container>
       <subway-map></subway-map>
-
       <switch-card></switch-card>
-
       <el-footer height="250px">
         <chart></chart>
       </el-footer>
     </el-container>
-
     <card-side></card-side>
   </el-container>
 </template>
