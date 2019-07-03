@@ -1,9 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Login from './views/Login.vue'
 import Register from './views/Register.vue'
-import Index from './views/Index.vue'
 import MainContainer from './views/MainContainer.vue';
 
 Vue.use(Router)
@@ -17,11 +15,6 @@ export default new Router({
       name: 'Main',
       component: MainContainer
     },
-    // {
-    //   path: '/login',
-    //   name: 'Login',
-    //   component: Login
-    // },
     {
       path: '/login_register',
       name: 'Register',
