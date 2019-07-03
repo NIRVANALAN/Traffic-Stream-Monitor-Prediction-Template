@@ -34,15 +34,19 @@
             // let SubwayStations = subway.getStation();
             // console.log(SubwayStations)
             let stations = [];
+            let station_id_map = {};
             console.log(SubwayLines);
             for (let i = 0; i < SubwayLines.length; i++) {
                 let line = SubwayLines[i].stations;
                 for (let j = 0; j < line.length; j++) {
-                    stations.push(line[j])
+                    if (!(line[j].name in station_id_map)) {
+                        station_id_map[line[j].name] = stations.length;
+                        stations.push(line[j]);
+                    }
                 }
-                // stations[i] =
             }
             localStorage.setItem("stations", JSON.stringify(stations));
+            localStorage.setItem("station_id_map", JSON.stringify(station_id_map));
         });
         var zoomControl = new BMapSub.ZoomControl({
             anchor: BMAPSUB_ANCHOR_BOTTOM_RIGHT,

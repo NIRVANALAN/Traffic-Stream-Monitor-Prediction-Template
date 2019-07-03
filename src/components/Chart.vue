@@ -111,11 +111,14 @@ export default {
         let date = now.getDate();
         let hour = now.getHours();
         let minutes = now.getMinutes();
+        let station_id_map = JSON.parse(localStorage.getItem("station_id_map"));
+        let id = station_id_map[e.data];
+        // console.log(id)
         Axios.post(get_station_url, {
           year: 2019,
           month: 5,
           dates: [date],
-          stations: [2]
+          stations: [id]
         })
           .then(response => {
             const data = response.data;
