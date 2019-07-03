@@ -1,7 +1,11 @@
 <template>
   <el-aside id="card-side">
-    <!-- <info-card v-for="(infoCard, index) in infoCards" :infoCard="infoCard" :key="index"></info-card> -->
-    <info-card v-for="(userCard, index) in userCards" :infoCard="userCard" :key="index"></info-card>
+    <div v-if="current_role!=0">
+      <info-card v-for="(userCard, index) in userCards" :infoCard="userCard" :key="index"></info-card>
+    </div>
+    <div v-else>
+      <info-card v-for="(infoCard, index) in infoCards" :infoCard="infoCard" :key="index"></info-card>
+    </div>
   </el-aside>
 </template>
 
@@ -417,7 +421,7 @@ export default {
               }
             },
             yAxis: {
-              data: ["2013", "2014", "2015", "2016"],
+              data: ["火车东站", "文化广场", "市民中心", "钱江路"],
               inverse: true,
               axisTick: { show: false },
               axisLine: { show: false },
@@ -432,8 +436,8 @@ export default {
             grid: {
               top: "center",
               height: 200,
-              left: 70,
-              right: 100
+              left: 80,
+              right: 75
             },
             series: [
               {
@@ -506,6 +510,11 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    current_role: function() {
+      return localStorage.getItem("role");
+    }
   },
   mounted() {}
 };

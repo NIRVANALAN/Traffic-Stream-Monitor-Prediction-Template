@@ -109,3 +109,5 @@ yarn-error.log
 
 package-lock.json
 yarn.lock
+.vscode/settings.json
+.gitignore

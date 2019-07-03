@@ -13,7 +13,7 @@
             value="用户名"
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'USERNAME';}"
-          >
+          />
           <input
             id="login_pw"
             autocomplete="on"
@@ -22,10 +22,10 @@
             value="199882"
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'PASSWORD';}"
-          >
+          />
           <div class="button-row">
-            <input type="button" class="sign-in" value="登入" @click="login">
-            <input type="reset" class="reset" value="重置">
+            <input type="button" class="sign-in" value="登入" @click="login" />
+            <input type="reset" class="reset" value="重置" />
             <div class="clear"></div>
           </div>
         </form>
@@ -41,7 +41,7 @@
             value="用户名"
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'USERNAME';}"
-          >
+          />
           <!-- <input
             autocomplete="on"
             type="tel"
@@ -66,7 +66,7 @@
             value="PASSWORD"
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'PASSWORD';}"
-          >
+          />
           <!-- <el-form>
             <el-form-item label="活动区域">
               <el-select placeholder="请选择活动区域">
@@ -75,15 +75,17 @@
               </el-select>
             </el-form-item>
           </el-form>-->
-          <br>
-          <select>
-            <option value="subway_admin">乘务人员</option>
-            <option value="common_user">普通用户</option>
+          <br />
+          <select id="reg_role">
+            <option value="0">乘务人员</option>
+            <option value="1">年轻人</option>
+            <option value="2">孕妇</option>
+            <option value="3">老年人</option>
             <!-- <option value="audi">Audi</option> -->
           </select>
-          <br>
+          <br />
 
-          <input type="button" class="register" value="注册&登录" @click="register">
+          <input type="button" class="register" value="注册&登录" @click="register" />
         </form>
       </div>
       <div class="clear"></div>
@@ -105,18 +107,16 @@ export default {
         username: form_username,
         password: form_password
       })
-        .catch(function(error) {
-          alert("Authentication failed");
-          window.console.log(error);
-        })
         .then(function(response) {
-          console.log(response);
+          console.log(111);
           // router.replace("/");
           if (response) {
+            console.log(response);
             var data = response.data;
+            var user_name = data.username;
             var get_profile_url = "http://127.0.0.1:8000/User/get_profile/";
             let user_token = data.access;
-            localStorage.setItem("username", form_username);
+            localStorage.setItem("username", user_name);
             localStorage.setItem("token", user_token);
             if (window.localStorage.getItem("token")) {
               Axios.defaults.headers.common["Authorization"] =
@@ -133,35 +133,42 @@ export default {
                 });
             }
           }
+        })
+        .catch(function(error) {
+          alert("Authentication failed");
+          window.console.log(error);
         });
     },
     register() {
       var router = this.$router;
       var form_username = window.$("#reg_name").val();
       var form_password = window.$("#reg_pw").val();
+      var form_role = window.$("#reg_role").val();
+      delete Axios.defaults.headers.common["Authorization"];
+      // console.log("test");
+      localStorage.clear();
       Axios.post("http://127.0.0.1:8000/User/register/", {
         username: form_username,
-        password: form_password
+        password: form_password,
+        role: form_role
       })
-        .catch(function(error) {
-          alert("Register failed");
-          window.console.log(error);
-        })
         .then(function(response) {
-          // console.log(response);
-          if (response) {
+          console.log(response);
+          if (response.status == 200) {
             var data = response.data;
             var get_profile_url = "http://127.0.0.1:8000/User/get_profile/";
-            let user_token = data.access;
-            console.log(response);
-            var data = response.data;
+            var user_token = data.token.access;
+            console.log(user_token);
+            // console.log(response);
+            // var data = response.data;
             if (data.username == form_username) {
-              console.log(form_username);
-              localStorage.setItem("username", form_username);
+              // console.log(form_username);
+              localStorage.setItem("username", data.username);
               localStorage.setItem("token", user_token);
+              localStorage.setItem("role", data.role);
               if (window.localStorage.getItem("token")) {
                 Axios.defaults.headers.common["Authorization"] =
-                  `Bearer ` + window.localStorage.getItem("token");
+                  `Bearer ` + user_token;
                 Axios.get(get_profile_url, {})
                   .then(response => {
                     var user_profile = JSON.stringify(response.data);
@@ -177,6 +184,10 @@ export default {
               window.alert("Username already exists");
             }
           }
+        })
+        .catch(function(error) {
+          alert("Register failed");
+          window.console.log(error);
         });
     }
   }
