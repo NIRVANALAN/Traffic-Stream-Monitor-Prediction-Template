@@ -17,10 +17,10 @@
 <body>
 <div id="container"></div>
 <script type="text/javascript">
-    var subwayCityName = '杭州';
-    var list = BMapSub.SubwayCitiesList;
-    var subwaycity = null;
-    for (var i = 0; i < list.length; i++) {
+    const subwayCityName = '杭州';
+    const list = BMapSub.SubwayCitiesList;
+    let subwaycity = null;
+    for (let i = 0; i < list.length; i++) {
         if (list[i].name === subwayCityName) {
             subwaycity = list[i];
             break;

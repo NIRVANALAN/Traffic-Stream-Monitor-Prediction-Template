@@ -13,22 +13,22 @@
         <img src="../assets/images/avtar.png" />
       </div>
       <form>
-        <input
+        <label for="name"></label><input
           id="name"
           type="text"
           class="text"
           value="Username"
           onfocus="this.value = '';"
-          onblur="if (this.value == '') {this.value = 'Username';}"
-        />
+          onblur="if (this.value === '') {this.value = 'Username';}"
+        >
         <div class="key">
-          <input
+          <label for="password"></label><input
             id="password"
             type="password"
             value="Password"
             onfocus="this.value = '';"
-            onblur="if (this.value == '') {this.value = 'Password';}"
-          />
+            onblur="if (this.value === '') {this.value = 'Password';}"
+          >
         </div>
       </form>
       <div class="signin">
@@ -46,9 +46,9 @@ import Axios from "axios";
 export default {
   methods: {
     login() {
-      var router = this.$router;
-      var form_username = window.$("#name").val();
-      var form_password = window.$("#password").val();
+      let router = this.$router;
+      let form_username = window.$("#name").val();
+      let form_password = window.$("#password").val();
       Axios.post("http://127.0.0.1:8000/User/obtain_token/", {
         username: form_username,
         password: form_password
@@ -58,8 +58,8 @@ export default {
         })
         .then(function(response) {
           if (response) {
-            var data = response.data;
-            var get_profile_url = "http://127.0.0.1:8000/User/get_profile/";
+            let data = response.data;
+            const get_profile_url = "http://127.0.0.1:8000/User/get_profile/";
             let user_token = data.access;
             localStorage.setItem("username", form_username);
             localStorage.setItem("token", user_token);
@@ -68,7 +68,7 @@ export default {
                 `Bearer ` + window.localStorage.getItem("token");
               Axios.get(get_profile_url, {})
                 .then(response => {
-                  var user_profile = JSON.stringify(response.data);
+                  let user_profile = JSON.stringify(response.data);
                   localStorage.setItem("profile", user_profile);
                   router.replace("/");
                 })
@@ -83,4 +83,4 @@ export default {
 };
 </script>
 
-<style scoped src="../assets/css/login_style.css">
+<style scoped src="../assets/css/login_style.css"></style>
