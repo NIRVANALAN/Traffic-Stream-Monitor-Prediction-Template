@@ -1,9 +1,9 @@
 <template>
-  <el-container style="width: 100%; height: 100%; solid #eee; display: flex; right:0;">
+  <el-container style="width: 100%; height: 100%; solid: #eee; display: flex; right:0;">
     <sidebar></sidebar>
     <el-container style="width: 100%" direction="vertical">
       <user-header></user-header>
-      <router-view id="container-router"/>
+      <router-view id="container-router"></router-view>
     </el-container>
   </el-container>
 </template>

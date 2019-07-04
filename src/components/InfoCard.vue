@@ -21,8 +21,8 @@ export default {
     update_option(chart, app) {
       // console.log(this.infoCard);
       let axisData = new Date().toLocaleTimeString().replace(/^\D*/, "");
-      var data0 = this.infoCard.option.series[0].data;
-      var data1 = this.infoCard.option.series[1].data;
+      let data0 = this.infoCard.option.series[0].data;
+      let data1 = this.infoCard.option.series[1].data;
       data0.shift();
       data0.push(Math.round(Math.random() * 1000));
       data1.shift();
@@ -43,7 +43,7 @@ export default {
       return +(Math.random() * (maxData - 10)).toFixed(1);
     },
     update_queued_option(chart, maxData) {
-      var dynamicData = [
+      let dynamicData = [
         this.random(maxData),
         this.random(maxData),
         this.random(maxData),
@@ -55,14 +55,14 @@ export default {
     }
   },
   mounted() {
-    var app = {};
+    let app = {};
     app.count = 11;
-    var chart = echarts.init(document.getElementById(this.infoCard.name));
-    if (this.infoCard.name == "CurrentDensity") {
+    let chart = echarts.init(document.getElementById(this.infoCard.name));
+    if (this.infoCard.name === "CurrentDensity") {
       setInterval(this.update_option, 2100, chart, app);
-    } else if (this.infoCard.name == "WaitingComfortDegree") {
+    } else if (this.infoCard.name === "WaitingComfortDegree") {
       setInterval(this.update_user_option, 2000, chart);
-    } else if (this.infoCard.name == "QueueNumber") {
+    } else if (this.infoCard.name === "QueueNumber") {
       setInterval(
         this.update_queued_option,
         3000,
@@ -93,7 +93,7 @@ export default {
 }
 
 .web-font {
-  font-family: "webfont" !important;
+  font-family: "webfont",sans-serif !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
@@ -103,8 +103,7 @@ export default {
 
 .info-card {
   width: 99%;
-  padding: 0;
-  padding-bottom: 15px;
+  padding: 0 0 15px;
   margin: 0;
   position: relative;
 }
