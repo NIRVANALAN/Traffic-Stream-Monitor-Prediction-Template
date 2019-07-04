@@ -1,5 +1,5 @@
 <template>
-  <el-aside>
+  <el-aside width="200px">
     <el-menu unique-opened>
       <el-submenu index="1">
         <template slot="title">
@@ -54,7 +54,10 @@
 
 <script>
 export default {
-  name: "Sidebar"
+  name: "Sidebar",
+  methods: {
+    set_sidebar() {}
+  }
 };
 </script>
 
@@ -64,6 +67,6 @@ export default {
   position: relative;
   height: 100%;
   background-color: rgb(238, 241, 246);
-  width: "200px";
+  width: "210px";
 }
 </style>

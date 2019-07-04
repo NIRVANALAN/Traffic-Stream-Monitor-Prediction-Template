@@ -1,55 +1,37 @@
 <template>
-  <el-container style="height: 100%; solid #eee; display: flex">
-    <Sidebar></Sidebar>
-
-    <el-container>
-      <UserHeader></UserHeader>
-      <el-main>
-        <SubwayMap></SubwayMap>
-        <Card></Card>
-      </el-main>
-      <SwitchCard></SwitchCard>
-      <el-footer>
-        <chart></chart>
-      </el-footer>
-    </el-container>
-  </el-container>
+  <div id="top-app">
+    <index></index>
+  </div>
 </template>
 
 <script>
-import UserHeader from "./components/UserHeader.vue";
-import Sidebar from "./components/Sidebar.vue";
-import SubwayMap from "./components/SubwayMap.vue";
-import Chart from "./components/Chart.vue";
-import Card from "./components/Card.vue";
-import SwitchCard from "./components/SwitchCard.vue";
+import Index from "./views/Index.vue";
 
 export default {
   name: "App",
   components: {
-    Sidebar,
-    UserHeader,
-    SubwayMap,
-    Chart,
-    Card,
-    SwitchCard
+    Index
   }
 };
 </script>
 
 <style>
-body {
+body,
+html {
   margin: 0;
   display: flex;
   height: 100%;
+  width: 100%;
 }
 
-html {
+.index {
   height: 100%;
+  width: 100%;
 }
 
-.el-main {
-  padding: 0%;
-  position: relative;
+#top-app {
+  width: 100%;
+  height: 100%;
+  right: 0;
 }
 </style>
