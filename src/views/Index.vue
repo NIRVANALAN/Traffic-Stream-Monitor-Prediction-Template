@@ -3,7 +3,7 @@
     <sidebar></sidebar>
     <el-container style="width: 100%" direction="vertical">
       <user-header></user-header>
-      <router-view id="container-router"/>
+      <router-view id="container-router" />
     </el-container>
   </el-container>
 </template>

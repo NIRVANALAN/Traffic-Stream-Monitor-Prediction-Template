@@ -10,7 +10,7 @@
       </div>
       <div class="clear"></div>
       <div class="avtar">
-        <img src="../assets/images/avtar.png">
+        <img src="../assets/images/avtar.png" />
       </div>
       <form>
         <input
@@ -20,7 +20,7 @@
           value="Username"
           onfocus="this.value = '';"
           onblur="if (this.value == '') {this.value = 'Username';}"
-        >
+        />
         <div class="key">
           <input
             id="password"
@@ -28,11 +28,11 @@
             value="Password"
             onfocus="this.value = '';"
             onblur="if (this.value == '') {this.value = 'Password';}"
-          >
+          />
         </div>
       </form>
       <div class="signin">
-        <input type="submit" value="Login" @click="login">
+        <input type="submit" value="Login" @click="login" />
       </div>
     </div>
     <div class="copy-rights"></div>
@@ -55,8 +55,6 @@ export default {
       })
         .catch(function(error) {
           alert(error);
-          // alert("Authentication failed");
-          // console.log(error);
         })
         .then(function(response) {
           if (response) {
