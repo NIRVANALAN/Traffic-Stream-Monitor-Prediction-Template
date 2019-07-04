@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import echarts from "echarts";
-import Axios from "axios";
+  import echarts from "echarts";
+  import Axios from "axios";
 
-export default {
+  export default {
   name: "Chart",
   mounted() {
     let chart = echarts.init(document.getElementById("chart"));
@@ -140,9 +140,8 @@ export default {
               localStorage.setItem("stationInfo", JSON.stringify(station_info));
               let station_name = e.data;
               if (!station_name.endsWith("站")) {
-                var new_station_name = station_name.concat("站");
+                option.title.subtext = station_name.concat("站");
               }
-              option.title.subtext = new_station_name;
               let time_slide_now = hour * 6 + Math.floor(minutes / 10);
               time_slide_now = time_slide_now < 7 ? 7 : time_slide_now;
               // console.log(time_slide_now);
@@ -150,11 +149,11 @@ export default {
                   // console.log(date);
                 // console.log(station_info)
                 option.series[0].data[index] =
-                  station_info[station_id]["date_".concat(date)][
+                  station_info[station_id]["date_".concat(date.toString())][
                     time_slide_now - 6 + index
                   ]["in"];
                 option.series[1].data[index] =
-                  station_info[station_id]["date_".concat(date)][
+                  station_info[station_id]["date_".concat(date.toString())][
                     time_slide_now - 6 + index
                   ]["out"];
                 let hour_now = Math.floor((time_slide_now - 6 + index) / 6);
