@@ -10,7 +10,7 @@
       </div>
       <div class="clear"></div>
       <div class="avtar">
-        <img src="../assets/images/avtar.png" alt="">
+        <img src="../assets/images/avtar.png" />
       </div>
       <form>
         <label for="name"></label><input
@@ -32,7 +32,7 @@
         </div>
       </form>
       <div class="signin">
-        <input type="submit" value="Login" @click="login">
+        <input type="submit" value="Login" @click="login" />
       </div>
     </div>
     <div class="copy-rights"></div>
