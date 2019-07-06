@@ -3,7 +3,7 @@
     <div v-if="current_role!==0">
       <info-card v-for="(userCard, index) in userCards" :infoCard="userCard" :key="index"></info-card>
     </div>
-    <div v-else>
+    <div>
       <info-card v-for="(infoCard, index) in infoCards" :infoCard="infoCard" :key="index"></info-card>
     </div>
   </el-aside>
@@ -24,7 +24,7 @@ export default {
     return {
       infoCards: [
         {
-          title: "当前流量",
+          title: "当前出入站流量",
           number: "78%",
           name: "CurrentDensity",
           height: "300px",
@@ -237,7 +237,7 @@ export default {
           }
         },
         {
-          title: "总客运量",
+          title: "周总客运量",
           number: "8846",
           name: "passengerFlow",
           height: "200px",
