@@ -3,7 +3,7 @@
     <div v-if="current_role!==0">
       <info-card v-for="(userCard, index) in userCards" :infoCard="userCard" :key="index"></info-card>
     </div>
-    <div>
+    <div v-else>
       <info-card v-for="(infoCard, index) in infoCards" :infoCard="infoCard" :key="index"></info-card>
     </div>
   </el-aside>

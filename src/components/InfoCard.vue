@@ -56,7 +56,7 @@ export default {
       this.infoCard.option.series[1].data = dynamicData.slice();
       chart.setOption(this.infoCard.option);
     },
-    update_average_density_number(chart) {
+    update_average_density_number() {
       this.infoCard.number = String(Math.round(Math.random() * 1000)) + "人/时";
     }
   },
@@ -83,7 +83,7 @@ export default {
       );
     } else if (this.infoCard.name == "averageFlow") {
       chart.setOption(this.infoCard.option);
-      setInterval(this.update_average_density_number, 10000, chart);
+      setInterval(this.update_average_density_number, 10000);
     }
     // else if (this.infoCard.name == "")
     else {

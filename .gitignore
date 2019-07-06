@@ -109,3 +109,8 @@ yarn-error.log
 
 package-lock.json
 yarn.lock
+node_modules
+public/macarons.js
+.vscode/settings.json
+.idea
+README.md
