@@ -333,74 +333,6 @@ export default {
           }
         },
         {
-          title: "乘车舒适度",
-          number: "⭐⭐⭐⭐",
-          name: "CongestionDegree",
-          height: "300px",
-          option: {
-            tooltip: {
-              trigger: "item",
-              formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            toolbox: {
-              show: false,
-              feature: {
-                mark: { show: true },
-                dataView: { show: true, readOnly: false },
-                magicType: {
-                  show: true,
-                  type: ["pie", "funnel"],
-                  option: {
-                    funnel: {
-                      x: "25%",
-                      width: "50%",
-                      funnelAlign: "center",
-                      max: 1548
-                    }
-                  }
-                }
-              }
-            },
-            series: [
-              {
-                name: "拥挤度",
-                type: "pie",
-                radius: ["50%", "70%"],
-                itemStyle: {
-                  normal: {
-                    label: {
-                      show: false
-                    },
-                    labelLine: {
-                      show: false
-                    }
-                  },
-                  emphasis: {
-                    label: {
-                      show: false,
-                      position: "center",
-                      textStyle: {
-                        fontSize: "10",
-                        fontWeight: "bold"
-                      }
-                    }
-                  }
-                },
-                data: [
-                  { value: 84, name: "满载车次" },
-                  { value: 46, name: "有座车次" }
-                ]
-              }
-            ],
-            grid: {
-              x: 20,
-              y: 20,
-              x2: 20,
-              y2: 20
-            }
-          }
-        },
-        {
           title: "平均排队人数",
           number: "5",
           name: "QueueNumber",
@@ -506,6 +438,74 @@ export default {
                 z: 5
               }
             ]
+          }
+        },
+        {
+          title: "乘车舒适度",
+          number: "⭐⭐⭐⭐",
+          name: "CongestionDegree",
+          height: "300px",
+          option: {
+            tooltip: {
+              trigger: "item",
+              formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            toolbox: {
+              show: false,
+              feature: {
+                mark: { show: true },
+                dataView: { show: true, readOnly: false },
+                magicType: {
+                  show: true,
+                  type: ["pie", "funnel"],
+                  option: {
+                    funnel: {
+                      x: "25%",
+                      width: "50%",
+                      funnelAlign: "center",
+                      max: 1548
+                    }
+                  }
+                }
+              }
+            },
+            series: [
+              {
+                name: "拥挤度",
+                type: "pie",
+                radius: ["50%", "70%"],
+                itemStyle: {
+                  normal: {
+                    label: {
+                      show: false
+                    },
+                    labelLine: {
+                      show: false
+                    }
+                  },
+                  emphasis: {
+                    label: {
+                      show: false,
+                      position: "center",
+                      textStyle: {
+                        fontSize: "10",
+                        fontWeight: "bold"
+                      }
+                    }
+                  }
+                },
+                data: [
+                  { value: 84, name: "满载车次" },
+                  { value: 46, name: "有座车次" }
+                ]
+              }
+            ],
+            grid: {
+              x: 20,
+              y: 20,
+              x2: 20,
+              y2: 20
+            }
           }
         }
       ]
