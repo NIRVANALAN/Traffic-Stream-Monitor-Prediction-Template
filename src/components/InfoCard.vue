@@ -57,7 +57,10 @@ export default {
   mounted() {
     let app = {};
     app.count = 11;
-    let chart = echarts.init(document.getElementById(this.infoCard.name));
+    let chart = echarts.init(
+      document.getElementById(this.infoCard.name),
+      "macarons"
+    );
     if (this.infoCard.name === "CurrentDensity") {
       setInterval(this.update_option, 2100, chart, app);
     } else if (this.infoCard.name === "WaitingComfortDegree") {
@@ -93,7 +96,7 @@ export default {
 }
 
 .web-font {
-  font-family: "webfont",sans-serif !important;
+  font-family: "webfont", sans-serif !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;

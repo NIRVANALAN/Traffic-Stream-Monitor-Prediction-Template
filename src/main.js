@@ -3,6 +3,9 @@ import App from './App.vue'
 import router from './router'
 
 import './plugins/element'
+import 'echarts/theme/macarons'
+import 'echarts/theme/vintage'
+import 'echarts/theme/roma'
 
 Vue.config.productionTip = false
 

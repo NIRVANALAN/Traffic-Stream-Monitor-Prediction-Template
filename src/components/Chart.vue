@@ -3,13 +3,13 @@
 </template>
 
 <script>
-  import echarts from "echarts";
-  import Axios from "axios";
+import echarts from "echarts";
+import Axios from "axios";
 
-  export default {
+export default {
   name: "Chart",
   mounted() {
-    let chart = echarts.init(document.getElementById("chart"));
+    let chart = echarts.init(document.getElementById("chart"), "roma");
     let option = {
       title: {
         text: "入站量和出站量",
@@ -24,10 +24,10 @@
       toolbox: {
         show: true,
         feature: {
-          mark: {show: true},
-          dataView: {show: true, readOnly: false},
-          magicType: {show: true, type: ["line", "bar"]},
-          restore: {show: true}
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          magicType: { show: true, type: ["line", "bar"] },
+          restore: { show: true }
         }
       },
       calculable: true,
@@ -74,10 +74,10 @@
             3.3
           ],
           markPoint: {
-            data: [{type: "max", name: "最大值"}]
+            data: [{ type: "max", name: "最大值" }]
           },
           markLine: {
-            data: [{type: "average", name: "平均值"}]
+            data: [{ type: "average", name: "平均值" }]
           }
         },
         {
@@ -146,7 +146,7 @@
               time_slide_now = time_slide_now < 7 ? 7 : time_slide_now;
               // console.log(time_slide_now);
               for (let index = 0; index < 12; index++) {
-                  // console.log(date);
+                // console.log(date);
                 // console.log(station_info)
                 option.series[0].data[index] =
                   station_info[station_id]["date_".concat(date.toString())][
