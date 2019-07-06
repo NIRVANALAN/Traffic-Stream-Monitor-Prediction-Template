@@ -474,26 +474,26 @@ export default {
                 name: "拥挤度",
                 type: "pie",
                 radius: ["50%", "70%"],
-                itemStyle: {
+                avoidLabelOverlap: false,
+                label: {
                   normal: {
-                    label: {
-                      show: false
-                    },
-                    labelLine: {
-                      show: false
-                    }
+                    show: false,
+                    position: "center"
                   },
                   emphasis: {
-                    label: {
-                      show: false,
-                      position: "center",
-                      textStyle: {
-                        fontSize: "10",
-                        fontWeight: "bold"
-                      }
+                    show: true,
+                    textStyle: {
+                      fontSize: "15",
+                      fontWeight: "bold"
                     }
                   }
                 },
+                labelLine: {
+                  normal: {
+                    show: false
+                  }
+                },
+                // },
                 data: [
                   { value: 84, name: "满载车次" },
                   { value: 46, name: "有座车次" }
