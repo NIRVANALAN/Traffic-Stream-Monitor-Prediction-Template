@@ -495,8 +495,8 @@ export default {
                 },
                 // },
                 data: [
-                  { value: 84, name: "满载车次" },
-                  { value: 46, name: "有座车次" }
+                  { value: 46, name: "有座车次" },
+                  { value: 84, name: "满载车次" }
                 ]
               }
             ],
