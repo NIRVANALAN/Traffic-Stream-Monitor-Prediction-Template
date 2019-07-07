@@ -8,6 +8,7 @@
 
 <script>
 import echarts from "echarts";
+import { setInterval } from "timers";
 
 export default {
   name: "InfoCard",
@@ -24,7 +25,8 @@ export default {
       let data0 = this.infoCard.option.series[0].data;
       let data1 = this.infoCard.option.series[1].data;
       data0.shift();
-      data0.push(Math.round(Math.random() * 1000));
+      let new_input = Math.round(Math.random() * 1000);
+      data0.push(new_input);
       data1.shift();
       data1.push((Math.random() * 10 + 5).toFixed(1) - 0);
 
@@ -33,6 +35,7 @@ export default {
       this.infoCard.option.xAxis[1].data.shift();
       this.infoCard.option.xAxis[1].data.push(app.count++);
       chart.setOption(this.infoCard.option);
+      this.infoCard.number = String(new_input / 10) + "%";
     },
     update_user_option(chart) {
       this.infoCard.option.series[0].data[0].value =
@@ -52,24 +55,38 @@ export default {
       this.infoCard.option.series[0].data = dynamicData.slice();
       this.infoCard.option.series[1].data = dynamicData.slice();
       chart.setOption(this.infoCard.option);
+    },
+    update_average_density_number() {
+      this.infoCard.number = String(Math.round(Math.random() * 1000)) + "人/时";
     }
   },
   mounted() {
     let app = {};
     app.count = 11;
-    let chart = echarts.init(document.getElementById(this.infoCard.name));
+    let chart = echarts.init(
+      document.getElementById(this.infoCard.name),
+      "macarons"
+    );
     if (this.infoCard.name === "CurrentDensity") {
-      setInterval(this.update_option, 2100, chart, app);
+      chart.setOption(this.infoCard.option);
+      setInterval(this.update_option, 1000, chart, app);
     } else if (this.infoCard.name === "WaitingComfortDegree") {
+      chart.setOption(this.infoCard.option);
       setInterval(this.update_user_option, 2000, chart);
     } else if (this.infoCard.name === "QueueNumber") {
+      chart.setOption(this.infoCard.option);
       setInterval(
         this.update_queued_option,
         3000,
         chart,
         this.infoCard.maxData
       );
-    } else {
+    } else if (this.infoCard.name == "averageFlow") {
+      chart.setOption(this.infoCard.option);
+      setInterval(this.update_average_density_number, 10000);
+    }
+    // else if (this.infoCard.name == "")
+    else {
       chart.setOption(this.infoCard.option);
     }
   }
@@ -93,7 +110,7 @@ export default {
 }
 
 .web-font {
-  font-family: "webfont",sans-serif !important;
+  font-family: "webfont", sans-serif !important;
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
