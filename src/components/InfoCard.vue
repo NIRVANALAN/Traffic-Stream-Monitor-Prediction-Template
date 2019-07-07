@@ -80,7 +80,11 @@ export default {
             that.infoCard.title = e.data + that.infoCard.title.slice(-5);
             let overall_number = Math.round(Math.random() * 10000);
             that.infoCard.number = overall_number;
-            Chart.setOption(that.infoCard.option, true);
+            that.infoCard.option.series[0].data = Array.from(
+              { length: 7 },
+              () => Math.floor(Math.random() * 1000 + 500)
+            );
+            chart.setOption(that.infoCard.option, true);
             break;
           case "WaitingComfortDegree":
             let number = Math.round(Math.random() * 100).toFixed(0);
