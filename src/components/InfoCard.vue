@@ -1,7 +1,7 @@
 <template>
   <el-card class="info-card" :body-style="{padding: '0px'}">
     <div class="info-card-head web-font">{{ infoCard.title }}</div>
-    <div class="info-card-item web-font">{{ infoCard.number }}</div>
+    <div class="info-card-item web-font">{{ number }}</div>
     <div :id="infoCard.name" class="info-card-chart"></div>
   </el-card>
 </template>
@@ -63,16 +63,79 @@ export default {
   mounted() {
     let app = {};
     app.count = 11;
+    var that = this;
+    window.addEventListener("message", function(e) {
+      if (e.source === window.frames[0]) {
+        // console.log("testsssss");
+        let name = that.infoCard.name;
+        switch (name) {
+          case "averageFlow":
+            that.infoCard.title = e.data + that.infoCard.title.slice(-6);
+            that.update_average_density_number();
+            break;
+          case "CurrentDensity":
+            that.infoCard.title = e.data + that.infoCard.title.slice(-5);
+            break;
+          case "passengerFlow":
+            that.infoCard.title = e.data + that.infoCard.title.slice(-5);
+            let overall_number = Math.round(Math.random() * 10000);
+            that.infoCard.number = overall_number;
+            Chart.setOption(that.infoCard.option, true);
+            break;
+          case "WaitingComfortDegree":
+            let number = Math.round(Math.random() * 100).toFixed(0);
+            that.infoCard.number = String(number) + "%";
+            that.infoCard.option.series[0].data[0].value = number - 0;
+            // console.log(that.infoCard.option);
+            chart.setOption(that.infoCard.option, true);
+            break;
+          case "CongestionDegree":
+            let station_id_map = JSON.parse(
+              localStorage.getItem("station_id_map")
+            );
+            let id = station_id_map[e.data];
+            // console.log("id:" + String(id));
+            let busy_number = Math.round(Math.random() * 100);
+            let free_number = Math.round(Math.random() * 100);
+            that.infoCard.option.series[0].data[0].value = free_number;
+            that.infoCard.option.series[0].data[1].value = busy_number;
+            that.infoCard.number = "⭐".repeat(
+              Math.floor((free_number / (free_number + busy_number)) * 5) + 1
+            );
+            // console.log(that.infoCard.option);
+            chart.setOption(that.infoCard.option, true);
+            break;
+        }
+      }
+    });
     let chart = echarts.init(
       document.getElementById(this.infoCard.name),
       "macarons"
     );
     if (this.infoCard.name === "CurrentDensity") {
       chart.setOption(this.infoCard.option);
-      setInterval(this.update_option, 1000, chart, app);
-    } else if (this.infoCard.name === "WaitingComfortDegree") {
-      chart.setOption(this.infoCard.option);
-      setInterval(this.update_user_option, 2000, chart);
+      setInterval(this.update_option, 3000, chart, app);
+      // var that = this;
+      // window.addEventListener("message", function(e) {
+      //   if (e.source === window.frames[0]) {
+      // let station_id_map = JSON.parse(
+      //   localStorage.getItem("station_id_map")
+      // );
+      // let id = station_id_map[e.data];
+      // console.log("test" + e.data);
+
+      // let busy_number = Math.round(Math.random() * 100);
+      // let free_number = Math.round(Math.random() * 100);
+
+      // that.infoCard.title = e.data + that.infoCard.title.slice(-5);
+      // that.infoCard.option.series[0].data[1].value = busy_number;
+      // that.infoCard.number = "⭐".repeat(
+      //   Math.floor((free_number / (free_number + busy_number)) * 5) + 1
+      // );
+      // console.log(that.infoCard.option);
+      //   chart.setOption(that.infoCard.option, true);
+      // }
+      // });
     } else if (this.infoCard.name === "QueueNumber") {
       chart.setOption(this.infoCard.option);
       setInterval(
@@ -81,13 +144,13 @@ export default {
         chart,
         this.infoCard.maxData
       );
-    } else if (this.infoCard.name == "averageFlow") {
+    } else {
       chart.setOption(this.infoCard.option);
-      setInterval(this.update_average_density_number, 10000);
     }
-    // else if (this.infoCard.name == "")
-    else {
-      chart.setOption(this.infoCard.option);
+  },
+  computed: {
+    number: function() {
+      return this.infoCard.number;
     }
   }
 };
