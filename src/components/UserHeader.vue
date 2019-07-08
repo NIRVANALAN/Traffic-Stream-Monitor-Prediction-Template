@@ -1,5 +1,6 @@
 <template>
   <el-header>
+    <h1 style="float: left; margin: 0">Metro</h1>
     <el-dropdown>
       <i class="el-icon-view" style="margin-right: 15px"></i>
       <el-dropdown-menu slot="dropdown">
