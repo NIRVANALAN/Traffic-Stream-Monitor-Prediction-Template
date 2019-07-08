@@ -1,9 +1,9 @@
 <template>
   <el-aside id="card-side">
-    <div v-if="current_role!==0">
+    <div v-if="current_role!='0'">
       <info-card v-for="(userCard, index) in userCards" :infoCard="userCard" :key="index"></info-card>
     </div>
-    <div v-else>
+    <div v-if="current_role==='0'">
       <info-card v-for="(infoCard, index) in infoCards" :infoCard="infoCard" :key="index"></info-card>
     </div>
   </el-aside>
@@ -24,7 +24,7 @@ export default {
     return {
       infoCards: [
         {
-          title: "当前流量",
+          title: "火车东站出入站流量",
           number: "78%",
           name: "CurrentDensity",
           height: "300px",
@@ -143,8 +143,8 @@ export default {
         },
 
         {
-          title: "平均站点运量",
-          number: "1056",
+          title: "火车东站日均站点运量",
+          number: "856人/时",
           name: "averageFlow",
           height: "300px",
           option: {
@@ -237,7 +237,7 @@ export default {
           }
         },
         {
-          title: "总客运量",
+          title: "火车东站周总客运量",
           number: "8846",
           name: "passengerFlow",
           height: "200px",
@@ -279,7 +279,7 @@ export default {
       userCards: [
         {
           title: "候车舒适度",
-          number: "⭐⭐⭐",
+          number: "50%",
           name: "WaitingComfortDegree",
           option: {
             tooltip: {
@@ -300,7 +300,7 @@ export default {
                 // detail: { formatter: "{value}%" },
                 detail: {
                   formatter: "{score|{value}%}",
-                  offsetCenter: [0, "70%"],
+                  offsetCenter: [0, "76%"],
                   backgroundColor: "#FFEC45",
                   height: 15,
                   rich: {
@@ -329,74 +329,6 @@ export default {
               y: 0,
               x2: 0,
               y2: 0
-            }
-          }
-        },
-        {
-          title: "乘车舒适度",
-          number: "⭐⭐⭐⭐",
-          name: "CongestionDegree",
-          height: "300px",
-          option: {
-            tooltip: {
-              trigger: "item",
-              formatter: "{a} <br/>{b} : {c} ({d}%)"
-            },
-            toolbox: {
-              show: false,
-              feature: {
-                mark: { show: true },
-                dataView: { show: true, readOnly: false },
-                magicType: {
-                  show: true,
-                  type: ["pie", "funnel"],
-                  option: {
-                    funnel: {
-                      x: "25%",
-                      width: "50%",
-                      funnelAlign: "center",
-                      max: 1548
-                    }
-                  }
-                }
-              }
-            },
-            series: [
-              {
-                name: "拥挤度",
-                type: "pie",
-                radius: ["50%", "70%"],
-                itemStyle: {
-                  normal: {
-                    label: {
-                      show: false
-                    },
-                    labelLine: {
-                      show: false
-                    }
-                  },
-                  emphasis: {
-                    label: {
-                      show: false,
-                      position: "center",
-                      textStyle: {
-                        fontSize: "10",
-                        fontWeight: "bold"
-                      }
-                    }
-                  }
-                },
-                data: [
-                  { value: 84, name: "满载车次" },
-                  { value: 46, name: "有座车次" }
-                ]
-              }
-            ],
-            grid: {
-              x: 20,
-              y: 20,
-              x2: 20,
-              y2: 20
             }
           }
         },
@@ -507,13 +439,83 @@ export default {
               }
             ]
           }
+        },
+        {
+          title: "乘车舒适度",
+          number: "⭐⭐⭐⭐",
+          name: "CongestionDegree",
+          height: "300px",
+          option: {
+            tooltip: {
+              trigger: "item",
+              formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            toolbox: {
+              show: false,
+              feature: {
+                mark: { show: true },
+                dataView: { show: true, readOnly: false },
+                magicType: {
+                  show: true,
+                  type: ["pie", "funnel"],
+                  option: {
+                    funnel: {
+                      x: "25%",
+                      width: "50%",
+                      funnelAlign: "center",
+                      max: 1548
+                    }
+                  }
+                }
+              }
+            },
+            series: [
+              {
+                name: "拥挤度",
+                type: "pie",
+                radius: ["50%", "70%"],
+                avoidLabelOverlap: false,
+                label: {
+                  normal: {
+                    show: false,
+                    position: "center"
+                  },
+                  emphasis: {
+                    show: true,
+                    textStyle: {
+                      fontSize: "15",
+                      fontWeight: "bold"
+                    }
+                  }
+                },
+                labelLine: {
+                  normal: {
+                    show: false
+                  }
+                },
+                // },
+                data: [
+                  { value: 46, name: "有座车次" },
+                  { value: 84, name: "满载车次" }
+                ]
+              }
+            ],
+            grid: {
+              x: 20,
+              y: 20,
+              x2: 20,
+              y2: 20
+            }
+          }
         }
       ]
     };
   },
   computed: {
     current_role: function() {
-      return localStorage.getItem("role");
+      let role = localStorage.getItem("role");
+      console.log("role:" + String(role));
+      return role;
     }
   },
   mounted() {}
