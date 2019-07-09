@@ -176,6 +176,26 @@ export default {
                       color: "#4ad2ff"
                     }
                   };
+                } else if (index > range + 2) {
+                  option.series[0].data[index] = {
+                    value:
+                      station_info[station_id]["date_".concat(date.toString())][
+                        time_slide_now - range + index
+                      ]["in"],
+                    itemStyle: {
+                      color: "#771100"
+                    }
+                  };
+
+                  option.series[1].data[index] = {
+                    value:
+                      station_info[station_id]["date_".concat(date.toString())][
+                        time_slide_now - range + index
+                      ]["out"],
+                    itemStyle: {
+                      color: "#96B3D3"
+                    }
+                  };
                 } else {
                   option.series[0].data[index] =
                     station_info[station_id]["date_".concat(date.toString())][
