@@ -94,10 +94,10 @@ export default {
             chart.setOption(that.infoCard.option, true);
             break;
           case "CongestionDegree":
-            let station_id_map = JSON.parse(
-              localStorage.getItem("station_id_map")
-            );
-            let id = station_id_map[e.data];
+            // let station_id_map = JSON.parse(
+            //   localStorage.getItem("station_id_map")
+            // );
+            // let id = station_id_map[e.data];
             // console.log("id:" + String(id));
             let busy_number = Math.round(Math.random() * 100);
             let free_number = Math.round(Math.random() * 100);

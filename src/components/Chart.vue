@@ -68,6 +68,12 @@ export default {
             76.7,
             135.6,
             162.2,
+            // {
+            // value: 162.2,
+            // itemStyle: {
+            // color: "#4ad2ff"
+            // }
+            // },
             32.6,
             20.0,
             6.4,
@@ -145,19 +151,43 @@ export default {
               let time_slide_now = hour * 6 + Math.floor(minutes / 10);
               time_slide_now = time_slide_now < 7 ? 7 : time_slide_now;
               // console.log(time_slide_now);
+              let range = 4;
+              let old_color = "gray";
               for (let index = 0; index < 12; index++) {
                 // console.log(date);
                 // console.log(station_info)
-                option.series[0].data[index] =
-                  station_info[station_id]["date_".concat(date.toString())][
-                    time_slide_now - 6 + index
-                  ]["in"];
-                option.series[1].data[index] =
-                  station_info[station_id]["date_".concat(date.toString())][
-                    time_slide_now - 6 + index
-                  ]["out"];
-                let hour_now = Math.floor((time_slide_now - 6 + index) / 6);
-                let time_now = (time_slide_now - 6 + index) % 6;
+                if (index < range) {
+                  option.series[0].data[index] = {
+                    value:
+                      station_info[station_id]["date_".concat(date.toString())][
+                        time_slide_now - range + index
+                      ]["in"],
+                    itemStyle: {
+                      color: "#CD5C5C"
+                    }
+                  };
+
+                  option.series[1].data[index] = {
+                    value:
+                      station_info[station_id]["date_".concat(date.toString())][
+                        time_slide_now - range + index
+                      ]["out"],
+                    itemStyle: {
+                      color: "#4ad2ff"
+                    }
+                  };
+                } else {
+                  option.series[0].data[index] =
+                    station_info[station_id]["date_".concat(date.toString())][
+                      time_slide_now - range + index
+                    ]["in"];
+                  option.series[1].data[index] =
+                    station_info[station_id]["date_".concat(date.toString())][
+                      time_slide_now - range + index
+                    ]["out"];
+                }
+                let hour_now = Math.floor((time_slide_now - range + index) / 6);
+                let time_now = (time_slide_now - range + index) % 6;
                 // console.log(option.xAxis);
                 option.xAxis[0].data[index] = String(hour_now)
                   .concat(":")
