@@ -56,6 +56,17 @@
 
       subway.setZoom(0.5);
       subway.setCenter("火车东站");
+      var infoWindowTemplate = `
+      <div>
+        <div id="bd-subwayTitle">
+          ${station.name}
+        </div>
+        <div>
+          <button>
+        </div>
+      </div>
+      `
+      var startStation, stopStation;
       subway.addEventListener('tap', function (e) {
         alert('您点击了"' + e.station.name + '"站');
 
