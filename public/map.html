@@ -2,67 +2,67 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>地铁图展示</title>
-    <script type="text/javascript"
-            src="https://api.map.baidu.com/api?type=subway&v=1.0&ak=SR5GvwWzQbGUvHsUVQkGxC4k1LZqd5l9"></script>
-    <style type="text/css">
-        #container {
-            height: 100%
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>地铁图展示</title>
+  <script type="text/javascript"
+    src="https://api.map.baidu.com/api?type=subway&v=1.0&ak=SR5GvwWzQbGUvHsUVQkGxC4k1LZqd5l9"></script>
+  <style type="text/css">
+    #container {
+      height: 100%
+    }
+  </style>
 </head>
 
 <body>
-<div id="container"></div>
-<script type="text/javascript">
+  <div id="container"></div>
+  <script type="text/javascript">
     const subwayCityName = '杭州';
     const list = BMapSub.SubwayCitiesList;
     let subwaycity = null;
     for (let i = 0; i < list.length; i++) {
-        if (list[i].name === subwayCityName) {
-            subwaycity = list[i];
-            break;
-        }
+      if (list[i].name === subwayCityName) {
+        subwaycity = list[i];
+        break;
+      }
     }
     if (subwaycity) {
-        let subway = new BMapSub.Subway('container', subwaycity.citycode);
-        subway.addEventListener('subwayloaded', function () {
-            // alert('地铁图加载完成');
-            let SubwayLines = subway.getLines();
-            // let SubwayStations = subway.getStation();
-            // console.log(SubwayStations)
-            let stations = [];
-            let station_id_map = {};
-            console.log(SubwayLines);
-            for (let i = 0; i < SubwayLines.length; i++) {
-                let line = SubwayLines[i].stations;
-                for (let j = 0; j < line.length; j++) {
-                    if (!(line[j].name in station_id_map)) {
-                        station_id_map[line[j].name] = stations.length;
-                        stations.push(line[j]);
-                    }
-                }
+      let subway = new BMapSub.Subway('container', subwaycity.citycode);
+      subway.addEventListener('subwayloaded', function () {
+        // alert('地铁图加载完成');
+        let SubwayLines = subway.getLines();
+        // let SubwayStations = subway.getStation();
+        // console.log(SubwayStations)
+        let stations = [];
+        let station_id_map = {};
+        console.log(SubwayLines);
+        for (let i = 0; i < SubwayLines.length; i++) {
+          let line = SubwayLines[i].stations;
+          for (let j = 0; j < line.length; j++) {
+            if (!(line[j].name in station_id_map)) {
+              station_id_map[line[j].name] = stations.length;
+              stations.push(line[j]);
             }
-            localStorage.setItem("stations", JSON.stringify(stations));
-            localStorage.setItem("station_id_map", JSON.stringify(station_id_map));
-        });
-        var zoomControl = new BMapSub.ZoomControl({
-            anchor: BMAPSUB_ANCHOR_BOTTOM_RIGHT,
-            offset: new BMapSub.Size(10, 100)
-        });
-        subway.addControl(zoomControl);
+          }
+        }
+        localStorage.setItem("stations", JSON.stringify(stations));
+        localStorage.setItem("station_id_map", JSON.stringify(station_id_map));
+      });
+      var zoomControl = new BMapSub.ZoomControl({
+        anchor: BMAPSUB_ANCHOR_BOTTOM_RIGHT,
+        offset: new BMapSub.Size(10, 100)
+      });
+      subway.addControl(zoomControl);
 
-        subway.setZoom(0.5);
-        subway.setCenter("火车东站");
-        subway.addEventListener('tap', function (e) {
-            alert('您点击了"' + e.station.name + '"站');
+      subway.setZoom(0.5);
+      subway.setCenter("火车东站");
+      subway.addEventListener('tap', function (e) {
+        alert('您点击了"' + e.station.name + '"站');
 
-            window.parent.postMessage(e.station.name);
-        });
+        window.parent.postMessage(e.station.name);
+      });
     }
-</script>
+  </script>
 </body>
 
 </html>
