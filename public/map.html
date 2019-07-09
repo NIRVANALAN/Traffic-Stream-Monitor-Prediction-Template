@@ -17,6 +17,11 @@
 <body>
   <div id="container"></div>
   <script type="text/javascript">
+    const fillTemplate = (template, kwargs) => {
+      return new Function("return `" + template + "`").call(kwargs)
+    }
+
+    // get city by name
     const subwayCityName = '杭州';
     const list = BMapSub.SubwayCitiesList;
     let subwaycity = null;
@@ -26,16 +31,16 @@
         break;
       }
     }
+
     if (subwaycity) {
       let subway = new BMapSub.Subway('container', subwaycity.citycode);
+
       subway.addEventListener('subwayloaded', function () {
-        // alert('地铁图加载完成');
+        // create local cache of station info
         let SubwayLines = subway.getLines();
-        // let SubwayStations = subway.getStation();
-        // console.log(SubwayStations)
         let stations = [];
         let station_id_map = {};
-        console.log(SubwayLines);
+
         for (let i = 0; i < SubwayLines.length; i++) {
           let line = SubwayLines[i].stations;
           for (let j = 0; j < line.length; j++) {
@@ -45,17 +50,19 @@
             }
           }
         }
+
         localStorage.setItem("stations", JSON.stringify(stations));
         localStorage.setItem("station_id_map", JSON.stringify(station_id_map));
       });
+
       var zoomControl = new BMapSub.ZoomControl({
         anchor: BMAPSUB_ANCHOR_BOTTOM_RIGHT,
         offset: new BMapSub.Size(10, 100)
       });
       subway.addControl(zoomControl);
-
       subway.setZoom(0.5);
       subway.setCenter("火车东站");
+
       var infoWindowTemplate = `
       <div>
         <div id="bd-subwayTitle">
