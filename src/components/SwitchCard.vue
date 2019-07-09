@@ -2,7 +2,6 @@
   <el-carousel
     :initial-index="2"
     type="card"
-    trigger="click"
     height="75px"
     id="switchcard"
     :loop="false"
@@ -13,11 +12,13 @@
       <div class="grid-content">
         <el-col :md="12" :offset="6">
           <div>
-            <p class="italictext">{{ item.stand }}</p>
+            <div align="center"><p class="italictext" v-bind="stand_name">{{stand_name}}</p></div>
+            <div align="center">
             <span class="service">
               <i class="el-icon-date"></i>
-              {{ item.date }}
+              {{item.date_day}}
             </span>
+            </div>
           </div>
         </el-col>
       </div>
@@ -28,33 +29,59 @@
 <script>
 export default {
   name: "SwitchCard",
+
   data() {
+    var stand = "火车东站";
+    var Dates_1 = func_date(-2);
+    var Dates_2 = func_date(-1);
+    var Dates_3 = func_date(0);
+    var Dates_4 = func_date(1);
+    var Dates_5 = func_date(2)
     return {
+      stand_name :stand,
       content: [
         {
-          date: "6月11日",
-          stand: "西直门"
+          date_day:Dates_1,
         },
         {
-          date: "6月12日",
-          stand: "西直门"
+          date_day:Dates_2,
         },
         {
-          date: "6月13日",
-          stand: "西直门"
+          date_day:Dates_3,
         },
         {
-          date: "6月14日",
-          stand: "西直门"
+          date_day:Dates_4,
         },
         {
-          date: "6月15日",
-          stand: "西直门"
+          date_day:Dates_5,
         }
-      ]
-    };
+      ]   
   }
-};
+  },
+   watch: {
+      stand_name: function () {
+      stand_name = e.name;
+    }
+  },
+}
+
+//获取当前时间的函数
+function func_date(aa){
+    var date1 = new Date();
+    var date2 = new Date(date1);
+    date2.setDate(date1.getDate()+aa);
+    var time2 = (date2.getMonth()+1)+"月"+date2.getDate()+"日";
+    return time2;
+    }
+
+function get_stand_name()
+{
+  return e.name;
+}
+window.parent.addEventListener("message",function(e){
+  Vue.set(stand_name,e.name);
+})
+
 </script>
 
 <style scoped>
