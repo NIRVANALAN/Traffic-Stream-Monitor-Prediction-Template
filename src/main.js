@@ -6,6 +6,7 @@ import './plugins/element'
 import 'echarts/theme/macarons'
 import 'echarts/theme/vintage'
 import 'echarts/theme/roma'
+import 'echarts/extension/bmap/bmap'
 
 Vue.config.productionTip = false
 
