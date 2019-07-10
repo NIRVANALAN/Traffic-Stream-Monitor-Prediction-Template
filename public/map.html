@@ -21,8 +21,21 @@
       return new Function("return `" + template + "`").call(kwargs)
     }
 
+    const fillInfoWindowTempl(station) => {
+      return `
+      <div>
+        <div id="bd-subwayTitle">
+          ${station.name}
+        </div>
+        <div>
+          <button>
+        </div>
+      </div>
+      `
+    }
+
     // get city by name
-    const subwayCityName = '杭州';
+    const subwayCityName = '北京';
     const list = BMapSub.SubwayCitiesList;
     let subwaycity = null;
     for (let i = 0; i < list.length; i++) {
@@ -61,18 +74,8 @@
       });
       subway.addControl(zoomControl);
       subway.setZoom(0.5);
-      subway.setCenter("火车东站");
+      subway.setCenter("西土城");
 
-      var infoWindowTemplate = `
-      <div>
-        <div id="bd-subwayTitle">
-          ${station.name}
-        </div>
-        <div>
-          <button>
-        </div>
-      </div>
-      `
       var startStation, stopStation;
       subway.addEventListener('tap', function (e) {
         alert('您点击了"' + e.station.name + '"站');
