@@ -9,7 +9,12 @@
     src="https://api.map.baidu.com/api?type=subway&v=1.0&ak=SR5GvwWzQbGUvHsUVQkGxC4k1LZqd5l9"></script>
   <style type="text/css">
     #container {
-      height: 100%
+      height: 100%;
+    }
+
+    #bd-subwayTitle {
+      text-align: center;
+      line-height: 50px;
     }
   </style>
 </head>
@@ -19,19 +24,19 @@
   <script type="text/javascript">
     const fillInfoWindowTempl = (station) => {
       return `
-      <div>
+      <div id="bd-subwayInfo">
         <div id="bd-subwayTitle">
           ${station.name}
         </div>
         <div>
-          <button>
+          <button>Test</button>
         </div>
       </div>
       `
     }
 
     // get city by name
-    const subwayCityName = '北京';
+    const subwayCityName = '杭州';
     const list = BMapSub.SubwayCitiesList;
     let subwaycity = null;
     for (let i = 0; i < list.length; i++) {
@@ -70,12 +75,12 @@
       });
       subway.addControl(zoomControl);
       subway.setZoom(0.5);
-      subway.setCenter("西土城");
+      subway.setCenter("火车东站");
 
       var startStation, stopStation;
       subway.addEventListener('tap', function (e) {
-        alert('您点击了"' + e.station.name + '"站');
-
+        subway.openInfoWindow(new BMapSub.InfoWindow(fillInfoWindowTempl(e.station)), e.station);
+        window.console.log(new BMapSub.InfoWindow(fillInfoWindowTempl(e.station)));
         window.parent.postMessage(e.station.name);
       });
     }
