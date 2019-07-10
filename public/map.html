@@ -17,11 +17,7 @@
 <body>
   <div id="container"></div>
   <script type="text/javascript">
-    const fillTemplate = (template, kwargs) => {
-      return new Function("return `" + template + "`").call(kwargs)
-    }
-
-    const fillInfoWindowTempl(station) => {
+    const fillInfoWindowTempl = (station) => {
       return `
       <div>
         <div id="bd-subwayTitle">
