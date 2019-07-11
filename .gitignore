@@ -147,5 +147,4 @@ test/
 dist/
 npm-debug.log
 yarn-error.log
-.vscode
-.idea
+
