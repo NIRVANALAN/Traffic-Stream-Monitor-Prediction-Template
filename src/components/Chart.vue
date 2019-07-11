@@ -108,22 +108,15 @@ export default {
       ]
     };
     chart.setOption(option);
-    window.addEventListener("message",function(e){
-      if(e.data === "carousel_change")
-      {
-        for(var i=0;i<12;i++)
-        {
-          option.series[0].data[i] = random(10+20*i);
-          chart.setOption(this.option);
-        }
-        
-      }
-    })
     window.addEventListener("message", function(e) {
-      if (e.source === window.frames[0]) {
+      if (e.source === window.frames[0] || isNaN(e.data)) {
         const get_station_url = "http://127.0.0.1:8000/Flow/show_flow/";
         const now = new Date();
         let date = now.getDate();
+        if(isNaN(e.data))
+        {
+          date += e.data-2;
+        }
         let hour = now.getHours();
         let minutes = now.getMinutes();
         let station_id_map = JSON.parse(localStorage.getItem("station_id_map"));

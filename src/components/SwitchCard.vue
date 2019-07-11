@@ -1,4 +1,4 @@
-<template>
+<template >
   <el-carousel
     :initial-index="2"
     type="card"
@@ -7,8 +7,9 @@
     :loop="false"
     :autoplay="false"
     indicator-position="none"
-    @change="carouselChange">
-  >
+    @change="carouselChange($event)"
+     style="filter:alpha(opacity=50);background:#ffffff;width:600;">
+    
     <el-carousel-item v-for="(item, index) in content" :key="index">
       <div class="grid-content">
         <el-col :md="12" :offset="6">
@@ -63,14 +64,14 @@ export default {
      var that = this;
      window.addEventListener("message", function(e) {
       if (e.source === window.frames[0]) {
-          that.stand_name=e.name;
+          that.stand_name=e.data;
       }
      });
    },
    methods:{
-     carouselChange:function()
+     carouselChange:function($event)
      {
-       window.parent.postMessage("carousel_change");
+       window.parent.postMessage($event);
      }
    }
 }
