@@ -22,8 +22,7 @@
         </template>
         <el-menu-item-group>
           <template slot="title">路线</template>
-          <el-menu-item index="3-1">起点 - 终点</el-menu-item>
-          <el-menu-item index="3-2">起点 - 终点</el-menu-item>
+          <el-menu-item index="3-1" onclick="window.frames[0].postMessage({'type': 'collection_line', 'content': {'start': '文新', 'end': '下沙西'}})">文新 - 下沙西</el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group>
           <template slot="title">站点</template>
