@@ -1,24 +1,7 @@
 jQuery(document).ready(function () {
-
-    /*
-    Background slideshow
-    */
-    // $.backstretch([
-    //     "backgrounds/1.jpg"
-    //     , "backgrounds/2.jpg"
-    //     , "backgrounds/3.jpg"
-    // ], { duration: 3000, fade: 750 });
-    // alert('1234');
-
-    /*
-        Tooltips
-    */
     $('.links a.home').tooltip();
     $('.links a.blog').tooltip();
 
-    /*
-        Form validation
-    */
     $('.register form').submit(function () {
         $(this).find("label[for='firstname']").html('First Name');
         $(this).find("label[for='lastname']").html('Last Name');
