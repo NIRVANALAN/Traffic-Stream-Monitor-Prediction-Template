@@ -15,9 +15,13 @@
       height: 100%;
     }
 
-    #bd-subwayTitle {
+    #bd-subwayContainer {
       text-align: center;
       line-height: 50px;
+      background: #000000;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 5px;
     }
   </style>
 </head>
@@ -27,11 +31,15 @@
   <script type="text/javascript">
     const fillInfoWindowTempl = (station) => {
       return `
-      <div id="bd-subwayInfo">
-        <div id="bd-subwayTitle">
+      <el-container id="bd-subwayContainer">
+        <el-container>
           ${station.name}
-        </div>
-      </div>
+        </el-container>
+        <el-container>
+          <el-button type="text">文字按钮</el-button>
+          <el-button type="primary">btn2</el-button>
+        </el-container>
+      </el-container>
       `
     }
 
