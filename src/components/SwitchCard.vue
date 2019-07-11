@@ -7,26 +7,19 @@
     :loop="false"
     :autoplay="false"
     indicator-position="none"
-    &#x26;#x26;#x26;#x26;#x26;#x3C;&#x26;#x26;#x26;#x26;#x26;#x3C;&#x26;#x26;#x26;#x26;#x26;#x3C;&#x26;#x26;#x26;#x26;#x26;#x3C;&#x26;#x26;#x26;#x26;#x26;#x3C;&#x26;#x26;#x26;#x26;#x26;#x3C;&#x26;#x26;#x26;#x26;#x26;#x3C;
-    HEAD
-    @change="carouselChange"
-  >
-    >
-    =======
     @change="carouselChange($event)"
-    style="filter:alpha(opacity=50);background:#ffffff;width:600;">
-    >>>>>>> d5fed51eeef4f314db65091347df1866c8c5c979
+  >
     <el-carousel-item v-for="(item, index) in content" :key="index">
       <div class="grid-content">
         <el-col :md="12" :offset="6">
           <div>
             <div align="center" id="stand">
-              <el-button type="text">{{stand_name}}</el-button>
+              <el-button type="text">{{ stand_name }}</el-button>
             </div>
             <div align="center">
               <span class="service">
                 <i class="el-icon-date"></i>
-                {{item.date_day}}
+                {{ item.date_day }}
               </span>
             </div>
           </div>
