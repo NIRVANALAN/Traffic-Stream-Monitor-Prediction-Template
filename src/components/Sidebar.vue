@@ -35,30 +35,63 @@
         <template slot="title">
           <i class="el-icon-info"></i>我的消息
         </template>
-        <el-menu-item index="4-1">消息一</el-menu-item>
-        <el-menu-item index="4-2">消息二</el-menu-item>
+        <el-menu-item index="4-1" title="火车东站有拥堵状况">路况信息</el-menu-item>
+        <el-menu-item index="4-2" title="今天下午有小到中雨">天气信息</el-menu-item>
       </el-submenu>
       <el-submenu index="5">
         <template slot="title">
           <i class="el-icon-setting"></i>设置
         </template>
+        <el-menu-item index="5-1">路况通知 <el-switch @change="switch_button_1" on-value="1" off-value="0" v-model="value_switch_1"></el-switch></el-menu-item>
+        <el-menu-item index="5-2">天气通知 <el-switch @change="switch_button_2" on-value="1" off-value="0" v-model="value_switch_2"></el-switch></el-menu-item>
       </el-submenu>
       <el-submenu index="6">
         <template slot="title">
           <i class="el-icon-edit"></i>我的反馈
         </template>
+        <el-menu-item index="6-1"><textarea style="width:120px; height:50px">请在这里提交您的反馈</textarea></el-menu-item>
+        <div align="center"><el-button type="success" plain @click="submit">提交</el-button></div>
       </el-submenu>
     </el-menu>
   </el-aside>
 </template>
 
+
 <script>
 export default {
-  name: "Sidebar",
-  methods: {
-    set_sidebar() {}
-  }
-};
+    props: {
+      value: {
+        type: Boolean,
+        default: true
+      }
+    },
+    data() {
+      return {
+        value_switch_1:'1',
+        value_switch_2:'1',
+        me_checked: this.value
+      }
+    },
+    watch: {
+      me_checked(val) {
+        this.$emit('input', val);
+      }
+    },
+    methods: {
+      switch_button_1 (val) {
+        //console.log(val)
+    },
+    switch_button_2 (val) {
+        //console.log(val)
+    },
+      toggle() {
+        this.me_checked = !this.me_checked;
+      },
+      submit(){
+        alert("提交成功，感谢您的反馈")
+      }
+    }
+}
 </script>
 
 <style>

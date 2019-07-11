@@ -8,7 +8,16 @@ import Axios from "axios";
 
 export default {
   name: "Chart",
+  methods: {
+    randomInt: function(maxData) {
+      return +(Math.random() * (maxData - 10)).toFixed(1);
+    }
+  },
+  data() {
+    return {};
+  },
   mounted() {
+    var that = this;
     let chart = echarts.init(document.getElementById("chart"), "roma");
     let option = {
       title: {
@@ -68,12 +77,6 @@ export default {
             76.7,
             135.6,
             162.2,
-            // {
-            // value: 162.2,
-            // itemStyle: {
-            // color: "#4ad2ff"
-            // }
-            // },
             32.6,
             20.0,
             6.4,
@@ -111,14 +114,21 @@ export default {
     };
     chart.setOption(option);
     window.addEventListener("message", function(e) {
-      if (e.source === window.frames[0]) {
+      if (e.source === window.frames[0] || !isNaN(e.data)) {
         const get_station_url = "http://127.0.0.1:8000/Flow/show_flow/";
         const now = new Date();
+        let stand_name = "火车东站";
         let date = now.getDate();
+        if (!isNaN(e.data)) {
+          date = date + e.data - 2;
+        } else {
+          stand_name = e.data;
+        }
         let hour = now.getHours();
         let minutes = now.getMinutes();
         let station_id_map = JSON.parse(localStorage.getItem("station_id_map"));
-        let id = station_id_map[e.data];
+        let id = station_id_map[stand_name];
+        // console.log(id)
         // console.log(id)
         Axios.post(get_station_url, {
           year: 2019,
@@ -144,7 +154,7 @@ export default {
                 }
               }
               localStorage.setItem("stationInfo", JSON.stringify(station_info));
-              let station_name = e.data;
+              let station_name = stand_name;
               if (!station_name.endsWith("站")) {
                 option.title.subtext = station_name.concat("站");
               }
@@ -166,7 +176,6 @@ export default {
                       color: "#CD5C5C"
                     }
                   };
-
                   option.series[1].data[index] = {
                     value:
                       station_info[station_id]["date_".concat(date.toString())][
@@ -186,7 +195,6 @@ export default {
                       color: "#771100"
                     }
                   };
-
                   option.series[1].data[index] = {
                     value:
                       station_info[station_id]["date_".concat(date.toString())][
