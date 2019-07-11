@@ -132,11 +132,23 @@
 
     window.addEventListener("message", (event) => {
       message = event.data;
+      window.console.log(event);
       if (message.type == 'collection_line') {
-        window.console.log(event);
         setStart(message.content.start);
         setEnd(message.content.end);
         direct();
+      } else if (message.type == 'collection_station') {
+        subway.clearOverlays();
+        startStation = null;
+        endStation = null;
+        subway.openInfoWindow(
+          new BMapSub.InfoWindow(
+            fillInfoWindowTempl({ 'name': message.content.station })
+          ),
+          message.content.station
+        );
+
+        window.parent.postMessage(message.content.station);
       }
     })
   </script>
