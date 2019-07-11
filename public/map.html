@@ -7,15 +7,12 @@
   <title>地铁图展示</title>
   <script type="text/javascript"
     src="https://api.map.baidu.com/api?type=subway&v=1.0&ak=SR5GvwWzQbGUvHsUVQkGxC4k1LZqd5l9"></script>
-  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <style type="text/css">
     #container {
       height: 100%;
     }
 
-    #bd-subwayContainer {
+    #bd-subwayInfo {
       text-align: center;
       line-height: 50px;
       background: #000000;
@@ -27,26 +24,27 @@
 </head>
 
 <body>
+  <button onclick="direct()"></button>
   <div id="container"></div>
   <script type="text/javascript">
     const fillInfoWindowTempl = (station) => {
       return `
-      <el-container id="bd-subwayContainer">
-        <el-container>
+      <div id="bd-subwayInfo">
+        <div>
           ${station.name}
-        </el-container>
-        <el-container>
-          <el-button type="text">文字按钮</el-button>
-          <el-button type="primary">btn2</el-button>
-        </el-container>
-      </el-container>
+        </div>
+        <div>
+          <button onclick="setStart('${station.name}')">设为起点</button>
+          <button onclick="setEnd('${station.name}')">设为终点</button>
+        </div>
+      </div>
       `
     }
 
     // get city by name
     const subwayCityName = '杭州';
     const list = BMapSub.SubwayCitiesList;
-    let subwaycity = null;
+    var subwaycity = null;
     for (let i = 0; i < list.length; i++) {
       if (list[i].name === subwayCityName) {
         subwaycity = list[i];
@@ -54,14 +52,15 @@
       }
     }
 
+    var subway = new BMapSub.Subway('container', subwaycity.citycode);;
+    var startStation = null, endStation = null;
+    var startMarker = null, endMarker = null;
     if (subwaycity) {
-      let subway = new BMapSub.Subway('container', subwaycity.citycode);
-
       subway.addEventListener('subwayloaded', function () {
         // create local cache of station info
-        let SubwayLines = subway.getLines();
-        let stations = [];
-        let station_id_map = {};
+        var SubwayLines = subway.getLines();
+        var stations = [];
+        var station_id_map = {};
 
         for (let i = 0; i < SubwayLines.length; i++) {
           let line = SubwayLines[i].stations;
@@ -85,13 +84,61 @@
       subway.setZoom(0.5);
       subway.setCenter("火车东站");
 
-      var startStation, stopStation;
       subway.addEventListener('tap', function (e) {
         subway.openInfoWindow(new BMapSub.InfoWindow(fillInfoWindowTempl(e.station)), e.station);
 
         window.parent.postMessage(e.station.name);
       });
     }
+
+    function setStart(name) {
+      if (startStation != null) {
+        subway.removeMarker(startMarker);
+      }
+      startStation = name
+      startMarker = new BMapSub.Marker(name, {
+        icon: new BMapSub.Icon(
+          'https://api.map.baidu.com/images/subway/start-bak.png',
+          new BMapSub.Size(50, 80)
+        )
+      });
+      subway.addMarker(startMarker);
+    }
+
+    function setEnd(name) {
+      if (startStation != null) {
+        subway.removeMarker(endMarker);
+      }
+      endStation = name;
+      endMarker = new BMapSub.Marker(name, {
+        icon: new BMapSub.Icon(
+          'https://api.map.baidu.com/images/subway/end-bak.png',
+          new BMapSub.Size(50, 80)
+        )
+      });
+      subway.addMarker(endMarker);
+    }
+
+    var drct = null;
+
+    function direct() {
+      if (startStation != null && endStation != null) {
+
+        subway.closeInfoWindow();
+        drct = new BMapSub.Direction(subway);
+        drct.search(startStation, endStation);
+      }
+    }
+
+    window.addEventListener("message", (event) => {
+      message = event.data;
+      if (message.type == 'collection_line') {
+        window.console.log(event);
+        setStart(message.content.start);
+        setEnd(message.content.end);
+        direct();
+      }
+    })
   </script>
 </body>
 
