@@ -5,9 +5,13 @@
 <script>
 import echarts from "echarts";
 import Axios from "axios";
-
 export default {
   name: "Chart",
+  methods:{
+    random(maxData) {
+      return +(Math.random() * (maxData - 10)).toFixed(1);
+    }
+  },
   mounted() {
     let chart = echarts.init(document.getElementById("chart"), "roma");
     let option = {
@@ -68,12 +72,6 @@ export default {
             76.7,
             135.6,
             162.2,
-            // {
-            // value: 162.2,
-            // itemStyle: {
-            // color: "#4ad2ff"
-            // }
-            // },
             32.6,
             20.0,
             6.4,
@@ -110,6 +108,17 @@ export default {
       ]
     };
     chart.setOption(option);
+    window.addEventListener("message",function(e){
+      if(e.data === "carousel_change")
+      {
+        for(var i=0;i<12;i++)
+        {
+          option.series[0].data[i] = random(10+20*i);
+          chart.setOption(this.option);
+        }
+        
+      }
+    })
     window.addEventListener("message", function(e) {
       if (e.source === window.frames[0]) {
         const get_station_url = "http://127.0.0.1:8000/Flow/show_flow/";
@@ -166,7 +175,6 @@ export default {
                       color: "#CD5C5C"
                     }
                   };
-
                   option.series[1].data[index] = {
                     value:
                       station_info[station_id]["date_".concat(date.toString())][
@@ -186,7 +194,6 @@ export default {
                       color: "#771100"
                     }
                   };
-
                   option.series[1].data[index] = {
                     value:
                       station_info[station_id]["date_".concat(date.toString())][
