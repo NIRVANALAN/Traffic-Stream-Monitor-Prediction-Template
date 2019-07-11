@@ -1,9 +1,9 @@
 <template>
   <el-container>
-    <el-container>
+    <el-container direction="vertical">
       <subway-map></subway-map>
       <switch-card></switch-card>
-      <el-footer height="250px">
+      <el-footer height="250px" v-if="current_role">
         <chart></chart>
       </el-footer>
     </el-container>
@@ -24,6 +24,14 @@ export default {
     SubwayMap,
     Chart,
     SwitchCard
+  },
+  data() {
+    return {
+      current_role: 0
+    };
+  },
+  created() {
+    this.current_role = localStorage.getItem("role");
   }
 };
 </script>
