@@ -1,4 +1,4 @@
-<template>
+<template >
   <el-carousel
     :initial-index="2"
     type="card"
@@ -7,9 +7,15 @@
     :loop="false"
     :autoplay="false"
     indicator-position="none"
+    &#x26;#x26;#x26;#x26;#x26;#x3C;&#x26;#x26;#x26;#x26;#x26;#x3C;&#x26;#x26;#x26;#x26;#x26;#x3C;&#x26;#x26;#x26;#x26;#x26;#x3C;&#x26;#x26;#x26;#x26;#x26;#x3C;&#x26;#x26;#x26;#x26;#x26;#x3C;&#x26;#x26;#x26;#x26;#x26;#x3C;
+    HEAD
     @change="carouselChange"
   >
     >
+    =======
+    @change="carouselChange($event)"
+    style="filter:alpha(opacity=50);background:#ffffff;width:600;">
+    >>>>>>> d5fed51eeef4f314db65091347df1866c8c5c979
     <el-carousel-item v-for="(item, index) in content" :key="index">
       <div class="grid-content">
         <el-col :md="12" :offset="6">
@@ -71,8 +77,8 @@ export default {
     });
   },
   methods: {
-    carouselChange: function() {
-      window.parent.postMessage("carousel_change");
+    carouselChange: function($event) {
+      window.parent.postMessage($event);
     }
   }
 };

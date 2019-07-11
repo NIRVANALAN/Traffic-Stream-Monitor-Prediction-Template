@@ -114,19 +114,14 @@ export default {
     };
     chart.setOption(option);
     window.addEventListener("message", function(e) {
-      if (e.data === "carousel_change") {
-        window.console.log("carousel_change");
-        for (var i = 0; i < 12; i++) {
-          option.series[0].data[i] = random(1500 + 1500 * i);
-          option.series[1].data[i] = random(1500 + 1500 * i);
-          chart.setOption(option);
-        }
-      }
-
-      if (e.source === window.frames[0] || e.data === "carousel_change") {
+      if (e.source === window.frames[0] || isNaN(e.data)) {
         const get_station_url = "http://127.0.0.1:8000/Flow/show_flow/";
         const now = new Date();
         let date = now.getDate();
+        if(isNaN(e.data))
+        {
+          date += e.data-2;
+        }
         let hour = now.getHours();
         let minutes = now.getMinutes();
         let station_id_map = JSON.parse(localStorage.getItem("station_id_map"));
