@@ -7,12 +7,13 @@
     :loop="false"
     :autoplay="false"
     indicator-position="none"
+    @change="carouselChange">
   >
     <el-carousel-item v-for="(item, index) in content" :key="index">
       <div class="grid-content">
         <el-col :md="12" :offset="6">
           <div>
-            <div align="center"><p class="italictext" v-bind="stand_name">{{stand_name}}</p></div>
+            <div align="center" id="stand"><el-button type="text">{{stand_name}}</el-button></div>
             <div align="center">
             <span class="service">
               <i class="el-icon-date"></i>
@@ -29,16 +30,14 @@
 <script>
 export default {
   name: "SwitchCard",
-
   data() {
-    var stand = "火车东站";
     var Dates_1 = func_date(-2);
     var Dates_2 = func_date(-1);
     var Dates_3 = func_date(0);
     var Dates_4 = func_date(1);
-    var Dates_5 = func_date(2)
+    var Dates_5 = func_date(2);
     return {
-      stand_name :stand,
+      stand_name :"火车东站",
       content: [
         {
           date_day:Dates_1,
@@ -58,13 +57,23 @@ export default {
       ]   
   }
   },
-   watch: {
-      stand_name: function () {
-      stand_name = e.name;
-    }
-  },
+  mounted(){
+     let app = {};
+     app.count = 11;
+     var that = this;
+     window.addEventListener("message", function(e) {
+      if (e.source === window.frames[0]) {
+          that.stand_name=e.name;
+      }
+     });
+   },
+   methods:{
+     carouselChange:function()
+     {
+       window.parent.postMessage("carousel_change");
+     }
+   }
 }
-
 //获取当前时间的函数
 function func_date(aa){
     var date1 = new Date();
@@ -73,15 +82,6 @@ function func_date(aa){
     var time2 = (date2.getMonth()+1)+"月"+date2.getDate()+"日";
     return time2;
     }
-
-function get_stand_name()
-{
-  return e.name;
-}
-window.parent.addEventListener("message",function(e){
-  Vue.set(stand_name,e.name);
-})
-
 </script>
 
 <style scoped>
@@ -92,15 +92,12 @@ window.parent.addEventListener("message",function(e){
   line-height: 75px;
   margin: 0;
 }
-
 .el-carousel__item:nth-child(2n) {
   background-color: #99a9bf;
 }
-
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
 }
-
 #switchcard {
   position: relative;
   padding: 0;
@@ -109,7 +106,7 @@ window.parent.addEventListener("message",function(e){
   top: 0;
   left: 0;
   margin: auto;
-  width: 450px;
+  width: 600px;
   height: 75px;
 }
 </style>
