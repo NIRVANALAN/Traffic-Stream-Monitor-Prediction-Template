@@ -4,18 +4,32 @@
     <el-dropdown>
       <i class="el-icon-view" style="margin-right: 15px"></i>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item><el-button type="text" align="center">回放</el-button></el-dropdown-item>
-        <el-dropdown-item divided><el-button type="text" align="center">线路</el-button></el-dropdown-item>
-        <el-dropdown-item divided><el-button type="text" align="center">拥堵</el-button></el-dropdown-item>
-        <el-dropdown-item divided><el-button type="text" align="center" @click="collect">收藏</el-button></el-dropdown-item>
+        <el-dropdown-item>
+          <el-button type="text" align="center">回放</el-button>
+        </el-dropdown-item>
+        <el-dropdown-item divided>
+          <el-button type="text" align="center">线路</el-button>
+        </el-dropdown-item>
+        <el-dropdown-item divided>
+          <el-button type="text" align="center">拥堵</el-button>
+        </el-dropdown-item>
+        <el-dropdown-item divided>
+          <el-button type="text" align="center" @click="collect">收藏</el-button>
+        </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
     <el-dropdown>
       <i class="el-icon-setting" style="margin-right: 15px"></i>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item><el-button type="text" align="center">退出</el-button></el-dropdown-item>
-        <el-dropdown-item divided><el-button type="text" align="center">详细</el-button></el-dropdown-item>
-        <el-dropdown-item divided><el-button type="text" align="center">我的</el-button></el-dropdown-item>
+        <el-dropdown-item>
+          <el-button type="text" align="center">退出</el-button>
+        </el-dropdown-item>
+        <el-dropdown-item divided>
+          <el-button type="text" align="center">详细</el-button>
+        </el-dropdown-item>
+        <el-dropdown-item divided>
+          <el-button type="text" align="center">我的</el-button>
+        </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
     <span v-if="show_login_button">
@@ -42,7 +56,7 @@ export default {
     }
   },
   methods: {
-    collect(){
+    collect() {
       alert("收藏成功");
     },
     login() {
