@@ -7,18 +7,21 @@
     :loop="false"
     :autoplay="false"
     indicator-position="none"
-    @change="carouselChange">
+    @change="carouselChange"
   >
+    >
     <el-carousel-item v-for="(item, index) in content" :key="index">
       <div class="grid-content">
         <el-col :md="12" :offset="6">
           <div>
-            <div align="center" id="stand"><el-button type="text">{{stand_name}}</el-button></div>
+            <div align="center" id="stand">
+              <el-button type="text">{{stand_name}}</el-button>
+            </div>
             <div align="center">
-            <span class="service">
-              <i class="el-icon-date"></i>
-              {{item.date_day}}
-            </span>
+              <span class="service">
+                <i class="el-icon-date"></i>
+                {{item.date_day}}
+              </span>
             </div>
           </div>
         </el-col>
@@ -37,51 +40,50 @@ export default {
     var Dates_4 = func_date(1);
     var Dates_5 = func_date(2);
     return {
-      stand_name :"火车东站",
+      stand_name: "火车东站",
       content: [
         {
-          date_day:Dates_1,
+          date_day: Dates_1
         },
         {
-          date_day:Dates_2,
+          date_day: Dates_2
         },
         {
-          date_day:Dates_3,
+          date_day: Dates_3
         },
         {
-          date_day:Dates_4,
+          date_day: Dates_4
         },
         {
-          date_day:Dates_5,
+          date_day: Dates_5
         }
-      ]   
-  }
+      ]
+    };
   },
-  mounted(){
-     let app = {};
-     app.count = 11;
-     var that = this;
-     window.addEventListener("message", function(e) {
+  mounted() {
+    let app = {};
+    app.count = 11;
+    var that = this;
+    window.addEventListener("message", function(e) {
       if (e.source === window.frames[0]) {
-          that.stand_name=e.name;
+        that.stand_name = e.data;
       }
-     });
-   },
-   methods:{
-     carouselChange:function()
-     {
-       window.parent.postMessage("carousel_change");
-     }
-   }
-}
-//获取当前时间的函数
-function func_date(aa){
-    var date1 = new Date();
-    var date2 = new Date(date1);
-    date2.setDate(date1.getDate()+aa);
-    var time2 = (date2.getMonth()+1)+"月"+date2.getDate()+"日";
-    return time2;
+    });
+  },
+  methods: {
+    carouselChange: function() {
+      window.parent.postMessage("carousel_change");
     }
+  }
+};
+//获取当前时间的函数
+function func_date(aa) {
+  var date1 = new Date();
+  var date2 = new Date(date1);
+  date2.setDate(date1.getDate() + aa);
+  var time2 = date2.getMonth() + 1 + "月" + date2.getDate() + "日";
+  return time2;
+}
 </script>
 
 <style scoped>

@@ -28,9 +28,6 @@
         <div id="bd-subwayTitle">
           ${station.name}
         </div>
-        <div>
-          <button>Test</button>
-        </div>
       </div>
       `
     }
@@ -80,7 +77,7 @@
       var startStation, stopStation;
       subway.addEventListener('tap', function (e) {
         subway.openInfoWindow(new BMapSub.InfoWindow(fillInfoWindowTempl(e.station)), e.station);
-        window.console.log(new BMapSub.InfoWindow(fillInfoWindowTempl(e.station)));
+
         window.parent.postMessage(e.station.name);
       });
     }
