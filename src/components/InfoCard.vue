@@ -65,19 +65,26 @@ export default {
     app.count = 11;
     var that = this;
     window.addEventListener("message", function(e) {
-      if (e.source === window.frames[0]) {
+      if (e.source === window.frames[0] || !isNaN(e.data)) {
         // console.log("testsssss");
+        console.log(e.data);
         let name = that.infoCard.name;
         switch (name) {
           case "averageFlow":
-            that.infoCard.title = e.data + that.infoCard.title.slice(-6);
+            if (typeof(e.data)=='string') {
+              that.infoCard.title = e.data + that.infoCard.title.slice(-6);
+            }
             that.update_average_density_number();
             break;
           case "CurrentDensity":
-            that.infoCard.title = e.data + that.infoCard.title.slice(-5);
+            if (typeof(e.data)=='string') {
+              that.infoCard.title = e.data + that.infoCard.title.slice(-5);
+            }
             break;
           case "passengerFlow":
-            that.infoCard.title = e.data + that.infoCard.title.slice(-5);
+           if (typeof(e.data)=='string') {
+              that.infoCard.title = e.data + that.infoCard.title.slice(-5);
+            }
             let overall_number = Math.round(Math.random() * 10000);
             that.infoCard.number = overall_number;
             that.infoCard.option.series[0].data = Array.from(
