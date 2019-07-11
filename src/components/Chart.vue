@@ -5,14 +5,19 @@
 <script>
 import echarts from "echarts";
 import Axios from "axios";
+
 export default {
   name: "Chart",
-  methods:{
-    random(maxData) {
+  methods: {
+    randomInt: function(maxData) {
       return +(Math.random() * (maxData - 10)).toFixed(1);
     }
   },
+  data() {
+    return {};
+  },
   mounted() {
+    var that = this;
     let chart = echarts.init(document.getElementById("chart"), "roma");
     let option = {
       title: {
@@ -108,19 +113,17 @@ export default {
       ]
     };
     chart.setOption(option);
-    window.addEventListener("message",function(e){
-      if(e.data === "carousel_change")
-      {
-        for(var i=0;i<12;i++)
-        {
-          option.series[0].data[i] = random(10+20*i);
-          chart.setOption(this.option);
-        }
-        
-      }
-    })
     window.addEventListener("message", function(e) {
-      if (e.source === window.frames[0]) {
+      if (e.data === "carousel_change") {
+        window.console.log("carousel_change");
+        for (var i = 0; i < 12; i++) {
+          option.series[0].data[i] = random(1500 + 1500 * i);
+          option.series[1].data[i] = random(1500 + 1500 * i);
+          chart.setOption(option);
+        }
+      }
+
+      if (e.source === window.frames[0] || e.data === "carousel_change") {
         const get_station_url = "http://127.0.0.1:8000/Flow/show_flow/";
         const now = new Date();
         let date = now.getDate();
