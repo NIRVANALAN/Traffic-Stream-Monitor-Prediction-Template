@@ -3,7 +3,7 @@
     <el-container direction="vertical">
       <subway-map></subway-map>
       <switch-card></switch-card>
-      <el-footer height="250px" v-if="current_role">
+      <el-footer height="250px" v-if="current_role != 1">
         <chart></chart>
       </el-footer>
     </el-container>
