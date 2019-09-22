@@ -4,7 +4,7 @@
 
 This is a template for using BaiduMap with VueJS, to monitor and predict public traffic stream, using built in sequence model.
 This template can be applied to any city/traffic and is also easily deployed.
-Here in this repo we give an example of the template been applied to subway traffic of Beijing, with stream monitor, sequence prediction, user profile management and navigation.
+Here in this repo we give an example of the template been applied to subway traffic-Beijing, with stream monitor, sequence prediction, user profile management and navigation .etc
 
 
 ## Technology Roadmap
